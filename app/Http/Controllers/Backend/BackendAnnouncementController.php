@@ -27,7 +27,7 @@ class BackendAnnouncementController extends Controller
             if ($request->id != null) {
                 $q->where('id', $request->id);
             }
-            $q->where('title', 'LIKE', '%'.$request->key.'%');
+            $q->where('title', 'LIKE', '%' . $request->key . '%');
         })->orderBy('id', 'DESC')->paginate();
 
         return view('admin.announcements.index', compact('announcements'));
@@ -62,7 +62,7 @@ class BackendAnnouncementController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $announcement->addMedia($request->image)->toMediaCollection('image');
-            $announcement->update(['image' => $image->id.'/'.$image->file_name]);
+            $announcement->update(['image' => $image->id . '/' . $image->file_name]);
         }
 
         flash()->success(__('utils/toastr.store_success_message'));
@@ -75,7 +75,9 @@ class BackendAnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Announcement $announcement) {}
+    public function show(Announcement $announcement)
+    {
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -105,7 +107,7 @@ class BackendAnnouncementController extends Controller
         ]);
         if ($request->hasFile('image')) {
             $image = $announcement->addMedia($request->image)->toMediaCollection('image');
-            $announcement->update(['image' => $image->id.'/'.$image->file_name]);
+            $announcement->update(['image' => $image->id . '/' . $image->file_name]);
         }
         flash()->success(__('utils/toastr.update_success_message'));
 

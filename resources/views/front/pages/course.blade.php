@@ -39,8 +39,8 @@
                     <div class="card-body">
                         <!-- Price -->
                         <div class="d-flex align-items-center gap-3 mb-3">
-                            <p class="fw-bold text-primary">149 ريال</p>
-                            <p class="text-muted text-decoration-line-through">299 ريال</p>
+                            <p class="fw-bold text-primary mb-0">149 ريال</p>
+                            <p class="text-muted text-decoration-line-through mb-0">299 ريال</p>
                             <span class="badge bg-danger">خصم 50%</span>
                         </div>
 

@@ -37,7 +37,7 @@ class SettingsHelper
         if ($this->settings['website_logo'] == null) {
             return env('DEFAULT_IMAGE_LOGO');
         } else {
-            return env('STORAGE_URL').'/'.\MainHelper::get_conversion($this->settings['website_logo'], 'thumb');
+            return env('STORAGE_URL') . '/' . \MainHelper::get_conversion($this->settings['website_logo'], 'thumb');
         }
     }
 
@@ -46,7 +46,7 @@ class SettingsHelper
         if ($this->settings['website_cover'] == null) {
             return env('DEFAULT_IMAGE_COVER');
         } else {
-            return env('STORAGE_URL').'/'.\MainHelper::get_conversion($this->settings['website_cover'], 'original');
+            return env('STORAGE_URL') . '/' . \MainHelper::get_conversion($this->settings['website_cover'], 'original');
         }
     }
 
@@ -55,7 +55,7 @@ class SettingsHelper
         if ($this->settings['website_wide_logo'] == null) {
             return env('DEFAULT_IMAGE_WIDELOGO');
         } else {
-            return env('STORAGE_URL').'/'.\MainHelper::get_conversion($this->settings['website_wide_logo'], 'thumb');
+            return env('STORAGE_URL') . '/' . \MainHelper::get_conversion($this->settings['website_wide_logo'], 'thumb');
         }
     }
 
@@ -64,7 +64,7 @@ class SettingsHelper
         if ($this->settings['website_icon'] == null) {
             return env('DEFAULT_IMAGE_FAVICON');
         } else {
-            return env('STORAGE_URL').'/'.\MainHelper::get_conversion($this->settings['website_icon'], 'tiny');
+            return env('STORAGE_URL') . '/' . \MainHelper::get_conversion($this->settings['website_icon'], 'tiny');
         }
     }
 }

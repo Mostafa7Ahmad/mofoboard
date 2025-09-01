@@ -24,10 +24,10 @@ class BackendTagController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('tag_name', 'LIKE', '%'.$request->q.'%')
-                    ->orWhere('arabic_name', 'LIKE', '%'.$request->q.'%')
-                    ->orWhere('english_name', 'LIKE', '%'.$request->q.'%')
-                    ->orWhere('slug', 'LIKE', '%'.$request->q.'%');
+                $q->where('tag_name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('arabic_name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('english_name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('slug', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate(100);
 
@@ -95,8 +95,8 @@ class BackendTagController extends Controller
     public function update(UpdateTagRequest $request, Tag $tag)
     {
         $request->validate([
-            'tag_name' => 'required|unique:tags,tag_name,'.$tag->id,
-            'slug' => 'required|unique:tags,tag_name,'.$tag->id,
+            'tag_name' => 'required|unique:tags,tag_name,' . $tag->id,
+            'slug' => 'required|unique:tags,tag_name,' . $tag->id,
         ]);
         $tag->update([
             'tag_name' => $request->tag_name,

@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
             AttachSuperAdminPermissions::class,
             ContentSeeder::class
         ]);
+        \App\Models\Category::factory(5)->create();
+        \App\Models\Course::factory(10)
+            ->hasModules(3)
+            ->hasReviews(5)
+            ->create();
+
         cache()->flush();
     }
 }

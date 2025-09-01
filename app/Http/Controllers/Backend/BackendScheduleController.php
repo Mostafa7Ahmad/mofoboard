@@ -76,7 +76,7 @@ class BackendScheduleController extends Controller
         foreach ($rate_limits_chunks as $rate_limits_chunk) {
             \App\Models\RateLimit::insert($rate_limits_chunk->toArray());
         }
-        dump('rate_limits pushed '.count($rate_limits ?? []));
+        dump('rate_limits pushed ' . count($rate_limits ?? []));
         cache()->forget('rate_limits');
 
         $rate_limit_details = cache()->get('rate_limit_details') ?? [];
@@ -85,7 +85,7 @@ class BackendScheduleController extends Controller
         foreach ($rate_limit_details_chunks as $rate_limit_details_chunk) {
             \App\Models\RateLimitDetail::insert($rate_limit_details_chunk->toArray());
         }
-        dump('rate_limit_details pushed '.count($rate_limit_details ?? []));
+        dump('rate_limit_details pushed ' . count($rate_limit_details ?? []));
         cache()->forget('rate_limit_details');
 
         $item_seens = cache()->get('item_seens') ?? [];
@@ -94,7 +94,7 @@ class BackendScheduleController extends Controller
         foreach ($item_seens_chunks as $item_seens_chunk) {
             \App\Models\ItemSeen::insert($item_seens_chunk->toArray());
         }
-        dump('item_seens pushed '.count($item_seens ?? []));
+        dump('item_seens pushed ' . count($item_seens ?? []));
         cache()->forget('item_seens');
     }
 }

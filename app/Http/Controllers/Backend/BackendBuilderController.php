@@ -12,5 +12,7 @@ class BackendBuilderController extends Controller
         return view('admin.builders.index');
     }
 
-    public function create(Request $request) {}
+    public function create(Request $request)
+    {
+    }
 }

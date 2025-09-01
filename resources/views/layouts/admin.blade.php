@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     @vite('resources/css/dashboard.css')
 
     <style type="text/css">
@@ -207,14 +207,14 @@
     @yield('after-body')
     <div class="col-12 justify-content-end d-flex">
         @if ($errors->any())
-                <div class="col-12" style="position: absolute;top: 80px;left: 10px;">
-                    {!! implode(
-                '',
-                $errors->all(
-                    '<div class="alert-click-hide alert alert-danger alert alert-danger col-9 col-xl-3 rounded-0 mb-1" style="position: fixed!important;z-index: 11;opacity:.9;left:25px;cursor:pointer;" onclick="$(this).fadeOut();">:message</div>',
-                ),
-            ) !!}
-                </div>
+            <div class="col-12" style="position: absolute;top: 80px;left: 10px;">
+                {!! implode(
+                    '',
+                    $errors->all(
+                        '<div class="alert-click-hide alert alert-danger alert alert-danger col-9 col-xl-3 rounded-0 mb-1" style="position: fixed!important;z-index: 11;opacity:.9;left:25px;cursor:pointer;" onclick="$(this).fadeOut();">:message</div>',
+                    ),
+                ) !!}
+            </div>
         @endif
     </div>
     <form method="POST" action="{{ route('logout') }}" id="logout-form" class="d-none">@csrf</form>
@@ -374,14 +374,14 @@
                                 'icon' => 'fal fa-graduation-cap',
                                 'links' => [
                                     [
-                                        // 'can' => 'courses-read',
-                                        'url' => "#",
+                                        'can' => 'courses-read',
+                                        'url' => route("admin.courses.index"),
                                         'icon' => 'fal fa-book-open',
                                         'text' => 'الكورسات',
                                     ],
                                     [
                                         // 'can' => 'lessons-read',
-                                        'url' => "#",
+                                        'url' => '#',
                                         'icon' => 'fal fa-play-circle',
                                         'text' => 'الدروس',
                                     ],
@@ -393,13 +393,13 @@
                                     // ],
                                     [
                                         // 'can' => 'enrollments-read',
-                                        'url' => "#",
+                                        'url' => '#',
                                         'icon' => 'fal fa-clipboard-list',
                                         'text' => 'الاشتراكات',
                                     ],
                                     [
                                         // 'can' => 'certificates-read',
-                                        'url' => "#",
+                                        'url' => '#',
                                         'icon' => 'fal fa-certificate',
                                         'text' => 'الشهادات',
                                     ],
@@ -411,19 +411,19 @@
                                     // ],
                                     [
                                         // 'can' => 'quizzes-read',
-                                        'url' => "#",
+                                        'url' => '#',
                                         'icon' => 'fal fa-question-circle',
                                         'text' => 'الاختبارات',
                                     ],
                                     [
                                         // 'can' => 'reviews-read',
-                                        'url' => "#",
+                                        'url' => '#',
                                         'icon' => 'fal fa-star',
                                         'text' => 'التقييمات',
                                     ],
                                 ],
                             ],
-
+                    
                             [
                                 'can' => 'contacts-read',
                                 'text' => 'طلب التواصل',
@@ -504,29 +504,29 @@
                                 style="padding: 10px;border-radius: 50%;width: 55px;height: 55px;">
                         </div>
                         <ul class="dropdown-menu shadow border-0" aria-labelledby="dropdownMenuButton1"
-                            style="top: -3px;">
+                            style="top: -3px;left: 10px !important;">
                             <li><a class="dropdown-item font-1" href="/" target="_blank"><span
-                                        class="fal fa-desktop font-1"></span> عرض الموقع</a></li>
+                                        class="fal fa-desktop font-1 mx-2"></span> عرض الموقع</a></li>
                             <li><a class="dropdown-item font-1" href="{{ route('admin.profile.index') }}"><span
-                                        class="fal fa-user font-1"></span> ملفي الشخصي</a></li>
+                                        class="fal fa-user font-1 mx-1"></span> ملفي الشخصي</a></li>
 
                             <li><a class="dropdown-item font-1" href="{{ route('admin.profile.edit') }}"><span
-                                        class="fal fa-edit font-1"></span> تعديل ملفي الشخصي</a></li>
+                                        class="fal fa-edit font-1 mx-1"></span> تعديل ملفي الشخصي</a></li>
 
                             @can('hub-files-read')
                                 <li><a class="dropdown-item font-1" href="{{ route('admin.files.index') }}"><span
-                                            class="fal fa-file font-1"></span> الملفات</a></li>
+                                            class="fal fa-file font-1 mx-1"></span> الملفات</a></li>
                             @endcan
 
                             @can('traffics-read')
                                 <li><a class="dropdown-item font-1" href="{{ route('admin.traffics.index') }}"><span
-                                            class="fal fa-traffic-light font-1"></span> الترافيك</a></li>
+                                            class="fal fa-traffic-light font-1 mx-1"></span> الترافيك</a></li>
                             @endcan
 
                             @can('error-reports-read')
                                 <li><a class="dropdown-item font-1"
                                         href="{{ route('admin.traffics.error-reports') }}"><span
-                                            class="fal fa-bug font-1"></span> تقارير الأخطاء</a></li>
+                                            class="fal fa-bug font-1 mx-1"></span> تقارير الأخطاء</a></li>
                             @endcan
 
                             <li>
@@ -534,7 +534,7 @@
                             </li>
                             <li><a class="dropdown-item font-1" href="#"
                                     onclick="document.getElementById('logout-form').submit();"><span
-                                        class="fal fa-sign-out-alt font-1"></span> تسجيل خروج</a></li>
+                                        class="fal fa-sign-out-alt font-1 mx-1"></span> تسجيل خروج</a></li>
                         </ul>
 
                     </div>
@@ -548,9 +548,62 @@
             <div class="col-12 px-0" style="margin-top: 55px;position: relative;">
                 <div style="position:fixed;display: flex;align-items: center;justify-content: center;height: 100vh;background: var(--background-1);z-index: 10;margin-top: -15px;"
                     id="loading-image-container">
-                    <img src="/images/loading2.gif"
-                        style="position:fixed;width: 220px;max-width: 80%;margin-top: -60px;" id="loading-image">
+
+                    @if ($settings['dashboard_dark_mode'] == '1')
+                        <style>
+                            .loader {
+                                width: 90px;
+                                aspect-ratio: 1;
+                                display: grid;
+                                border: 6px solid #0000;
+                                border-radius: 50%;
+                                border-color: rgba(255, 255, 255, 0.3) transparent;
+                                animation: l16 1s infinite linear;
+                            }
+                        </style>
+                    @else
+                        <style>
+                            .loader {
+                                width: 90px;
+                                aspect-ratio: 1;
+                                display: grid;
+                                border: 6px solid #0000;
+                                border-radius: 50%;
+                                border-color: #ccc #0000;
+                                animation: l16 1s infinite linear;
+                            }
+                        </style>
+                    @endif
+                    <style>
+                        .loader::before,
+                        .loader::after {
+                            content: "";
+                            grid-area: 1/1;
+                            margin: 2px;
+                            border: inherit;
+                            border-radius: 50%;
+                        }
+
+                        .loader::before {
+                            border-color: #5c33f0 #0000;
+                            animation: inherit;
+                            animation-duration: .5s;
+                            animation-direction: reverse;
+                        }
+
+                        .loader::after {
+                            margin: 8px;
+                        }
+
+                        @keyframes l16 {
+                            100% {
+                                transform: rotate(1turn)
+                            }
+                        }
+                    </style>
+                    <span class="loader" style="position:fixed;margin-top: -60px;"></span>
                 </div>
+
 
                 @yield('content')
             </div>

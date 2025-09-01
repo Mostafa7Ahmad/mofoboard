@@ -43,7 +43,7 @@ class BackendSiteMapController extends Controller
             'page' => $page,
         ]);
         $request->validate([
-            'name' => 'required|in:'.implode(',', $this->data->pluck('name')->toArray()),
+            'name' => 'required|in:' . implode(',', $this->data->pluck('name')->toArray()),
             'page' => 'required|integer|min:0,max:10000',
         ]);
 
@@ -51,12 +51,12 @@ class BackendSiteMapController extends Controller
         $items = $this->data->where('name', $request->name)->first()['data']->simplePaginate($this->items_per_page);
         $route = $this->data->where('name', $request->name)->first()['show_route_name'];
         foreach ($items as $item) {
-            $url = '<url><loc>'.str_replace('&', '-', route($route, $item)).'</loc><priority>1.0</priority><lastmod>'.gmdate(DateTime::W3C, strtotime($item->updated_at)).'</lastmod></url>';
+            $url = '<url><loc>' . str_replace('&', '-', route($route, $item)) . '</loc><priority>1.0</priority><lastmod>' . gmdate(DateTime::W3C, strtotime($item->updated_at)) . '</lastmod></url>';
             array_push($urls, $url);
         }
         $urls = implode('', $urls);
 
-        return response('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'.$urls.'</urlset>', 200, [
+        return response('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . $urls . '</urlset>', 200, [
             'Content-Type' => 'application/xml',
         ]);
     }
@@ -66,14 +66,14 @@ class BackendSiteMapController extends Controller
         $urls = [];
         foreach ($items as $item) {
             for ($i = 1; $i < ceil($item['data']->count() / $this->items_per_page) + 1; $i++) {
-                $url = '<sitemap><loc>'.env('APP_URL').'/sitemaps/'.$item['name'].'/'.$i.'/sitemap.xml</loc></sitemap>';
+                $url = '<sitemap><loc>' . env('APP_URL') . '/sitemaps/' . $item['name'] . '/' . $i . '/sitemap.xml</loc></sitemap>';
                 array_push($urls, $url);
             }
         }
-        array_push($urls, '<sitemap><loc>'.env('APP_URL').'/sitemaps/links'.'</loc></sitemap>');
+        array_push($urls, '<sitemap><loc>' . env('APP_URL') . '/sitemaps/links' . '</loc></sitemap>');
         $urls = implode('', $urls);
 
-        return response('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.$urls.'</sitemapindex>', 200, [
+        return response('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . $urls . '</sitemapindex>', 200, [
             'Content-Type' => 'application/xml',
         ]);
     }
@@ -82,12 +82,12 @@ class BackendSiteMapController extends Controller
     {
         $urls = [];
         foreach ($this->custom_links as $custom_link) {
-            $url = '<url><loc>'.$custom_link.'</loc><priority>1.0</priority><lastmod>'.gmdate(DateTime::W3C, strtotime(date('Y-m-d'))).'</lastmod></url>';
+            $url = '<url><loc>' . $custom_link . '</loc><priority>1.0</priority><lastmod>' . gmdate(DateTime::W3C, strtotime(date('Y-m-d'))) . '</lastmod></url>';
             array_push($urls, $url);
         }
         $urls = implode('', $urls);
 
-        return response('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'.$urls.'</urlset>', 200, [
+        return response('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . $urls . '</urlset>', 200, [
             'Content-Type' => 'application/xml',
         ]);
     }

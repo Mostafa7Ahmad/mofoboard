@@ -3,7 +3,7 @@
     <div class="col-12 p-3">
         <div class="col-12 col-lg-12 p-0 ">
             <form id="validate-form" class="row" enctype="multipart/form-data" method="POST"
-                action="{{route('admin.tags.store')}}">
+                action="{{ route('admin.tags.store') }}">
                 @csrf
                 <div class="col-12 col-lg-8 p-0 main-box">
                     <div class="col-12 px-0">
@@ -19,7 +19,7 @@
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="tag_name" required maxlength="190" class="form-control"
-                                    value="{{old('tag_name', $tag ?? "")}}" placeholder="مثال: تصميم الجرافيك">
+                                    value="{{ old('tag_name', $tag ?? '') }}" placeholder="مثال: تصميم الجرافيك">
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="arabic_name" required maxlength="190" class="form-control"
-                                    value="{{old('arabic_name', $tag ?? "")}}" placeholder="مثال: التصميم الجرافيكي">
+                                    value="{{ old('arabic_name', $tag ?? '') }}" placeholder="مثال: التصميم الجرافيكي">
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="english_name" required maxlength="190" class="form-control"
-                                    value="{{old('english_name', $tag ?? "")}}" placeholder="مثال: Graphic Design">
+                                    value="{{ old('english_name', $tag ?? '') }}" placeholder="مثال: Graphic Design">
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="slug" required maxlength="190" class="form-control"
-                                    value="{{old('slug', $tag ?? "")}}" placeholder="مثال: graphic-design">
+                                    value="{{ old('slug', $tag ?? '') }}" placeholder="مثال: graphic-design">
                             </div>
                         </div>
                     </div>

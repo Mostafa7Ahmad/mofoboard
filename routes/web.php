@@ -1,6 +1,7 @@
 <?php
 
 // Backend Controllers
+use App\Http\Controllers\Backend\BackendCourseController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\BackendAdminController;
 use App\Http\Controllers\Backend\BackendAnnouncementController;
@@ -106,6 +107,8 @@ Route::prefix('admin')->middleware(['auth', 'ActiveAccount'])->name('admin.')->g
         Route::resource('menu-links', BackendMenuLinkController::class);
 
         Route::resource('categories', BackendCategoryController::class);
+
+        Route::resource('courses', BackendCourseController::class);
 
         Route::resource('redirections', BackendRedirectionController::class);
 

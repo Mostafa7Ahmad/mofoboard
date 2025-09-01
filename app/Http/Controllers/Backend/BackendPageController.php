@@ -18,7 +18,7 @@ class BackendPageController extends Controller
 
     public function index(Request $request)
     {
-        if (! auth()->user()->can('pages-read')) {
+        if (!auth()->user()->can('pages-read')) {
             abort(403);
         }
         $pages = Page::where(function ($q) use ($request) {
@@ -26,7 +26,7 @@ class BackendPageController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('title', 'LIKE', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
+                $q->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('description', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate();
 
@@ -40,7 +40,7 @@ class BackendPageController extends Controller
      */
     public function create()
     {
-        if (! auth()->user()->can('pages-create')) {
+        if (!auth()->user()->can('pages-create')) {
             abort(403);
         }
 
@@ -54,7 +54,7 @@ class BackendPageController extends Controller
      */
     public function store(Request $request)
     {
-        if (! auth()->user()->can('pages-create')) {
+        if (!auth()->user()->can('pages-create')) {
             abort(403);
         }
         $request->merge([
@@ -85,7 +85,7 @@ class BackendPageController extends Controller
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector, $page, 'description');
         if ($request->hasFile('image')) {
             $image = $page->addMedia($request->image)->toMediaCollection('image');
-            $page->update(['image' => $image->id.'/'.$image->file_name]);
+            $page->update(['image' => $image->id . '/' . $image->file_name]);
         }
         flash()->success('تم العملية بنجاح');
 
@@ -99,7 +99,7 @@ class BackendPageController extends Controller
      */
     public function show(Page $page)
     {
-        if (! auth()->user()->can('pages-read')) {
+        if (!auth()->user()->can('pages-read')) {
             abort(403);
         }
     }
@@ -111,7 +111,7 @@ class BackendPageController extends Controller
      */
     public function edit(Page $page)
     {
-        if (! auth()->user()->can('pages-update')) {
+        if (!auth()->user()->can('pages-update')) {
             abort(403);
         }
 
@@ -125,14 +125,14 @@ class BackendPageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        if (! auth()->user()->can('pages-read')) {
+        if (!auth()->user()->can('pages-read')) {
             abort(403);
         }
         $request->merge([
             'slug' => \MainHelper::slug($request->slug),
         ]);
         $request->validate([
-            'slug' => 'required|max:190|unique:pages,slug,'.$page->id,
+            'slug' => 'required|max:190|unique:pages,slug,' . $page->id,
             'title' => 'required|max:190',
             'title_en' => 'required|max:190',
             'description' => 'nullable|max:100000',
@@ -156,7 +156,7 @@ class BackendPageController extends Controller
         \MainHelper::move_media_to_model_by_id($request->temp_file_selector, $page, 'description');
         if ($request->hasFile('image')) {
             $image = $page->addMedia($request->image)->toMediaCollection('image');
-            $page->update(['image' => $image->id.'/'.$image->file_name]);
+            $page->update(['image' => $image->id . '/' . $image->file_name]);
         }
         flash()->success('تم العملية بنجاح');
 

@@ -35,7 +35,7 @@ class BackendTrafficsController extends Controller
             }
 
             if ($request->url != null) {
-                $q->where('url', 'LIKE', '%'.$request->url.'%');
+                $q->where('url', 'LIKE', '%' . $request->url . '%');
             }
 
             if ($request->ip != null) {
@@ -51,7 +51,7 @@ class BackendTrafficsController extends Controller
 
     public function index(Request $request)
     {
-        if (! auth()->user()->can('traffics-read')) {
+        if (!auth()->user()->can('traffics-read')) {
             abort(403);
         }
         $traffics = RateLimit::where(function ($q) use ($request) {
@@ -67,14 +67,16 @@ class BackendTrafficsController extends Controller
                 $q->whereNull('user_id');
             }
             if ($request->domain != null) {
-                $q->where('domain', 'LIKE', '%'.$request->domain.'%');
+                $q->where('domain', 'LIKE', '%' . $request->domain . '%');
             }
             if ($request->country_code != null) {
                 $q->where('country_code', $request->country_code);
             }
-        })->withCount(['details' => function ($q) {
-            $q->whereNull('user_id')->where('url', 'NOT LIKE', '%manifest.json');
-        }])->orderBy('id', 'DESC')->paginate(40);
+        })->withCount([
+                    'details' => function ($q) {
+                        $q->whereNull('user_id')->where('url', 'NOT LIKE', '%manifest.json');
+                    }
+                ])->orderBy('id', 'DESC')->paginate(40);
 
         return view('admin.traffics.index', compact('traffics'));
     }
@@ -86,7 +88,7 @@ class BackendTrafficsController extends Controller
 
     public function logs(Request $request)
     {
-        if (! auth()->user()->can('traffics-read')) {
+        if (!auth()->user()->can('traffics-read')) {
             abort(403);
         }
         $logs = RateLimitDetail::where(function ($q) use ($request) {
@@ -100,7 +102,7 @@ class BackendTrafficsController extends Controller
             }
 
             if ($request->url != null) {
-                $q->where('url', 'LIKE', '%'.$request->url.'%');
+                $q->where('url', 'LIKE', '%' . $request->url . '%');
             }
 
             if ($request->ip != null) {
@@ -116,7 +118,7 @@ class BackendTrafficsController extends Controller
 
     public function error_reports(Request $request)
     {
-        if (! auth()->user()->can('error-reports-read')) {
+        if (!auth()->user()->can('error-reports-read')) {
             abort(403);
         }
         $reports = ReportError::where(function ($q) use ($request) {
@@ -131,7 +133,7 @@ class BackendTrafficsController extends Controller
         return view('admin.traffics.error-reports', compact('reports'));
     }
 
-    public function error_report(Request $request,ReportError $report)
+    public function error_report(Request $request, ReportError $report)
     {
         return dd($report);
     }

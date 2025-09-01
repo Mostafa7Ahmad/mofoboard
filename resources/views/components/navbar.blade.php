@@ -137,27 +137,25 @@
                             </div>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 py-2"
                                 aria-labelledby="dropdownMenuButton1" style="top: -3px;">
-                                <li><a class="dropdown-item font-1" href="{{ route('user.dashboard') }}"><span
-                                            class="fal fa-sliders-h font-1" style="width: 20px;"></span> لوحة التحكم</a>
+                                <li><a class="dropdown-item font-1 px-3" href="{{ route('user.dashboard') }}"><span
+                                            class="fal fa-sliders-h font-1 mx-1" style="width: 20px;"></span> لوحة التحكم</a>
                                 </li>
-                                <li><a class="dropdown-item font-1" href="{{ route('user.support') }}"><span
-                                            class="fal fa-comments-alt font-1" style="width: 20px;"></span> الدعم الفني</a>
+                                <li><a class="dropdown-item font-1 px-3" href="{{ route('user.support') }}"><span
+                                            class="fal fa-comments-alt font-1 mx-1" style="width: 20px;"></span> الدعم الفني</a>
                                 </li>
 
+                                <li><a class="dropdown-item font-1 px-3" href="{{ route('user.profile.edit') }}"><span
+                                            class="fal fa-wrench font-1 mx-1" style="width: 20px;"></span> الاعدادات</a></li>
 
-
-                                <li><a class="dropdown-item font-1" href="{{ route('user.profile.edit') }}"><span
-                                            class="fal fa-wrench font-1" style="width: 20px;"></span> الاعدادات</a></li>
-
-                                <li><a class="dropdown-item font-1" href="{{ route('user.notifications') }}"><span
-                                            class="fal fa-bells font-1" style="width: 20px;"></span> الاشعارات</a></li>
+                                <li><a class="dropdown-item font-1 px-3" href="{{ route('user.notifications') }}"><span
+                                            class="fal fa-bells font-1 mx-1" style="width: 20px;"></span> الاشعارات</a></li>
 
                                 <li>
                                     <hr style="height: 1px;margin: 10px 0px 5px;">
                                 </li>
-                                <li><a class="dropdown-item font-1"
+                                <li><a class="dropdown-item font-1 px-3"
                                         onclick="document.getElementById('logout-form').submit();"
-                                        style="cursor:pointer;"><span class="fal fa-sign-out-alt font-1"
+                                        style="cursor:pointer;"><span class="fal fa-sign-out-alt font-1 mx-1"
                                             style="width: 20px;"></span> تسجيل خروج</a></li>
                             </ul>
 

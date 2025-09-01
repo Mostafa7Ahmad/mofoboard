@@ -25,7 +25,7 @@ class BackendUserController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('phone', 'LIKE', '%'.$request->q.'%')->orWhere('email', 'LIKE', '%'.$request->q.'%');
+                $q->where('name', 'LIKE', '%' . $request->q . '%')->orWhere('phone', 'LIKE', '%' . $request->q . '%')->orWhere('email', 'LIKE', '%' . $request->q . '%');
             }
         })->withCount(['logs', 'articles', 'contacts', 'comments'])->with(['roles'])->orderBy('last_activity', 'DESC')->orderBy('id', 'DESC')->paginate();
 
@@ -78,7 +78,7 @@ class BackendUserController extends Controller
 
         if ($request->hasFile('avatar')) {
             $avatar = $user->addMedia($request->avatar)->toMediaCollection('avatar');
-            $user->update(['avatar' => $avatar->id.'/'.$avatar->file_name]);
+            $user->update(['avatar' => $avatar->id . '/' . $avatar->file_name]);
         }
 
         flash()->success('تم إضافة المستخدم بنجاح');
@@ -121,7 +121,7 @@ class BackendUserController extends Controller
             'phone' => 'nullable|max:190',
             'bio' => 'nullable|max:5000',
             'blocked' => 'required|in:0,1',
-            'email' => 'required|unique:users,email,'.$user->id,
+            'email' => 'required|unique:users,email,' . $user->id,
             'password' => 'nullable|min:8|max:190',
         ]);
         $user->update([
@@ -147,7 +147,7 @@ class BackendUserController extends Controller
         }
         if ($request->hasFile('avatar')) {
             $avatar = $user->addMedia($request->avatar)->toMediaCollection('avatar');
-            $user->update(['avatar' => $avatar->id.'/'.$avatar->file_name]);
+            $user->update(['avatar' => $avatar->id . '/' . $avatar->file_name]);
         }
 
         flash()->success('تم تحديث المستخدم بنجاح');
@@ -162,7 +162,7 @@ class BackendUserController extends Controller
      */
     public function destroy(User $user)
     {
-        if (! auth()->user()->can('users-delete')) {
+        if (!auth()->user()->can('users-delete')) {
             abort(403);
         }
         $user->delete();

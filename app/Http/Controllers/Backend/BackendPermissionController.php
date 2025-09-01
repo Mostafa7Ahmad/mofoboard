@@ -23,7 +23,7 @@ class BackendPermissionController extends Controller
      */
     public function index(Request $request)
     {
-        if (! auth()->user()->can('permissions-read')) {
+        if (!auth()->user()->can('permissions-read')) {
             abort(403);
         }
         $permissions = Page::where(function ($q) use ($request) {
@@ -31,7 +31,7 @@ class BackendPermissionController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('display_name', 'LIKE', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
+                $q->where('name', 'LIKE', '%' . $request->q . '%')->orWhere('display_name', 'LIKE', '%' . $request->q . '%')->orWhere('description', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate();
 
@@ -45,7 +45,7 @@ class BackendPermissionController extends Controller
      */
     public function create()
     {
-        if (! auth()->user()->can('permissions-create')) {
+        if (!auth()->user()->can('permissions-create')) {
             abort(403);
         }
 
@@ -59,7 +59,7 @@ class BackendPermissionController extends Controller
      */
     public function store(Request $request)
     {
-        if (! auth()->user()->can('permissions-create')) {
+        if (!auth()->user()->can('permissions-create')) {
             abort(403);
         }
         Permission::create([
@@ -81,7 +81,7 @@ class BackendPermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        if (! auth()->user()->can('permissions-read')) {
+        if (!auth()->user()->can('permissions-read')) {
             abort(403);
         }
     }
@@ -94,7 +94,7 @@ class BackendPermissionController extends Controller
      */
     public function edit(Request $request, Permission $permission)
     {
-        if (! auth()->user()->can('permissions-update')) {
+        if (!auth()->user()->can('permissions-update')) {
             abort(403);
         }
 
@@ -109,7 +109,7 @@ class BackendPermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
-        if (! auth()->user()->can('permissions-update')) {
+        if (!auth()->user()->can('permissions-update')) {
             abort(403);
         }
         $permission->update([
@@ -131,7 +131,7 @@ class BackendPermissionController extends Controller
      */
     public function destroy($id)
     {
-        if (! auth()->user()->can('permissions-delete')) {
+        if (!auth()->user()->can('permissions-delete')) {
             abort(403);
         }
         flash()->success('تمت العملية بنجاح');

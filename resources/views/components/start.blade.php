@@ -197,7 +197,11 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <a href="{{ route('register') }}" class="hero-cta">سجل مجانًا</a>
+                @auth
+                    <a href="{{ route('user.dashboard') }}" class="hero-cta"> لوحه التحكم</a>
+                @else
+                    <a href="{{ route('register') }}" class="hero-cta">سجل مجانًا</a>
+                @endauth
             </div>
         </div>
 

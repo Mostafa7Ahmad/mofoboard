@@ -11,59 +11,6 @@
 </head>
 
 <body class="bg-background min-h-screen">
-    <!-- Sticky Header -->
-    <header class="sticky top-0 z-50 bg-surface shadow-card-sm border-b border-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z" />
-                            <path d="M16 6L7 9.5v7.5c0 3.33 2.31 6.45 5.4 7.2 3.09-.75 5.4-3.87 5.4-7.2V9.5L16 6z"
-                                fill="white" />
-                        </svg>
-                    </div>
-                    <div class="hidden md:block mr-4">
-                        <h1 class="text-xl font-heading font-semibold text-text-primary">منصة التعلم</h1>
-                    </div>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="flex-1 max-w-2xl mx-4">
-                    <div class="relative">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <i class="fas fa-search text-text-secondary"></i>
-                        </div>
-                        <input type="text"
-                            class="block w-full pr-10 pl-3 py-2 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal"
-                            placeholder="ابحث في دوراتك..." />
-                    </div>
-                </div>
-
-                <!-- Header Actions -->
-                <div class="flex items-center space-x-4 space-x-reverse">
-                    <!-- Notifications -->
-                    <button class="relative p-2 text-text-secondary hover:text-primary transition-micro">
-                        <i class="fas fa-bell text-lg"></i>
-                        <span
-                            class="absolute -top-1 -left-1 h-4 w-4 bg-error text-white text-xs rounded-full flex items-center justify-center">5</span>
-                    </button>
-
-                    <!-- User Avatar -->
-                    <div class="relative">
-                        <button class="flex items-center space-x-2 space-x-reverse"
-                            onclick="window.location.href='user_profile_management.html'">
-                            <img class="h-8 w-8 rounded-full object-cover"
-                                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
-                                alt="صورة المستخدم"
-                                />
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -477,31 +424,6 @@
             </aside>
         </div>
     </main>
-
-    <!-- Bottom Navigation (Mobile) -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-border md:hidden z-40">
-        <div class="flex items-center justify-around py-2">
-            <a href="student_dashboard.html" class="flex flex-col items-center py-2 px-3 text-primary">
-                <i class="fas fa-home text-lg"></i>
-                <span class="text-xs mt-1">الرئيسية</span>
-            </a>
-            <a href="course_catalog.html"
-                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
-                <i class="fas fa-th-large text-lg"></i>
-                <span class="text-xs mt-1">الكتالوج</span>
-            </a>
-            <a href="quiz_assessment.html"
-                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
-                <i class="fas fa-clipboard-check text-lg"></i>
-                <span class="text-xs mt-1">الاختبارات</span>
-            </a>
-            <a href="user_profile_management.html"
-                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
-                <i class="fas fa-user text-lg"></i>
-                <span class="text-xs mt-1">الملف الشخصي</span>
-            </a>
-        </div>
-    </nav>
 
     <script>
         // Progress animation on page load

@@ -3,22 +3,17 @@
 @section('content')
     <div class="error-page d-flex align-items-center justify-content-center text-center">
         <div class="error-box">
-            <!-- أيقونة/رسمة -->
             <div class="error-icon mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#0d6efd" viewBox="0 0 16 16">
                     <path
                         d="M7.938 2.016a.13.13 0 0 1 .125 0l6.857 3.941c.108.062.18.177.18.303v7.48c0 .126-.072.24-.18.303l-6.857 3.94a.13.13 0 0 1-.125 0l-6.857-3.94A.34.34 0 0 1 .9 13.74V6.26c0-.126.072-.24.18-.303l6.857-3.94z" />
                 </svg>
             </div>
-
-            <!-- النصوص -->
             <h3 class="fw-bold mb-3">حدث خطأ أثناء معالجة طلبك</h3>
             <p class="text-muted mb-4">
                 لا تقلق، يعمل فريقنا على حل المشكلة في الوقت الحالي.<br>
                 يمكنك إعادة تحديث الصفحة والمحاولة مرة أخرى.
             </p>
-
-            <!-- زر تحديث -->
             <a href="{{ url()->current() }}" class="btn btn-primary btn-lg rounded-pill px-5">
                 <i class="fas fa-sync-alt me-2"></i> تحديث الصفحة
             </a>

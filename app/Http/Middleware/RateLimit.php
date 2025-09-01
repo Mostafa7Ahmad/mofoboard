@@ -9,7 +9,7 @@ class RateLimit
 {
     /**
      * Handle an incoming request.
-     *
+     *s
      * @return mixed
      */
     public function handle(Request $request, Closure $next)

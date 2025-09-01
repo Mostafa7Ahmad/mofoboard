@@ -18,7 +18,7 @@ class BackendMenuController extends Controller
 
     public function index(Request $request)
     {
-        if (! auth()->user()->can('menus-read')) {
+        if (!auth()->user()->can('menus-read')) {
             abort(403);
         }
         $menus = Menu::where(function ($q) use ($request) {
@@ -26,7 +26,7 @@ class BackendMenuController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('title', 'LIKE', '%'.$request->q.'%')->orWhere('location', 'LIKE', '%'.$request->q.'%');
+                $q->where('title', 'LIKE', '%' . $request->q . '%')->orWhere('location', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate();
 
@@ -40,7 +40,7 @@ class BackendMenuController extends Controller
      */
     public function create()
     {
-        if (! auth()->user()->can('menus-create')) {
+        if (!auth()->user()->can('menus-create')) {
             abort(403);
         }
 
@@ -54,7 +54,7 @@ class BackendMenuController extends Controller
      */
     public function store(Request $request)
     {
-        if (! auth()->user()->can('menus-create')) {
+        if (!auth()->user()->can('menus-create')) {
             abort(403);
         }
         $request->validate([
@@ -78,7 +78,7 @@ class BackendMenuController extends Controller
     public function show(Menu $menu)
     {
         return;
-        if (! auth()->user()->can('menus-read')) {
+        if (!auth()->user()->can('menus-read')) {
             abort(403);
         }
     }
@@ -91,7 +91,7 @@ class BackendMenuController extends Controller
     public function edit(Menu $menu)
     {
         return;
-        if (! auth()->user()->can('menus-update')) {
+        if (!auth()->user()->can('menus-update')) {
             abort(403);
         }
 
@@ -106,12 +106,12 @@ class BackendMenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         return;
-        if (! auth()->user()->can('menus-update')) {
+        if (!auth()->user()->can('menus-update')) {
             abort(403);
         }
         $request->validate([
             'title' => 'required|max:190',
-            'location' => 'required|unique:menus,location,'.$menu->id,
+            'location' => 'required|unique:menus,location,' . $menu->id,
         ]);
         $menu->update([
             'title' => $request->title,
@@ -130,7 +130,7 @@ class BackendMenuController extends Controller
     public function destroy(Menu $menu)
     {
         return;
-        if (! auth()->user()->can('menus-delete')) {
+        if (!auth()->user()->can('menus-delete')) {
             abort(403);
         }
         $menu->delete();

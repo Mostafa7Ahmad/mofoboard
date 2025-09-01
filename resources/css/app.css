@@ -2819,8 +2819,12 @@ a:hover {
     margin: 45px 0 40px;
     color: #111827;
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
 }
 
+/* الخط المتحرك */
 .section-title::before {
     content: "";
     position: absolute;
@@ -2828,10 +2832,32 @@ a:hover {
     left: 50%;
     width: 60px;
     height: 4px;
-    background: #2563eb;
+    background: linear-gradient(90deg, #2563eb, #9333ea);
     transform: translateX(-50%);
     border-radius: 2px;
+    animation: pulseLine 2s ease-in-out infinite;
 }
+
+/* أنيميشن ظهور العنوان */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* أنيميشن فتح وقفل الخط */
+@keyframes pulseLine {
+    0%, 100% {
+        width: 0;
+        opacity: 0.3;
+    }
+    50% {
+        width: 80px;
+        opacity: 1;
+    }
+}
+
 
 body,
 html {

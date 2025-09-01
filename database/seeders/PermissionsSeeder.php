@@ -28,7 +28,6 @@ class PermissionsSeeder extends Seeder
             foreach ($role_value as $module => $permission_content) {
                 foreach (explode(',', $permission_content) as $p => $perm) {
                     $this->command->info('Adding Permission '.$module.'-'.$permissions_map[$perm].' For Module '.$module);
-
                     $permission = Permission::firstOrCreate(['name' => $module.'-'.$permissions_map[$perm], 'table' => $module]);
                     $role->givePermissionTo($permission);
                 }

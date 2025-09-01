@@ -68,8 +68,9 @@
                             <ul class="post-meta mb-5">
                                 <li class="post-date font-1"><i class="fal fa-calendar-alt"></i><span>
                                         {{ \Carbon::parse($article->created_at)->diffForHumans() }}</span></li>
-                                <li class="post-author font-1"><a href="{{ route('blog', ['user_id' => $article->user->id]) }}"
-                                        class="font-1"><i class="fal fa-user"></i><span>
+                                <li class="post-author font-1"><a
+                                        href="{{ route('blog', ['user_id' => $article->user->id]) }}" class="font-1"><i
+                                            class="fal fa-user"></i><span>
                                             {{ $article->user->name }}</span></a></li>
                                 @if ($article->comments_count != 0)
                                     <li class="post-comments"><a href="#comments"><i class="fal fa-comment"></i>
@@ -167,23 +168,15 @@
                 </div>
                 <div class="col-12 col-lg-4 p-2 mb-4">
                     <div style="position: sticky;top: 85px;">
-
-
-                        <div class="col-12 mb-2" style="background:var(--bg-main);border-radius: 6px;">
-                            <form method="GET" action="{{ route('blog') }}" class="p-4">
+                        <div class="col-12 mb-2 p-0" style="background:var(--bg-main);border-radius: 6px;">
+                            <form method="GET" action="{{ route('blog') }}" class="p-0">
                                 <input type="text" name="q" class="form-control" placeholder="بحث ..">
                             </form>
                         </div>
-
-                        <div class="col-12 mb-2 p-3" style="background:var(--bg-main);border-radius: 6px;">
+                        <div class="col-12 mb-2 p-0" style="background:var(--bg-main);border-radius: 6px;">
                             <img src="{{ $article->main_image('thumb') }}" style="width:100%">
                         </div>
-
-
                         <div class="col-12 p-0" style="background:var(--bg-main);border-radius: 6px;">
-
-
-
                             <div class="col-12 p-2">
                                 <div class="col-12 p-0">
                                     <div class="col-12 aside-post "
@@ -197,7 +190,6 @@
                                                 ])
                                                 ->paginate(5);
                                         @endphp
-
                                         @foreach ($random_articles as $single_article)
                                             <div class="col-12 p-0 d-flex row">
                                                 <div style="width: 65px;padding: 3px;border-radius: 5px;overflow: hidden;">
@@ -235,12 +227,9 @@
                                         @endforeach
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

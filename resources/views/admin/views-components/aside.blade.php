@@ -52,10 +52,12 @@
                                         @if ($internal_link['visible'] ?? 1)
                                             @can($internal_link['can'] ?? 'profile-read')
                                                 <li>
-                                                    <a class="py-2 px-2" href="{{ $internal_link['url'] ?? '#' }}" style="font-size: 16px;">
-                                                        <span class="{{ $internal_link['icon'] ?? '' }} px-2" style="width: 28px;font-size: 15px;"></span>
+                                                    <a class="py-2 px-2" href="{{ $internal_link['url'] ?? '#' }}"
+                                                        style="font-size: 16px;">
+                                                        <span class="{{ $internal_link['icon'] ?? '' }} px-2"
+                                                            style="width: 28px;font-size: 15px;"></span>
                                                         <span class="mx-2">
-                                                        {{ $internal_link['text'] }}
+                                                            {{ $internal_link['text'] }}
                                                         </span>
 
                                                     </a>

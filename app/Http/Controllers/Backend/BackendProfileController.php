@@ -33,7 +33,7 @@ class BackendProfileController extends Controller
         $user = User::where('id', auth()->id())->firstOrFail();
         if ($request->avatar != null) {
             $avatar = $user->addMediaFromBase64($request->avatar)->toMediaCollection('avatar');
-            $user->update(['avatar' => $avatar->id.'/'.$avatar->file_name]);
+            $user->update(['avatar' => $avatar->id . '/' . $avatar->file_name]);
         }
         $request->validate([
             'name' => 'required|min:3|max:190',
@@ -55,7 +55,7 @@ class BackendProfileController extends Controller
         $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $file));
 
         // save it to temporary dir first.
-        $tmpFilePath = sys_get_temp_dir().'/'.Str::uuid()->toString();
+        $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
         file_put_contents($tmpFilePath, $fileData);
 
         // this just to help us get file info.
@@ -96,7 +96,7 @@ class BackendProfileController extends Controller
     {
         $request->validate([
             'old_email' => 'required|email',
-            'email' => 'required|email|confirmed|unique:users,email,'.auth()->user()->id,
+            'email' => 'required|email|confirmed|unique:users,email,' . auth()->user()->id,
         ]);
         auth()->user()->update([
             'email' => $request->email,

@@ -72,7 +72,7 @@ class FrontController extends Controller
 
     public function category(Request $request, Category $category)
     {
-        $articles = cache()->remember('category_'.$category->id.'_'.$request->page, 60, function () use ($request, $category) {
+        $articles = cache()->remember('category_' . $category->id . '_' . $request->page, 60, function () use ($request, $category) {
             return Article::where(function ($q) use ($request, $category) {
                 if ($request->user_id != null) {
                     $q->where('user_id', $request->user_id);
@@ -81,9 +81,11 @@ class FrontController extends Controller
                 $q->whereHas('categories', function ($q) use ($category) {
                     $q->where('category_id', $category->id);
                 });
-            })->with(['categories', 'tags'])->withCount(['comments' => function ($q) {
-                $q->where('reviewed', 1);
-            }])->orderBy('id', 'DESC')->paginate();
+            })->with(['categories', 'tags'])->withCount([
+                        'comments' => function ($q) {
+                            $q->where('reviewed', 1);
+                        }
+                    ])->orderBy('id', 'DESC')->paginate();
         });
 
         return view('front.pages.blog', compact('articles', 'category'));
@@ -100,21 +102,29 @@ class FrontController extends Controller
             $q->whereHas('tags', function ($q) use ($tag) {
                 $q->where('tag_id', $tag->id);
             });
-        })->with(['categories', 'tags'])->withCount(['comments' => function ($q) {
-            $q->where('reviewed', 1);
-        }])->orderBy('id', 'DESC')->paginate();
+        })->with(['categories', 'tags'])->withCount([
+                    'comments' => function ($q) {
+                        $q->where('reviewed', 1);
+                    }
+                ])->orderBy('id', 'DESC')->paginate();
 
         return view('front.pages.blog', compact('articles', 'tag'));
     }
 
     public function article(Request $request, Article $article)
     {
-        cache()->remember('article_'.$article->id, 60, function () use ($article) {
-            return $article->load(['categories', 'comments' => function ($q) {
-                $q->where('reviewed', 1);
-            }, 'tags'])->loadCount(['comments' => function ($q) {
-                $q->where('reviewed', 1);
-            }]);
+        cache()->remember('article_' . $article->id, 60, function () use ($article) {
+            return $article->load([
+                'categories',
+                'comments' => function ($q) {
+                    $q->where('reviewed', 1);
+                },
+                'tags'
+            ])->loadCount([
+                        'comments' => function ($q) {
+                            $q->where('reviewed', 1);
+                        }
+                    ]);
         });
         $this->views_increase_article($article);
 
@@ -124,7 +134,7 @@ class FrontController extends Controller
     public function page(Request $request, Page $page)
     {
 
-        $customView = 'front.pages.custom-pages.'.$page->slug;
+        $customView = 'front.pages.custom-pages.' . $page->slug;
 
         if (view()->exists($customView)) {
             // If the file exists, return custom page
@@ -136,7 +146,7 @@ class FrontController extends Controller
 
     public function blog(Request $request)
     {
-        $articles = cache()->remember('blog_'.$request->page.'_'.$request->category_id.'_'.$request->user_id, 60, function () use ($request) {
+        $articles = cache()->remember('blog_' . $request->page . '_' . $request->category_id . '_' . $request->user_id, 60, function () use ($request) {
             return Article::where(function ($q) use ($request) {
                 if ($request->category_id != null) {
                     $q->where('category_id', $request->category_id);
@@ -144,9 +154,11 @@ class FrontController extends Controller
                 if ($request->user_id != null) {
                     $q->where('user_id', $request->user_id);
                 }
-            })->with(['categories', 'tags'])->withCount(['comments' => function ($q) {
-                $q->where('reviewed', 1);
-            }])->orderBy('id', 'DESC')->paginate();
+            })->with(['categories', 'tags'])->withCount([
+                        'comments' => function ($q) {
+                            $q->where('reviewed', 1);
+                        }
+                    ])->orderBy('id', 'DESC')->paginate();
         });
 
         return view('front.pages.blog', compact('articles'));

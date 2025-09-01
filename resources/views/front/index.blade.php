@@ -121,7 +121,7 @@
             object-fit: cover;
             border-radius: 50%;
             margin-bottom: 16px;
-            border: 2px solid #2563eb;
+            border: 2px solid gray;
         }
 
         .testimonial-card p {
@@ -143,7 +143,7 @@
 
         /* === CTA Section === */
         .cta-section {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
+            background: linear-gradient(135deg, var(--bs-purple), var(--bs-indigo));
             border-radius: 16px;
             padding: 60px 20px;
             text-align: center;
@@ -160,10 +160,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('{{ url('images/components/decor/pattern.png') }}') repeat;
-            opacity: 0.1;
+            background: url('{{ url('images/components/decor/topography.svg') }}') repeat;
+            opacity: 0.3;
+            filter: brightness(0) invert(1);
+            /* يخلي الصورة كلها بيضاء */
             z-index: 0;
         }
+
 
         .cta-section h2 {
             font-size: 2.5rem;
@@ -226,7 +229,7 @@
                         <div class="feature-card">
                             <img src="{{ url('images/components/images/courses.png') }}" alt="تعلم مرن">
                             <h4>تعلم مرن</h4>
-                            <p>تعلم في أي وقت ومن أي مكان باستخدام جهازك المفضل، مع دورات مصممة لتناسب جدولك.</p>
+                            <p>تعلم في أي وقت ومن أي مكان باستخدام جهازك المفضل.</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 mb-4">

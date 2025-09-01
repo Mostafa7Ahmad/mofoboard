@@ -18,7 +18,7 @@ class BackendRedirectionController extends Controller
 
     public function index(Request $request)
     {
-        if (! auth()->user()->can('redirections-read')) {
+        if (!auth()->user()->can('redirections-read')) {
             abort(403);
         }
         $redirections = Redirection::where(function ($q) use ($request) {
@@ -26,7 +26,7 @@ class BackendRedirectionController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('url', 'LIKE', '%'.$request->q.'%')->orWhere('new_url', 'LIKE', '%'.$request->q.'%');
+                $q->where('url', 'LIKE', '%' . $request->q . '%')->orWhere('new_url', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate();
 
@@ -40,7 +40,7 @@ class BackendRedirectionController extends Controller
      */
     public function create()
     {
-        if (! auth()->user()->can('redirections-create')) {
+        if (!auth()->user()->can('redirections-create')) {
             abort(403);
         }
 
@@ -54,7 +54,7 @@ class BackendRedirectionController extends Controller
      */
     public function store(Request $request)
     {
-        if (! auth()->user()->can('redirections-create')) {
+        if (!auth()->user()->can('redirections-create')) {
             abort(403);
         }
         $request->validate([
@@ -80,7 +80,7 @@ class BackendRedirectionController extends Controller
      */
     public function show(Redirection $redirection)
     {
-        if (! auth()->user()->can('redirections-read')) {
+        if (!auth()->user()->can('redirections-read')) {
             abort(403);
         }
     }
@@ -92,7 +92,7 @@ class BackendRedirectionController extends Controller
      */
     public function edit(Redirection $redirection)
     {
-        if (! auth()->user()->can('redirections-update')) {
+        if (!auth()->user()->can('redirections-update')) {
             abort(403);
         }
 
@@ -106,7 +106,7 @@ class BackendRedirectionController extends Controller
      */
     public function update(Request $request, Redirection $redirection)
     {
-        if (! auth()->user()->can('redirections-update')) {
+        if (!auth()->user()->can('redirections-update')) {
             abort(403);
         }
         $request->validate([
@@ -131,7 +131,7 @@ class BackendRedirectionController extends Controller
      */
     public function destroy(Redirection $redirection)
     {
-        if (! auth()->user()->can('redirections-delete')) {
+        if (!auth()->user()->can('redirections-delete')) {
             abort(403);
         }
         $redirection->delete();

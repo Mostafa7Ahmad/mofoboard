@@ -4142,4 +4142,8 @@ tbody tr:last-child td {
 table th {
     text-align: start !important;
 }
+
+.dropdown-menu.show {
+    left: 10px !important;
+}
 /*! purgecss end ignore */

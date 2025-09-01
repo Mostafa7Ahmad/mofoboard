@@ -62,14 +62,14 @@
                 $empty = 5 - $full - ($half ? 1 : 0);
             @endphp
 
-            @for ($i = 0; $i < $full; $i++)
-                <i class="fas fa-star text-warning"></i>
+            @for ($i = 0; $i < $empty; $i++)
+                <i class="far fa-star text-warning"></i>
             @endfor
             @if ($half)
                 <i class="fas fa-star-half-alt text-warning"></i>
             @endif
-            @for ($i = 0; $i < $empty; $i++)
-                <i class="far fa-star text-warning"></i>
+            @for ($i = 0; $i < $full; $i++)
+                <i class="fas fa-star text-warning"></i>
             @endfor
 
             <span class="small text-muted ms-1">({{ number_format($rating, 1) }})</span>
@@ -86,13 +86,13 @@
         {{-- السعر --}}
         <div class="mb-3">
             @if ($isFree)
-                <span class="fw-bold text-success fs-6">مجانًا</span>
+                <span class="fw-bold text-success">مجانًا</span>
             @elseif ($oldPrice && $oldPrice > $price)
-                <span class="fw-bold fs-6">{{ number_format($price, 2) }} ج.م</span>
+                <span class="fw-bold">{{ number_format($price, 2) }} ج.م</span>
                 <span class="text-muted text-decoration-line-through small">{{ number_format($oldPrice, 2) }}
                     ج.م</span>
             @elseif($price)
-                <span class="fw-bold fs-6">{{ number_format($price, 2) }} ج.م</span>
+                <span class="fw-bold">{{ number_format($price, 2) }} ج.م</span>
             @else
                 <span class="text-muted">تواصل لمعرفة السعر</span>
             @endif
@@ -113,19 +113,19 @@
         @if ($showActions)
             <div class="mt-auto d-flex gap-2">
                 {{-- زر عرض --}}
-                <a href="#"
+                <a href="{{ url($slug) }}"
                     class="btn btn-sm btn-primary flex-fill d-flex align-items-center justify-content-center gap-2">
                     <i class="fas fa-eye"></i>
                     <span>عرض</span>
                 </a>
 
                 {{-- زر السلة --}}
-                <form method="POST" action="#" class="flex-fill">
+                <form method="get" action="#" class="flex-fill">
                     @csrf
                     <button type="submit"
                         class="btn btn-sm btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2">
                         <i class="fas fa-cart-plus"></i>
-                        <span>إضافة للسلة</span>
+                        <span>اشتراك</span>
                     </button>
                 </form>
             </div>

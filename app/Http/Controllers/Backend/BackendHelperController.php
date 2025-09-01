@@ -14,7 +14,7 @@ class BackendHelperController extends Controller
             'content' => [],
         ];
         if ($request->type == 'categories' || $request->type == 'categories_articles') {
-            if (! auth()->user()->can('categories-read')) {
+            if (!auth()->user()->can('categories-read')) {
                 return $data;
             }
 
@@ -30,7 +30,7 @@ class BackendHelperController extends Controller
                 ];
             }
         } elseif ($request->type == 'articles') {
-            if (! auth()->user()->can('articles-read')) {
+            if (!auth()->user()->can('articles-read')) {
                 return $data;
             }
 
@@ -54,12 +54,12 @@ class BackendHelperController extends Controller
     public function load_data(Request $request)
     {
         if ($request->type == 'categories' || $request->type == 'categories_articles') {
-            if (! auth()->user()->can('categories-read')) {
+            if (!auth()->user()->can('categories-read')) {
                 return;
             }
         }
         if ($request->type == 'articles') {
-            if (! auth()->user()->can('articles-read')) {
+            if (!auth()->user()->can('articles-read')) {
                 return;
             }
         }

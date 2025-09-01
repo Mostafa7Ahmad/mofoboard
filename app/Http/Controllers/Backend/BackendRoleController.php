@@ -28,7 +28,7 @@ class BackendRoleController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('display_name', 'LIKE', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
+                $q->where('name', 'LIKE', '%' . $request->q . '%')->orWhere('display_name', 'LIKE', '%' . $request->q . '%')->orWhere('description', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate();
 
@@ -101,7 +101,7 @@ class BackendRoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name' => 'required|unique:roles,name,'.$role->id,
+            'name' => 'required|unique:roles,name,' . $role->id,
             'display_name' => 'required|min:3',
         ]);
         $role->update([

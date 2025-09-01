@@ -16,13 +16,15 @@ use Symfony\Component\HttpFoundation\File\File as FileFromUrl;
 
 class UploadFilesHelper
 {
-    public static function __callStatic($name, $args) {}
+    public static function __callStatic($name, $args)
+    {
+    }
 
     public static function url_to_uploaded_file($file, $filename = null)
     {
         $fileData = $file;
         $name = $filename == null ? Str::uuid()->toString() : $filename;
-        $tmpFilePath = sys_get_temp_dir().'/'.$name;
+        $tmpFilePath = sys_get_temp_dir() . '/' . $name;
         file_put_contents($tmpFilePath, $fileData);
         $tmpFile = new FileFromUrl($tmpFilePath);
         $uploaded_file = new UploadedFile(
@@ -42,7 +44,7 @@ class UploadFilesHelper
         $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $file));
 
         // save it to temporary dir first.
-        $tmpFilePath = sys_get_temp_dir().'/'.Str::uuid()->toString();
+        $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
         file_put_contents($tmpFilePath, $fileData);
 
         // this just to help us get file info.
@@ -62,15 +64,15 @@ class UploadFilesHelper
     public static function formatSizeUnits($bytes)
     {
         if ($bytes >= 1073741824) {
-            $bytes = number_format($bytes / 1073741824, 2).' GB';
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
         } elseif ($bytes >= 1048576) {
-            $bytes = number_format($bytes / 1048576, 2).' MB';
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
         } elseif ($bytes >= 1024) {
-            $bytes = number_format($bytes / 1024, 2).' KB';
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
         } elseif ($bytes > 1) {
-            $bytes = $bytes.' bytes';
+            $bytes = $bytes . ' bytes';
         } elseif ($bytes == 1) {
-            $bytes = $bytes.' byte';
+            $bytes = $bytes . ' byte';
         } else {
             $bytes = '0 bytes';
         }
@@ -124,27 +126,53 @@ class UploadFilesHelper
     {
         $t = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $specChars = [
-            ' ' => '-',    '!' => '',    '"' => '',
-            '#' => '',    '$' => '',    '%' => '',
-            '&amp;' => '', '&nbsp;' => '',
-            '\'' => '',   '(' => '',
-            ')' => '',    '*' => '',    '+' => '',
-            ',' => '',    '₹' => '',    '.' => '',
-            '/-' => '',    ':' => '',    ';' => '',
-            '<' => '',    '=' => '',    '>' => '',
-            '?' => '',    '@' => '',    '[' => '',
-            '\\' => '',   ']' => '',    '^' => '',
-            '_' => '',    '`' => '',    '{' => '',
-            '|' => '',    '}' => '',    '~' => '',
-            '-----' => '-',    '----' => '-',    '---' => '-',
-            '/' => '',    '--' => '-',   '/_' => '-',
+            ' ' => '-',
+            '!' => '',
+            '"' => '',
+            '#' => '',
+            '$' => '',
+            '%' => '',
+            '&amp;' => '',
+            '&nbsp;' => '',
+            '\'' => '',
+            '(' => '',
+            ')' => '',
+            '*' => '',
+            '+' => '',
+            ',' => '',
+            '₹' => '',
+            '.' => '',
+            '/-' => '',
+            ':' => '',
+            ';' => '',
+            '<' => '',
+            '=' => '',
+            '>' => '',
+            '?' => '',
+            '@' => '',
+            '[' => '',
+            '\\' => '',
+            ']' => '',
+            '^' => '',
+            '_' => '',
+            '`' => '',
+            '{' => '',
+            '|' => '',
+            '}' => '',
+            '~' => '',
+            '-----' => '-',
+            '----' => '-',
+            '---' => '-',
+            '/' => '',
+            '--' => '-',
+            '/_' => '-',
         ];
         foreach ($specChars as $k => $v) {
             $t = str_replace($k, $v, $t);
         }
         $original_file_name = substr($t, 0, 500);
         $extension = $options['new_extension'] == '' ? $file->extension() : $options['new_extension'];
-        $filename = pathinfo($original_file_name, PATHINFO_FILENAME).'-'.substr(str_shuffle('0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 6).'.'.$extension;
+        $filename = pathinfo($original_file_name, PATHINFO_FILENAME) . '-' . substr(str_shuffle('0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 6) . '.' . $extension;
 
         return $filename;
     }
@@ -168,7 +196,7 @@ class UploadFilesHelper
             // 'used_at'=>NULL,
         ], $options);
 
-        $validation = Validator::make($options, ['source' => 'required|mimes:'.self::get_validations($options['validation']).'|max:250000']);
+        $validation = Validator::make($options, ['source' => 'required|mimes:' . self::get_validations($options['validation']) . '|max:250000']);
         if ($validation->fails()) {
             self::store_file_has_errors($options['source']);
         }
@@ -295,7 +323,7 @@ class UploadFilesHelper
 
     public static function get_private_file(Request $request, HubFile $file)
     {
-        if (! self::has_access_to_get_private_file($file)) {
+        if (!self::has_access_to_get_private_file($file)) {
             abort(403);
         }
 
@@ -310,7 +338,7 @@ class UploadFilesHelper
         if ($file->visibility == 'PRIVATE') {
             if (\Auth::check() && (\Auth::user()->hasRole('ADMIN') || $file->user_id == \Auth::user()->id)) {
                 return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
-                    substr($file->path, 1).$file->name,
+                    substr($file->path, 1) . $file->name,
                     now()->addHour()
                 ));
             } elseif ($file->type == 'ticket_message') {
@@ -318,7 +346,7 @@ class UploadFilesHelper
                     $tm = \App\TicketMessage::where('id', $file->type_id)->firstOrFail();
                     if (\Auth::user()->hasRole('ADMIN') || $tm->ticket->user_id == \Auth::id()) {
                         return redirect(Storage::disk($file->bucket_name)->temporaryUrl(
-                            substr($file->path, 1).$file->name,
+                            substr($file->path, 1) . $file->name,
                             now()->addHour()
                         ));
                     }

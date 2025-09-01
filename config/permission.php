@@ -184,6 +184,7 @@ return [
             'traffics' => 'c,r,u,d',
             'profile' => 'r,u',
             'plugins' => 'c,r,u,d',
+            'courses' => 'c,r,u,d',
         ],
         'admin' => [
             'users' => 'c,r,u,d',

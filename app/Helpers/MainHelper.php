@@ -176,20 +176,46 @@ class MainHelper
     {
         $t = $string;
         $specChars = [
-            ' ' => '-',    '!' => '',    '"' => '',
-            '#' => '',    '$' => '',    '%' => '',
-            '&amp;' => '', '&nbsp;' => '',
-            '\'' => '',   '(' => '',
-            ')' => '',    '*' => '',    '+' => '',
-            ',' => '',    '₹' => '',    '.' => '',
-            '/-' => '',    ':' => '',    ';' => '',
-            '<' => '',    '=' => '',    '>' => '',
-            '?' => '',    '@' => '',    '[' => '',
-            '\\' => '',   ']' => '',    '^' => '',
-            '_' => '',    '`' => '',    '{' => '',
-            '|' => '',    '}' => '',    '~' => '',
-            '-----' => '-',    '----' => '-',    '---' => '-',
-            '/' => '',    '--' => '-',   '/_' => '-',
+            ' ' => '-',
+            '!' => '',
+            '"' => '',
+            '#' => '',
+            '$' => '',
+            '%' => '',
+            '&amp;' => '',
+            '&nbsp;' => '',
+            '\'' => '',
+            '(' => '',
+            ')' => '',
+            '*' => '',
+            '+' => '',
+            ',' => '',
+            '₹' => '',
+            '.' => '',
+            '/-' => '',
+            ':' => '',
+            ';' => '',
+            '<' => '',
+            '=' => '',
+            '>' => '',
+            '?' => '',
+            '@' => '',
+            '[' => '',
+            '\\' => '',
+            ']' => '',
+            '^' => '',
+            '_' => '',
+            '`' => '',
+            '{' => '',
+            '|' => '',
+            '}' => '',
+            '~' => '',
+            '-----' => '-',
+            '----' => '-',
+            '---' => '-',
+            '/' => '',
+            '--' => '-',
+            '/_' => '-',
         ];
         foreach ($specChars as $k => $v) {
             $t = str_replace($k, $v, $t);
@@ -226,9 +252,9 @@ class MainHelper
         }
         $explode = explode('/', $file_name);
         if (isset($explode[0]) && isset($explode[1]) && $conversion != null) {
-            $new_file_name = pathinfo($file_name, PATHINFO_FILENAME).'-'.$conversion.'.'.$new_extension;
+            $new_file_name = pathinfo($file_name, PATHINFO_FILENAME) . '-' . $conversion . '.' . $new_extension;
 
-            return $explode[0].'/'.'conversions'.'/'.$new_file_name;
+            return $explode[0] . '/' . 'conversions' . '/' . $new_file_name;
         }
 
         return $file_name;
@@ -258,9 +284,9 @@ class MainHelper
     public static function allowed_files_mimetypes($type = 'file')
     {
 
-        $file = ['video/3gpp', 'application/x-7z-compressed', 'application/x-7z-compressed', 'application/postscript', 'application/vnd.android.package-archive', 'video/x-msvideo', 'application/octet-stream', 'image/bmp', 'application/x-bzip2', 'text/css', 'text/csv', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.python.egg', 'video/x-flv', 'image/gif', 'application/gzip', 'video/h264', 'text/html', 'text/html', 'application/itch', 'image/icns', 'image/vnd.microsoft.icon', 'image/jpeg', 'image/jpeg', 'video/x-m4v', 'text/markdown', 'text/markdown', 'application/vnd.ms-access', 'video/x-matroska', 'video/quicktime', 'audio/mpeg', 'video/mp4', 'video/mpeg', 'video/mpeg', 'audio/mpeg', 'application/octet-stream', 'application/vnd.oasis.opendocument.presentation', 'application/vnd.oasis.opendocument.spreadsheet', 'application/vnd.oasis.opendocument.text', 'audio/ogg', 'font/otf', 'application/x-pak', 'application/pdf', 'application/x-pea', 'image/png', 'application/vnd.ms-powerpoint', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'image/vnd.adobe.photoshop', 'application/x-rar-compressed', 'application/vnd.rn-realmedia', 'application/rss+xml', 'application/rtf', 'application/x-7z-compressed', 'application/sql'/* ,'image/svg+xml' */, 'application/x-tar', 'application/gzip', 'application/x-bzip2', 'application/x-tex', 'application/gzip', 'image/tiff', 'image/tiff', 'application/x-lzma', 'font/ttf', 'text/plain', 'video/dvd', 'audio/wav', 'video/webm', 'audio/x-ms-wma', 'video/x-ms-wmv', 'application/xhtml+xml', 'application/vnd.ms-excel', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/xml', 'application/x-compress', 'application/zip', 'application/x-zip-compressed'];
+        $file = ['video/3gpp', 'application/x-7z-compressed', 'application/x-7z-compressed', 'application/postscript', 'application/vnd.android.package-archive', 'video/x-msvideo', 'application/octet-stream', 'image/bmp', 'application/x-bzip2', 'text/css', 'text/csv', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.python.egg', 'video/x-flv', 'image/gif', 'application/gzip', 'video/h264', 'text/html', 'text/html', 'application/itch', 'image/icns', 'image/vnd.microsoft.icon', 'image/jpeg', 'image/jpeg', 'video/x-m4v', 'text/markdown', 'text/markdown', 'application/vnd.ms-access', 'video/x-matroska', 'video/quicktime', 'audio/mpeg', 'video/mp4', 'video/mpeg', 'video/mpeg', 'audio/mpeg', 'application/octet-stream', 'application/vnd.oasis.opendocument.presentation', 'application/vnd.oasis.opendocument.spreadsheet', 'application/vnd.oasis.opendocument.text', 'audio/ogg', 'font/otf', 'application/x-pak', 'application/pdf', 'application/x-pea', 'image/png', 'application/vnd.ms-powerpoint', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'image/vnd.adobe.photoshop', 'application/x-rar-compressed', 'application/vnd.rn-realmedia', 'application/rss+xml', 'application/rtf', 'application/x-7z-compressed', 'application/sql'/* ,'image/svg+xml' */ , 'application/x-tar', 'application/gzip', 'application/x-bzip2', 'application/x-tex', 'application/gzip', 'image/tiff', 'image/tiff', 'application/x-lzma', 'font/ttf', 'text/plain', 'video/dvd', 'audio/wav', 'video/webm', 'audio/x-ms-wma', 'video/x-ms-wmv', 'application/xhtml+xml', 'application/vnd.ms-excel', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/xml', 'application/x-compress', 'application/zip', 'application/x-zip-compressed'];
 
-        $image = ['image/bmp', 'image/gif', 'image/jpeg', 'image/jpeg', 'image/png', 'image/vnd.microsoft.icon', 'image/jpeg', 'image/tiff', 'image/tiff'/* ,'image/svg+xml' */, 'image/png', 'image/vnd.adobe.photoshop'];
+        $image = ['image/bmp', 'image/gif', 'image/jpeg', 'image/jpeg', 'image/png', 'image/vnd.microsoft.icon', 'image/jpeg', 'image/tiff', 'image/tiff'/* ,'image/svg+xml' */ , 'image/png', 'image/vnd.adobe.photoshop'];
 
         $video = ['video/3gpp', 'video/x-msvideo', 'video/x-flv', 'video/h264', 'video/x-m4v', 'video/quicktime', 'video/mp4', 'video/mpeg', 'video/mpeg', 'video/x-matroska', 'video/vnd.rn-realmedia', 'video/webm', 'video/x-ms-wma', 'video/x-ms-wmv', 'video/dvd'];
 
@@ -407,7 +433,7 @@ class MainHelper
 
     public static function arrayToObject($array)
     {
-        if (! is_array($array)) {
+        if (!is_array($array)) {
             return $array;
         }
         $obj = new \stdClass;
@@ -428,7 +454,7 @@ class MainHelper
             $response = str_replace('```', '', $response);
 
             if ($format == 'json') {
-                $response = json_decode(json_decode(json_encode(str_replace(' ', '', str_replace("\n", '', $response)))),true);
+                $response = json_decode(json_decode(json_encode(str_replace(' ', '', str_replace("\n", '', $response)))), true);
             }
 
             return $response;

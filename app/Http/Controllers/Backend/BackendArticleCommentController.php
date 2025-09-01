@@ -31,7 +31,7 @@ class BackendArticleCommentController extends Controller
                 $q->where('article_id', $request->article_id);
             }
             if ($request->q != null) {
-                $q->where('content', 'LIKE', '%'.$request->q.'%');
+                $q->where('content', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('id', 'DESC')->paginate(100);
 
@@ -44,7 +44,9 @@ class BackendArticleCommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {}
+    public function create()
+    {
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -52,7 +54,9 @@ class BackendArticleCommentController extends Controller
      * @param  \App\Http\Requests\StoreArticleCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {}
+    public function store(Request $request)
+    {
+    }
 
     /**
      * Display the specified resource.
@@ -120,7 +124,7 @@ class BackendArticleCommentController extends Controller
         }
 
         $comment = ArticleComment::where('id', $request->id)->firstOrFail();
-        $comment->update(['reviewed' => ! $comment->reviewed]);
+        $comment->update(['reviewed' => !$comment->reviewed]);
 
         return 1;
     }

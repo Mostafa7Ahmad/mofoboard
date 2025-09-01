@@ -52,9 +52,9 @@
         <div class="container">
             <div class=" d-flex row m-0">
                 <div class="col-12 col-lg-6 my-2">
-                    <form method="POST" action="{{route('admin.profile.update')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
                         @csrf
-                        @method("PUT")
+                        @method('PUT')
                         <div class="col-12 p-0 main-box shadow">
                             <div class="col-12 px-0">
                                 <div class="col-12 px-3 py-3">
@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-12 p-3">
                                 <div class="col-12 py-2 px-0 d-flex justify-content-center">
-                                    <img src="{{auth()->user()->getUserAvatar()}}"
+                                    <img src="{{ auth()->user()->getUserAvatar() }}"
                                         style="width:150px;max-width: 100%;border-radius: 50%;" id="getUserAvatar">
                                 </div>
                                 <div class="col-12 p-2">
@@ -72,8 +72,8 @@
                                         الصورة الشخصية
                                     </div>
                                     <div class="col-12 pt-3">
-                                        <input type="file" name="" class="form-control" value="{{auth()->user()->name}}"
-                                            id="avatar-image">
+                                        <input type="file" name="" class="form-control"
+                                            value="{{ auth()->user()->name }}" id="avatar-image">
                                         <input type="hidden" name="avatar" id="encoded_image">
                                     </div>
                                 </div>
@@ -82,8 +82,8 @@
                                         اسم المستخدم
                                     </div>
                                     <div class="col-12 pt-3">
-                                        <input type="text" name="name" required min="3" max="190" class="form-control"
-                                            value="{{auth()->user()->name}}" accept="image/*">
+                                        <input type="text" name="name" required min="3" max="190"
+                                            class="form-control" value="{{ auth()->user()->name }}" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="col-12 p-2">
@@ -91,8 +91,7 @@
                                         النبذة
                                     </div>
                                     <div class="col-12 pt-3">
-                                        <textarea class="form-control" name="bio"
-                                            style="min-height:150px">{{auth()->user()->bio}}</textarea>
+                                        <textarea class="form-control" name="bio" style="min-height:150px">{{ auth()->user()->bio }}</textarea>
                                     </div>
                                 </div>
 
@@ -111,9 +110,9 @@
                 </div>
 
                 <div class="col-12 col-lg-6 my-2">
-                    <form method="POST" action="{{route('admin.profile.update-email')}}">
+                    <form method="POST" action="{{ route('admin.profile.update-email') }}">
                         @csrf
-                        @method("PUT")
+                        @method('PUT')
                         <div class="col-12 p-0 main-box shadow">
                             <div class="col-12 px-0">
                                 <div class="col-12 px-3 py-3">
@@ -128,7 +127,7 @@
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="email" name="old_email" class="form-control" required
-                                            value="{{auth()->user()->email}}">
+                                            value="{{ auth()->user()->email }}">
                                     </div>
                                 </div>
 
@@ -163,9 +162,9 @@
                 </div>
 
                 <div class="col-12 col-lg-6 my-2">
-                    <form method="POST" action="{{route('admin.profile.update-password')}}">
+                    <form method="POST" action="{{ route('admin.profile.update-password') }}">
                         @csrf
-                        @method("PUT")
+                        @method('PUT')
                         <div class="col-12 p-0 main-box shadow">
                             <div class="col-12 px-0">
                                 <div class="col-12 px-3 py-3">
@@ -196,8 +195,8 @@
                                         كلمة المرور الجديدة
                                     </div>
                                     <div class="col-12 pt-3">
-                                        <input type="password" name="password" class="form-control" required minlength="8"
-                                            maxlength="190">
+                                        <input type="password" name="password" class="form-control" required
+                                            minlength="8" maxlength="190">
                                     </div>
                                 </div>
                                 <div class="col-12 p-2">
@@ -230,7 +229,7 @@
 @section('scripts')
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.4/croppie.min.js"></script>
     <script type="module">
-        $(document).ready(function () {
+        $(document).ready(function() {
             //$('body').css({'background':"#333"});
 
 
@@ -251,35 +250,33 @@
             function readFile(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         $('#changeAvatarBtn').click();
                         $uploadCrop.croppie('bind', {
                             url: e.target.result
-                        }).then(function () {
+                        }).then(function() {
 
                         });
                     }
                     reader.readAsDataURL(input.files[0]);
-                    $('.cr-image').css(
-                        {
-                            'transform': 'translate3d(0px, 0px, 0px) scale(0.9787)',
-                            'transform-origin': '0px 0px'
-                        }
-                    );
-                    $('.cr-overlay').css(
-                        {
-                            'width': '667.8px',
-                            'height': '667.8px',
-                            'top': '-26.2914px',
-                            'left': '-129.291px',
-                            'cr-overlay': '5'
-                        }
-                    );
-                    $('.cr-slider').attr({ 'min': 0.1, 'max': 1.5 });
-                }
-                else {
-                }
+                    $('.cr-image').css({
+                        'transform': 'translate3d(0px, 0px, 0px) scale(0.9787)',
+                        'transform-origin': '0px 0px'
+                    });
+                    $('.cr-overlay').css({
+                        'width': '667.8px',
+                        'height': '667.8px',
+                        'top': '-26.2914px',
+                        'left': '-129.291px',
+                        'cr-overlay': '5'
+                    });
+                    $('.cr-slider').attr({
+                        'min': 0.1,
+                        'max': 1.5
+                    });
+                } else {}
             }
+
             function popupResult(result) {
                 $('#getUserAvatar').attr('src', result.src);
                 $('#changeAvatar .btn-close').click();
@@ -287,14 +284,14 @@
 
             }
 
-            $('#avatar-image').on('change', function () {
+            $('#avatar-image').on('change', function() {
                 readFile(this);
             });
-            $('.save-image').on('click', function (ev) {
+            $('.save-image').on('click', function(ev) {
                 $uploadCrop.croppie('result', {
                     type: 'canvas',
                     size: 'viewport'
-                }).then(function (resp) {
+                }).then(function(resp) {
                     popupResult({
                         src: resp
                     });

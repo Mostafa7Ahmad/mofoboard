@@ -23,7 +23,7 @@ class BackendFaqController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('question', 'LIKE', '%'.$request->q.'%')->orWhere('answer', 'LIKE', '%'.$request->q.'%');
+                $q->where('question', 'LIKE', '%' . $request->q . '%')->orWhere('answer', 'LIKE', '%' . $request->q . '%');
             }
         })->orderBy('order', 'ASC')->orderBy('id', 'DESC')->paginate(100);
 
@@ -64,7 +64,9 @@ class BackendFaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Faq $faq) {}
+    public function show(Faq $faq)
+    {
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -101,7 +103,7 @@ class BackendFaqController extends Controller
      */
     public function destroy(Faq $faq)
     {
-        if (! auth()->user()->can('faqs-delete')) {
+        if (!auth()->user()->can('faqs-delete')) {
             abort(403);
         }
         $faq->delete();

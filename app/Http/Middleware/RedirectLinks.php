@@ -34,7 +34,7 @@ class RedirectLinks
             foreach ($redirections as $redirection) {
                 $database_redirection = str_replace('www.', '', preg_replace('(^https?://)', '', $redirection->url));
                 if ($database_redirection == $url) {
-                    header('Location: '.$redirection->new_url, true, $redirection->code);
+                    header('Location: ' . $redirection->new_url, true, $redirection->code);
                     exit();
                 }
             }

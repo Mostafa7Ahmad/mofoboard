@@ -53,7 +53,7 @@ class BackendPluginController extends Controller
      */
     public function show(Request $request, Plugin $plugin)
     {
-        return view('admin.plugins.views.'.$plugin->slug, ['plugin' => $plugin])->render();
+        return view('admin.plugins.views.' . $plugin->slug, ['plugin' => $plugin])->render();
     }
 
     /**
@@ -179,7 +179,7 @@ class BackendPluginController extends Controller
     public function builder_edit(Request $request, Plugin $plugin)
     {
 
-        if ($plugin->settings != null && ! array_key_exists($request->input_parameter, $plugin->settings)) {
+        if ($plugin->settings != null && !array_key_exists($request->input_parameter, $plugin->settings)) {
             abort(404);
         }
 
@@ -197,13 +197,13 @@ class BackendPluginController extends Controller
     public function builder_update(Request $request, Plugin $plugin)
     {
 
-        if ($plugin->settings != null && ! array_key_exists($request->input_parameter, $plugin->settings)) {
+        if ($plugin->settings != null && !array_key_exists($request->input_parameter, $plugin->settings)) {
             abort(404);
         }
 
         $result = json_encode(json_decode($request->contents, true)) == '[]' ? '' : json_encode(json_decode($request->contents, true));
         $plugin->update([
-            'settings->'.$request->input_parameter => $result,
+            'settings->' . $request->input_parameter => $result,
         ]);
 
         return [

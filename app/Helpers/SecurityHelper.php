@@ -13,18 +13,17 @@ class SecurityHelper
             'X-Auth-Email' => env('CF_EMAIL'),
             'X-Auth-Key' => env('CF_KEY'),
         ])->post('https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules', [
-            'paused' => false,
-            'mode' => 'block',
-            'configuration' => ['target' => 'ip', 'value' => $ip],
-            'notes' => 'Banned on '.date('Y-m-d H:i:s').' by '.env('APP_NAME').' Firewall '.env('APP_ENV'),
-        ])->json();
+                    'paused' => false,
+                    'mode' => 'block',
+                    'configuration' => ['target' => 'ip', 'value' => $ip],
+                    'notes' => 'Banned on ' . date('Y-m-d H:i:s') . ' by ' . env('APP_NAME') . ' Firewall ' . env('APP_ENV'),
+                ])->json();
         if ($res['success'] == true) {
             $exists = \App\Models\BlockIp::where('status', 'block')->where(function ($q) use ($ip) {
                 $q->where('ip', $ip);
             })->count();
             if ($exists == 0) {
                 \App\Models\BlockIp::create(['ip' => $ip, 'state_id' => $res['result']['id'], 'description' => $user_agent, 'status' => 'block']);
-
                 return true;
             }
         }
@@ -38,7 +37,7 @@ class SecurityHelper
             'Content-Type' => 'application/json',
             'X-Auth-Email' => env('CF_EMAIL'),
             'X-Auth-Key' => env('CF_KEY'),
-        ])->delete('https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules/'.$block_rule_id)->json();
+        ])->delete('https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules/' . $block_rule_id)->json();
         if ($res['success'] == true) {
             return true;
         }
@@ -53,8 +52,10 @@ class SecurityHelper
             'Content-Type' => 'application/json',
             'X-Auth-Email' => env('CF_EMAIL'),
             'X-Auth-Key' => env('CF_KEY'),
-        ])->patch('https://api.cloudflare.com/client/v4/zones/'.env('CF_Z').'/settings/security_level',
-            ['value' => 'under_attack'])->json();
+        ])->patch(
+                'https://api.cloudflare.com/client/v4/zones/' . env('CF_Z') . '/settings/security_level',
+                ['value' => 'under_attack']
+            )->json();
         if ($res['success'] == true) {
             return true;
         }
@@ -68,8 +69,10 @@ class SecurityHelper
             'Content-Type' => 'application/json',
             'X-Auth-Email' => env('CF_EMAIL'),
             'X-Auth-Key' => env('CF_KEY'),
-        ])->patch('https://api.cloudflare.com/client/v4/zones/'.env('CF_Z').'/settings/security_level',
-            ['value' => 'medium'])->json();
+        ])->patch(
+                'https://api.cloudflare.com/client/v4/zones/' . env('CF_Z') . '/settings/security_level',
+                ['value' => 'medium']
+            )->json();
         if ($res['success'] == true) {
             return true;
         }

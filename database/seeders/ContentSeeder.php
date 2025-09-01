@@ -48,8 +48,8 @@ class ContentSeeder extends Seeder
             $category->update(['image' => $image->id . '/' . $image->file_name]);
         }
 
-        $this->command->info('Sleeping For 5 Seconds!');
-        sleep(5);
+        // $this->command->info('Sleeping For 5 Seconds!');
+        // sleep(5);
 
         for ($i = 0; $i < $articles_count; $i++) {
             $this->command->info('creating article with title ' . $faker->realText(50));

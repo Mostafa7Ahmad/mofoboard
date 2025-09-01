@@ -18,7 +18,7 @@ class BackendMenuLinkController extends Controller
 
     public function index(Request $request)
     {
-        if (! auth()->user()->can('menu-links-read')) {
+        if (!auth()->user()->can('menu-links-read')) {
             abort(403);
         }
         $menuLinks = MenuLink::where(function ($q) use ($request) {
@@ -29,7 +29,7 @@ class BackendMenuLinkController extends Controller
                 $q->where('id', $request->id);
             }
             if ($request->q != null) {
-                $q->where('type', 'LIKE', '%'.$request->q.'%')->orWhere('url', 'icon', '%'.$request->q.'%');
+                $q->where('type', 'LIKE', '%' . $request->q . '%')->orWhere('url', 'icon', '%' . $request->q . '%');
             }
         })->orderBy('order', 'ASC')->orderBy('id', 'DESC')->paginate(100);
 
@@ -43,7 +43,7 @@ class BackendMenuLinkController extends Controller
      */
     public function create(Request $request)
     {
-        if (! auth()->user()->can('menu-links-create')) {
+        if (!auth()->user()->can('menu-links-create')) {
             abort(403);
         }
         $request->validate(['menu_id' => 'required|exists:menus,id']);
@@ -58,7 +58,7 @@ class BackendMenuLinkController extends Controller
      */
     public function store(Request $request)
     {
-        if (! auth()->user()->can('menu-links-create')) {
+        if (!auth()->user()->can('menu-links-create')) {
             abort(403);
         }
         $request->validate([
@@ -95,7 +95,7 @@ class BackendMenuLinkController extends Controller
      */
     public function show(MenuLink $menuLink)
     {
-        if (! auth()->user()->can('menu-links-read')) {
+        if (!auth()->user()->can('menu-links-read')) {
             abort(403);
         }
     }
@@ -107,7 +107,7 @@ class BackendMenuLinkController extends Controller
      */
     public function edit(MenuLink $menuLink)
     {
-        if (! auth()->user()->can('menu-links-update')) {
+        if (!auth()->user()->can('menu-links-update')) {
             abort(403);
         }
 
@@ -121,7 +121,7 @@ class BackendMenuLinkController extends Controller
      */
     public function update(Request $request, MenuLink $menuLink)
     {
-        if (! auth()->user()->can('menu-links-update')) {
+        if (!auth()->user()->can('menu-links-update')) {
             abort(403);
         }
         $request->validate([
@@ -157,7 +157,7 @@ class BackendMenuLinkController extends Controller
      */
     public function destroy(MenuLink $menuLink)
     {
-        if (! auth()->user()->can('menu-links-delete')) {
+        if (!auth()->user()->can('menu-links-delete')) {
             abort(403);
         }
         $menu_id = $menuLink->menu_id;
@@ -169,7 +169,7 @@ class BackendMenuLinkController extends Controller
 
     public function order(Request $request)
     {
-        if (! auth()->user()->can('menu-links-update')) {
+        if (!auth()->user()->can('menu-links-update')) {
             abort(403);
         }
         // return dd($request->order);
@@ -180,7 +180,7 @@ class BackendMenuLinkController extends Controller
 
     public function getType(Request $request)
     {
-        if (! auth()->user()->can('menu-links-read')) {
+        if (!auth()->user()->can('menu-links-read')) {
             abort(403);
         }
         // dd($request->all());
@@ -196,7 +196,7 @@ class BackendMenuLinkController extends Controller
                 if ($request->id != null) {
                     $q->where('id', $request->id);
                 }
-            })->orderBy('id','DESC')->get();
+            })->orderBy('id', 'DESC')->get();
         }
     }
 }
