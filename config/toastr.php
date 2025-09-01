@@ -5,7 +5,7 @@
  * (c) Younes KHOUBZA <younes.khoubza@gmail.com>
  */
 
-return array(
+return [
     /*
     |--------------------------------------------------------------------------
     | Toastr options
@@ -24,43 +24,43 @@ return array(
     */
 
     'options' => [
-        'closeButton'       => false,
-        'closeClass'        => 'toast-close-button',
-        'closeDuration'     => 300,
-        'closeEasing'       => 'swing',
-        'closeHtml'         => '<button><i class="fas fa-times"></i></button>',
-        'closeMethod'       => 'fadeOut',
-        'closeOnHover'      => true,
-        'containerId'       => 'toast-container',
-        'debug'             => true,
-        'escapeHtml'        => true,
-        'extendedTimeOut'   => 7000,
-        'hideDuration'      => 3000,
-        'hideEasing'        => 'linear',
-        'hideMethod'        => 'fadeOut',
-        'iconClass'         => 'toast-info',
-        'iconClasses'       => [
-            'error'   => 'toast-error',
-            'info'    => 'toast-info',
+        'closeButton' => false,
+        'closeClass' => 'toast-close-button',
+        'closeDuration' => 300,
+        'closeEasing' => 'swing',
+        'closeHtml' => '<button><i class="fas mx-1fa-times"></i></button>',
+        'closeMethod' => 'fadeOut',
+        'closeOnHover' => true,
+        'containerId' => 'toast-container',
+        'debug' => true,
+        'escapeHtml' => true,
+        'extendedTimeOut' => 7000,
+        'hideDuration' => 3000,
+        'hideEasing' => 'linear',
+        'hideMethod' => 'fadeOut',
+        'iconClass' => 'toast-info',
+        'iconClasses' => [
+            'error' => 'toast-error',
+            'info' => 'toast-info',
             'success' => 'toast-success',
             'warning' => 'toast-warning',
         ],
-        'messageClass'      => 'toast-message',
-        'newestOnTop'       => true,
-        'onHidden'          => null,
-        'onShown'           => null,
-        'positionClass'     => 'toast-top-left',
+        'messageClass' => 'toast-message',
+        'newestOnTop' => true,
+        'onHidden' => null,
+        'onShown' => null,
+        'positionClass' => 'toast-top-left',
         'preventDuplicates' => true,
-        'progressBar'       => true,
-        'progressClass'     => 'toast-progress',
-        'rtl'               => true,
-        'showDuration'      => 300,
-        'showEasing'        => 'swing',
-        'showMethod'        => 'fadeIn',
-        'tapToDismiss'      => true,
-        'target'            => 'body',
-        'timeOut'           => 12000,
-        'titleClass'        => 'toast-title',
-        'toastClass'        => 'toast',
+        'progressBar' => true,
+        'progressClass' => 'toast-progress',
+        'rtl' => true,
+        'showDuration' => 300,
+        'showEasing' => 'swing',
+        'showMethod' => 'fadeIn',
+        'tapToDismiss' => true,
+        'target' => 'body',
+        'timeOut' => 12000,
+        'titleClass' => 'toast-title',
+        'toastClass' => 'toast',
     ],
-);
+];

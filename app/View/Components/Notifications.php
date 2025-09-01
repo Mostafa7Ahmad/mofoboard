@@ -12,9 +12,10 @@ class Notifications extends Component
      * @return void
      */
     public $notifications;
+
     public function __construct($notifications)
     {
-        $this->notifications=$notifications;
+        $this->notifications = $notifications;
     }
 
     /**
@@ -22,12 +23,10 @@ class Notifications extends Component
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public function render($render=null)
+    public function render($render = null)
     {
-        $notifications=$this->notifications; 
-            return (null!==$render)?view('components.notifications',compact('notifications'))->render():view('components.notifications'); 
+        $notifications = $this->notifications;
+
+        return ($render !== null) ? view('components.notifications', compact('notifications'))->render() : view('components.notifications');
     }
 }
-
-
-  

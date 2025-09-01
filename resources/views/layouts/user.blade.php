@@ -3,11 +3,11 @@
 <div class="col-12" style="min-height:100vh;background:#f4f4f4">
     <div class="col-12 p-0" style="background:#fff">
         <div class="container">
-            <div class="col-12 p-0 d-flex align-items-center justify-content-center" style="min-height:40vh;">
-                <div style="width: 700px;" class="mx-auto py-8 d-flex align-items-center justify-content-center">
+            <div class="col-12 p-0 d-flex align-items-center justify-content-center">
+                <div style="width: 700px;" class="mx-auto py-2 d-flex align-items-center justify-content-center">
                     <div class="text-center col-12 p-0 mx-auto">
                         <div class="col-12 px-0 row d-flex justify-content-between ">
-                            <div class="col-12 py-5 rounded-2 text-center" style="text-align: center;background: var(--background-1);margin-top: -5px;">
+                            <div class="col-12 py-9 rounded-2 text-center" style="text-align: center;background: var(--background-1);margin-top: -5px;">
                                 <div class="col-12" style="display:flex;justify-content: center;">
                                     <img src="{{auth()->user()->getUserAvatar()}}" style="width:130px;height: 130px;border-radius: 50%;">
                                 </div>

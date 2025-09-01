@@ -6,14 +6,14 @@
 		<div class="col-12 px-0">
 			<div class="col-12 p-0 row">
 				<div class="col-12 col-lg-4 py-3 px-3">
-					<span class="fas fa-faqs"></span> عرض الكل
+					<span class="fas mx-1fa-faqs"></span> عرض الكل
 				</div>
 				<div class="col-12 col-lg-4 p-0">
 				</div>
 				<div class="col-12 col-lg-4 p-2 text-lg-end">
 					@can('faqs-create')
 					<a href="{{route('admin.faqs.create')}}">
-					<span class="btn btn-primary"><span class="fas fa-plus"></span> إضافة جديد</span>
+					<span class="btn btn-primary"><span class="fas mx-1fa-plus"></span> إضافة جديد</span>
 					</a>
 					@endcan
 				</div>
@@ -48,7 +48,7 @@
 						<td>{{$faq->question}}</td>
 						<td>
 							@if($faq->is_featured==1)
-							<span class="fas fa-check-circle text-success" ></span>
+							<span class="fas mx-1fa-check-circle text-success" ></span>
 							@endif
 						</td>
 						<td style="width: 1%;text-wrap: nowrap;">

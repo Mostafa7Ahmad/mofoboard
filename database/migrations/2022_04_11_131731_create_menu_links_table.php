@@ -16,17 +16,17 @@ return new class extends Migration
         Schema::create('menu_links', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('menu_id')->nullable();
-            $table->foreign('menu_id')->references('id')->on("menus")->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
             $table->unsignedBigInteger('menu_link_id')->nullable();
-            $table->foreign('menu_link_id')->references('id')->on("menu_links")->onDelete('cascade');
+            $table->foreign('menu_link_id')->references('id')->on('menu_links')->onDelete('cascade');
 
-            $table->string("type")->default('CUSTOM_LINK');//['CUSTOM_LINK','PAGE','CATEGORY']
+            $table->string('type')->default('CUSTOM_LINK'); // ['CUSTOM_LINK','PAGE','CATEGORY']
             $table->integer('type_id')->nullable();
-            $table->string("title")->nullable();
+            $table->string('title')->nullable();
             $table->string('url')->nullable();
             $table->string('icon')->nullable();
             $table->integer('order')->default(0);
-            
+
             $table->timestamps();
         });
     }

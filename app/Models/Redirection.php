@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Redirection extends Model
 {
     use HasFactory;
-    public $guarded=['id','created_at','updated_at'];
-    public function user(){
+
+    public $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function user()
+    {
         return $this->belongsTo(\App\Models\User::class);
     }
 }

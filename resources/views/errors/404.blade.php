@@ -1,24 +1,58 @@
 @extends('layouts.app')
+
 @section('content')
-<div style="min-height: 95vh; 
-    overflow-x: hidden;" class="col-12">
-	<div class="container  mt-5 pt-5 pt-md-0 mt-md-0" style="">
-		<div class="row col-12 pt-6 px-0" style="padding-top: 20px;">
-			<div class="row col-12 align-items-center" style="min-height: 80vh;margin: 0% 0px;">
-				<div class="row align-items-center py-5 main-nafez-box-styles" style=";border-radius: 12px">
-					<div class="col text-center py-5">
-						<span class="fal fa-exclamation-triangle font-12 pb-4" style="color: var(--bg-color-4)"></span>
-						<h4 class="text-center">404 | الصفحة المطلوبة غير متوفرة</h4>
-						<br>
-						<div class="col-12 text-center px-2" dir="ltr" style="padding-top: 8px;">
-						<a href="/" class="d-inline-block ">
-						<span class="btn btn-primary cairo px-5" style=" padding: 5px 10px 9px;cursor: pointer;border:none;border-radius: 90px;"> <span class="fal fa-home font-1 " style="color: #fff"></span> الرئيسية </span>
-						</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="error-page d-flex align-items-center justify-content-center text-center">
+    <div>
+        <h1 class="error-code">404</h1>
+        <h3 class="mb-3">الصفحة غير موجودة</h3>
+        <p class="text-muted mb-4">
+            يبدو أنك وصلت إلى رابط غير صحيح أو الصفحة قد تمت إزالتها.
+        </p>
+        <a href="{{ url('/') }}" class="btn btn-primary btn-lg rounded-pill px-5">
+            <i class="fas fa-home me-2"></i> العودة للرئيسية
+        </a>
+    </div>
 </div>
+
+<style>
+	body {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+	}
+
+    .error-page {
+        min-height: 90vh;
+        padding: 40px;
+    }
+
+    .error-code {
+        font-size: 8rem;
+        font-weight: 800;
+        color: #0d6efd;
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    .error-page h3 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .error-page p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .btn-primary {
+        background: #0d6efd;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background: #0b5ed7;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+    }
+</style>
 @endsection

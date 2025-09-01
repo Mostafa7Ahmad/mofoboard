@@ -6,14 +6,14 @@
 		<div class="col-12 px-0">
 			<div class="col-12 p-0 row">
 				<div class="col-12 col-lg-4 py-3 px-3">
-					<span class="fas fa-articles"></span> المقالات
+					<span class="fas mx-1fa-articles"></span> المقالات
 				</div>
 				<div class="col-12 col-lg-4 p-0">
 				</div>
 				<div class="col-12 col-lg-4 p-2 text-lg-end">
 					@can('articles-create')
 					<a href="{{route('admin.articles.create')}}">
-						<span class="btn btn-primary"><span class="fas fa-plus"></span> إضافة جديد</span>
+						<span class="btn btn-primary"><span class="fas mx-1fa-plus"></span> إضافة جديد</span>
 					</a>
 					@endcan
 				</div>
@@ -57,7 +57,7 @@
 
 						<td>
 							@if($article->is_featured==1)
-							<span class="fas fa-check-circle text-success" ></span>
+							<span class="fas mx-1fa-check-circle text-success" ></span>
 							@endif
 						</td>
 						<td>{{$article->views}}</td>
@@ -101,7 +101,7 @@
 							{{-- @can('articles-read')
 							<a href="{{route('article.show',['article'=>$article])}}">
 								<span class="btn  btn-outline-primary btn-sm font-1 mx-1">
-									<span class="fas fa-search "></span> عرض
+									<span class="fas mx-1fa-search "></span> عرض
 								</span>
 							</a>
 							@endcan
@@ -109,7 +109,7 @@
 							@can('comments-read')
 							<a href="{{route('admin.article-comments.index',['article_id'=>$article->id])}}">
 								<span class="btn  btn-outline-primary btn-sm font-1 mx-1">
-									<span class="fas fa-comments "></span> التعليقات
+									<span class="fas mx-1fa-comments "></span> التعليقات
 								</span>
 							</a>
 							@endcan
@@ -117,14 +117,14 @@
 							@can('articles-update')
 							<a href="{{route('admin.articles.edit',$article)}}">
 								<span class="btn  btn-outline-success btn-sm font-1 mx-1">
-									<span class="fas fa-wrench "></span> تحكم
+									<span class="fas mx-1fa-wrench "></span> تحكم
 								</span>
 							</a>
 							@endcan
 							@can('articles-delete')
 							<form method="POST" action="{{route('admin.articles.destroy',$article)}}" class="d-inline-block">@csrf @method("DELETE")
 								<button class="btn  btn-outline-danger btn-sm font-1 mx-1" onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
-									<span class="fas fa-trash "></span> حذف
+									<span class="fas mx-1fa-trash "></span> حذف
 								</button>
 							</form>
 							@endcan

@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 
 class BackendReportErrorController extends Controller
 {
-
     /*public function __construct()
     {
-        $this->authorizeResource(ReportError::class, 'report-error'); 
+        $this->authorizeResource(ReportError::class, 'report-error');
     }*/
 
     /**
@@ -37,7 +36,6 @@ class BackendReportErrorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +46,6 @@ class BackendReportErrorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ReportError  $reportError
      * @return \Illuminate\Http\Response
      */
     public function show(ReportError $reportError)
@@ -59,7 +56,6 @@ class BackendReportErrorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ReportError  $reportError
      * @return \Illuminate\Http\Response
      */
     public function edit(ReportError $reportError)
@@ -70,8 +66,6 @@ class BackendReportErrorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ReportError  $reportError
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ReportError $reportError)
@@ -82,7 +76,6 @@ class BackendReportErrorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ReportError  $reportError
      * @return \Illuminate\Http\Response
      */
     public function destroy(ReportError $reportError)

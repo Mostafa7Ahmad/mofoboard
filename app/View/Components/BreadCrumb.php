@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class BreadCrumb extends Component
 {
-
     public $breads;
 
     /**

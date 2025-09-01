@@ -1,216 +1,209 @@
-<section class="wrapper bg-light" >
-  <style type="text/css">
-    .features-list i{
-      width: 50px;
+<style>
+    body {
+        font-family: 'Tajawal', sans-serif;
+        position: relative;
+        overflow-x: hidden;
     }
-  </style>
-  <div class="container  ">
-    <div class="row gx-lg-8 gx-xl-12 gy-10 align-items-center">
-      <div class="col-lg-5 position-relative order-lg-2 px-0">
-        <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
-        <div class="overlap-grid overlap-grid-2">
-          <div class="item">
-            <figure class="rounded shadow"><img src="/images/screenshots/2.png"  alt=""></figure>
-          </div>
-          <div class="item">
-            <figure class="rounded shadow"><img src="/images/screenshots/1.png" alt=""></figure>
-          </div>
+
+    /* === Hero Section Responsive === */
+    .hero-section {
+        padding: 100px 20px 80px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 900;
+        color: #111;
+        margin-bottom: 20px;
+        line-height: 1.3;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-content p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        color: #555;
+        margin-bottom: 30px;
+        max-width: 500px;
+        animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        animation: fadeInUp 1.4s ease-out;
+    }
+
+    .hero-search {
+        flex: 1;
+        max-width: 420px;
+        display: flex;
+        border: 1px solid #ddd;
+        border-radius: 50px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+    }
+
+    .hero-search input {
+        flex: 1;
+        border: none;
+        outline: none !important;
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+
+    .hero-search button {
+        background: #2563eb;
+        border: none;
+        color: #fff;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* padding: 0 20px; */
+        transition: background 0.3s ease;
+    }
+
+    /* CTA Button */
+    .hero-cta {
+        background: #10b981;
+        border: none;
+        border-radius: 50px;
+        padding: 14px 30px;
+        color: #fff;
+        font-size: 1.05rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    /* === Responsive Fixes === */
+    @media (max-width: 992px) {
+        .hero-section {
+            padding: 80px 15px 60px;
+            text-align: center;
+        }
+
+        .hero-content {
+            margin-bottom: 40px;
+        }
+
+        .hero-actions {
+            justify-content: center;
+        }
+
+        .hero-search {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .hero-cta {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-section {
+            padding: 60px 10px 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 1.8rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .hero-search input {
+            padding: 12px 15px;
+            font-size: 0.95rem;
+        }
+
+        .hero-cta {
+            padding: 12px 20px;
+            font-size: 1rem;
+        }
+    }
+
+    .hero-illustration img {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 22px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        animation: floatImage 5s ease-in-out infinite;
+    }
+
+    @keyframes floatImage {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .hero-cta {
+        background: #10b981;
+        padding: 16px 40px;
+        font-size: 1.1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-cta:hover {
+        background: #059669;
+        transform: translateY(-3px);
+    }
+
+    /* === Animations === */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-section>* {
+        position: relative;
+        z-index: 1;
+    }
+</style>
+<!-- === Hero Section === -->
+<div class="container hero-section">
+    <div class="row align-items-center">
+        <!-- Left Content -->
+        <div class="col-12 col-lg-6 hero-content">
+            <h1>ابدأ رحلتك التعليمية<br>نحو مستقبل أقوى</h1>
+            <p>منصتك التعليمية المتكاملة: تعلم من أفضل المحاضرين والدورات المتميزة في مختلف المجالات.</p>
+            <div class="hero-actions">
+                <form method="GET" action="{{ route('blog') }}" class="hero-search">
+                    <input type="text" name="q" placeholder="ابحث عن دورة أو موضوع...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <a href="{{ route('register') }}" class="hero-cta">سجل مجانًا</a>
+            </div>
         </div>
-      </div>
-      <!--/column -->
-      <div class="col-lg-7">
-        
 
-        <h2 class="display-4 mb-3">
-          {{-- <img src="/assets/img/avatars/team1.jpg" style="width: 80px;height: 80px;border-radius: 50%;" class="svg-inject icon-svg icon-svg-md mb-4" alt="" /> --}}
-          <span class="far fa-info-circle" style="color:#7b60fb"></span>
-
-           لماذا تستخدمني ؟</h2>
-        <p class="lead fs-lg"  data-delay="1000">أبسط وأسهل لوحة تحكم عربية بكامل المزايا التي تحتاجها</p>
-        <span class="typer text-primary" 
-          data-delay="80" 
-          data-words="تم تطوير لوحة التحكم لمساعدتك على زيادة انتاجيتك وتسهيل الأمور المعقدة التي غالباً تتكرر أمامك كثيراً">
-        </span>
-
-
-
-
-        <div class="row gy-3 gx-xl-8">
-
-          
- 
-
-          <div class="col-xl-6 px-0">
-          	<ul style="list-style:none" class="p-0 features-list">
-          		<li>
-          			<i class="fal fa-search me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>مهيئة للسيو بشكل تلقائي وذكي</span>
-                </li>
-                <li>
-          			<i class="fal fa-bell me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>جاهزة لعرض اشعارات مع صور</span>
-                </li>
-                <li>
-          			<i class="fal fa-lightbulb-on me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>عرض التنبيهات بشكل لطيف</span>
-                </li>
-                <li>
-          			<i class="fal fa-exclamation-triangle me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>عرض الأخطاء بشكل لحظي وتلقائي</span>
-                </li>
-                <li>
-          			<i class="fal fa-image me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>طريقة لعرض الصور باحترافية</span>
-                </li>
-                <li>
-          			<i class="fal fa-check-circle me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>تدعم السحب والافلات</span>
-                </li>
-                <li>
-                <i class="fal fa-bells me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>الاشعارات في الوقت الفعلي</span>
-                </li>
-                <li>
-                <i class="fal fa-info me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>أيقونات مدفوعة بشكل مجاني</span>
-                </li>
-                <li>
-                <i class="fal fa-font me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>أفضل وأجمل الخطوط العربية</span>
-                </li>
-                <li>
-                <i class="fal fa-robot me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>اعدادات Robots جاهزة</span>
-                </li>
-                <li>
-                <i class="fal fa-sitemap me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>منشئ SiteMap تلقائي</span>
-                </li>
-                <li>
-                <i class="fal fa-mobile me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>جاهزة للتحويل إلى تطبيق هاتف</span>
-                </li>
-                <li>
-                <i class="fal fa-file-invoice me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>جميع الصفحات الأساسية وأكثر</span>
-                </li>
-                <li>
-                <i class="fal fa-chart-network me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>احصائيات رائعة في لوحة التحكم</span>
-                </li>
-                <li>
-                <i class="fal fa-bars me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>امكانية انشاء قوائم وتحديد أماكنها</span>
-                </li>
-                <li>
-                <i class="fal fa-link me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>امكانية ترتيب الروابط داخل القوائم</span>
-                </li>
-                <li>
-                <i class="fal fa-file me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>امكانية انشاء صفحات مخصصة</span>
-                </li>
-                <li>
-                <i class="fal fa-bullhorn me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام اعلانات جاهز</span>
-                </li>
-                <li>
-                <i class="fal fa-books me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>مدونة متكاملة أقسام،مقالات ..</span>
-                </li>
-                <li>
-                <i class="fal fa-share me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام تحويل الروابط</span>
-                </li>
-                
-          	</ul>
-          </div>
-          <div class="col-xl-6 px-0">
-          	<ul style="list-style:none" class="p-0 features-list">
-          		<li>
-          			<i class="fal fa-language me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span><span class="underline-3 style-1 green">عربية بالكامل !</span> </span>
-                </li>
-                <li>
-          			<i class="fal fa-pen-alt me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>محرر جميل مع امكانية رفع صور</span>
-                </li>
-                <li>
-          			<i class="fal fa-users me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>نظام مستخدمين ولهم صور</span>
-                </li>
-                <li>
-          			<i class="fal fa-desktop me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>متجاوبة بالكامل</span>
-                </li>
-                <li>
-          			<i class="fab fa-laravel me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-          			<span>تستخدم آخر اصدار Laravel</span>
-                </li>
-                <li>
-                <i class="fab fa-bootstrap  me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>تستخدم آخر اصدار Bootstrap</span>
-                </li>
-                <li>
-                <i class="fal fa-clock me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>الاشعارات في الوقت الفعلي</span>
-                </li>
-
-                <li>
-                <i class="fal fa-bug me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>راصد الأخطاء الذكي</span>
-                </li>
-                <li>
-                <i class="fal fa-lightbulb-on me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام تتبع شامل</span>
-                </li>
-                <li>
-                <i class="fal fa-chart-line me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>اضافة حدود الزيارات لزيادة الحماية</span>
-                </li>
-                <li>
-                <i class="fal fa-exclamation me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>صفحات 404 مخصصة</span>
-                </li>
-                <li>
-                <i class="fal fa-user me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>صفحات الدخول والتسجيل وغيرها</span>
-                </li>
-                <li>
-                <i class="fal fa-wrench me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام اعدادات الموقع</span>
-                </li>
-                <li>
-                <i class="fal fa-cloud me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>جاهزة للدمج مع كلاود فلاير</span>
-                </li>
-                <li>
-                <i class="fal fa-file-search me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام متابعة ذكي</span>
-                </li>
-                <li>
-                <i class="fal fa-key me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام صلاحيات متقدم</span>
-                </li>
-                <li>
-                <i class="fal fa-boxes me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>مرفق نماذج لصناعة الصفحات</span>
-                </li>
-                <li>
-                <i class="fal fa-ticket-alt me-2 ms-0 font-4 p-2" style="color:#7cb798"></i>
-                <span>نظام التذاكر للتواصل معنا</span>
-                </li>
-                
-
-          	</ul>
-          </div> 
-          <!--/column -->
+        <!-- Right Illustration -->
+        <div class="col-12 col-lg-6 hero-illustration text-center mt-5 mt-lg-0">
+            <img src="{{ url("images/website/bg-hero.jpeg") }}" alt="تعليم">
         </div>
-        <!--/.row -->
-      </div>
-      <!--/column -->
     </div>
-    <!--/.row -->
-  </div>
-  <!-- /.container -->
-</section>
+</div>

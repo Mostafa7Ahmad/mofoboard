@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تطوير مواقع الويب الحديثة باستخدام React - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                            <img width="50s" src="{{ asset("images/website/logo.png") }}" alt="">
+                    </div>
+                    <div class="hidden md:block mr-4">
+                        <h1 class="text-xl font-sans font-semibold text-gray-800">منصة التعلم</h1>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-500"></i>
+                        </div>
+                        <input type="text" class="block w-full pr-10 pl-3 py-2 border border-gray-200 rounded-lg bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent transition-all duration-300 ease-out" placeholder="ابحث عن الدورات..." />
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="absolute -top-1 -left-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+
+                    <!-- User Avatar -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 space-x-reverse">
+                            <img class="h-8 w-8 rounded-full object-cover" src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400" alt="صورة المستخدم" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center space-x-2 space-x-reverse text-sm">
+                <a href="course_catalog.html" class="text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">الكتالوج</a>
+                <i class="fas fa-chevron-left text-gray-500 text-xs"></i>
+                <a href="course_catalog.html" class="text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">التكنولوجيا</a>
+                <i class="fas fa-chevron-left text-gray-500 text-xs"></i>
+                <span class="text-gray-800">تطوير مواقع الويب الحديثة باستخدام React</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Hero Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <!-- Video Preview -->
+            <div class="lg:col-span-2">
+                <div class="relative bg-black rounded-xl overflow-hidden aspect-video">
+                    <img class="w-full h-full object-cover" src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800" alt="معاينة الدورة" />
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                        <button id="previewBtn" class="bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-4 transition-all duration-300 ease-out">
+                            <i class="fas fa-play text-blue-800 text-2xl mr-1"></i>
+                        </button>
+                    </div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-black bg-opacity-70 text-white text-sm px-3 py-1 rounded-full">معاينة مجانية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Info Card -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 sticky top-24">
+                    <!-- Price -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl font-bold text-blue-800">149 ريال</span>
+                        <span class="text-lg text-gray-500 line-through">299 ريال</span>
+                        <span class="bg-red-500 text-white text-sm px-2 py-1 rounded-full">خصم 50%</span>
+                    </div>
+
+                    <!-- Enroll Button -->
+                    <button class="w-full bg-blue-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 ease-out mb-4">
+                        التسجيل في الدورة
+                    </button>
+
+                    <!-- Course Stats -->
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">المستوى</span>
+                            <span class="text-gray-800 font-medium">مبتدئ</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">المدة</span>
+                            <span class="text-gray-800 font-medium">12 ساعة</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">الدروس</span>
+                            <span class="text-gray-800 font-medium">24 درس</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">الطلاب</span>
+                            <span class="text-gray-800 font-medium">1,234 طالب</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-500">اللغة</span>
+                            <span class="text-gray-800 font-medium">العربية</span>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check text-emerald-600 text-sm"></i>
+                            <span class="text-sm text-gray-500">وصول مدى الحياة</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check text-emerald-600 text-sm"></i>
+                            <span class="text-sm text-gray-500">شهادة إتمام</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check text-emerald-600 text-sm"></i>
+                            <span class="text-sm text-gray-500">دعم فني</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check text-emerald-600 text-sm"></i>
+                            <span class="text-sm text-gray-500">ملفات قابلة للتحميل</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-2">
+                        <button id="bookmarkBtn" class="flex-1 border border-gray-200 text-gray-500 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-800 hover:border-blue-800 transition-all duration-300 ease-out">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button id="shareBtn" class="flex-1 border border-gray-200 text-gray-500 py-2 rounded-lg hover:bg-blue-50 hover:text-blue-800 hover:border-blue-800 transition-all duration-300 ease-out">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Title and Instructor -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-sans font-bold text-gray-800 mb-4">تطوير مواقع الويب الحديثة باستخدام React</h1>
+            <p class="text-lg text-gray-500 mb-4">تعلم كيفية بناء تطبيقات ويب تفاعلية وحديثة باستخدام مكتبة React الشهيرة مع أفضل الممارسات والأدوات الحديثة</p>
+            
+            <!-- Rating and Instructor -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="flex text-amber-500">
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                        <i class="fas fa-star text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium">4.8</span>
+                    <span class="text-sm text-gray-500">(1,234 تقييم)</span>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <img class="w-10 h-10 rounded-full object-cover" src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_960_720.jpg" alt="المدرب" />
+                    <div>
+                        <p class="font-medium text-gray-800">أحمد محمد</p>
+                        <p class="text-sm text-gray-500">مطور ويب خبير</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabbed Content -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <!-- Tab Navigation -->
+            <div class="border-b border-gray-200">
+                <nav class="flex">
+                    <button class="tab-btn active px-6 py-4 text-sm font-medium border-b-2 border-blue-800 text-blue-800" data-tab="overview">
+                        نظرة عامة
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-800 transition-all duration-200 ease-out" data-tab="curriculum">
+                        المنهج
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-800 transition-all duration-200 ease-out" data-tab="instructor">
+                        المدرب
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-800 transition-all duration-200 ease-out" data-tab="reviews">
+                        التقييمات
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="p-6">
+                <!-- Overview Tab -->
+                <div id="overview" class="tab-content">
+                    <div class="space-y-6">
+                        <!-- Course Description -->
+                        <div>
+                            <h3 class="text-xl font-sans font-semibold text-gray-800 mb-3">وصف الدورة</h3>
+                            <p class="text-gray-500 leading-relaxed mb-4">
+                                هذه الدورة مصممة لتعليمك كيفية بناء تطبيقات ويب حديثة وتفاعلية باستخدام مكتبة React. ستتعلم من الأساسيات وحتى المفاهيم المتقدمة، بما في ذلك إدارة الحالة، التوجيه، والتكامل مع APIs.
+                            </p>
+                            <p class="text-gray-500 leading-relaxed">
+                                سنغطي أيضاً أفضل الممارسات في التطوير، أدوات البناء الحديثة، واختبار التطبيقات. بنهاية الدورة، ستكون قادراً على بناء تطبيقات ويب كاملة ومتطورة.
+                            </p>
+                        </div>
+
+                        <!-- Learning Objectives -->
+                        <div>
+                            <h3 class="text-xl font-sans font-semibold text-gray-800 mb-3">ما ستتعلمه</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check text-emerald-600 text-sm mt-1"></i>
+                                    <span class="text-gray-500">أساسيات React والمكونات</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check text-emerald-600 text-sm mt-1"></i>
+                                    <span class="text-gray-500">إدارة الحالة باستخدام Hooks</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check text-emerald-600 text-sm mt-1"></i>
+                                    <span class="text-gray-500">التوجيه باستخدام React Router</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check text-emerald-600 text-sm mt-1"></i>
+                                    <span class="text-gray-500">التكامل مع REST APIs</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check text-emerald-600 text-sm mt-1"></i>
+                                    <span class="text-gray-500">أدوات البناء والتطوير</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check text-emerald-600 text-sm mt-1"></i>
+                                    <span class="text-gray-500">اختبار التطبيقات</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prerequisites -->
+                        <div>
+                            <h3 class="text-xl font-sans font-semibold text-gray-800 mb-3">المتطلبات المسبقة</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-dot-circle text-blue-800 text-xs mt-2"></i>
+                                    <span class="text-gray-500">معرفة أساسية بـ HTML و CSS</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-dot-circle text-blue-800 text-xs mt-2"></i>
+                                    <span class="text-gray-500">فهم أساسيات JavaScript</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-dot-circle text-blue-800 text-xs mt-2"></i>
+                                    <span class="text-gray-500">خبرة في استخدام محرر النصوص</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Certificate -->
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-certificate text-blue-800 text-2xl"></i>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">شهادة إتمام</h4>
+                                    <p class="text-sm text-gray-500">احصل على شهادة معتمدة عند إتمام الدورة بنجاح</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curriculum Tab -->
+                <div id="curriculum" class="tab-content hidden">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-sans font-semibold text-gray-800">محتوى الدورة</h3>
+                            <span class="text-sm text-gray-500">24 درس • 12 ساعة</span>
+                        </div>
+
+                        <!-- Module 1 -->
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <button class="module-header w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-all duration-200 ease-out" data-module="module1">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                                    <span class="font-medium text-gray-800">الوحدة الأولى: مقدمة في React</span>
+                                </div>
+                                <span class="text-sm text-gray-500">6 دروس • 3 ساعات</span>
+                            </button>
+                            <div id="module1" class="module-content">
+                                <div class="p-4 space-y-3 border-t border-gray-200">
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-blue-800"></i>
+                                            <span class="text-gray-500">ما هو React؟</span>
+                                            <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">معاينة</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">15 دقيقة</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-gray-500"></i>
+                                            <span class="text-gray-500">إعداد بيئة التطوير</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">20 دقيقة</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-gray-500"></i>
+                                            <span class="text-gray-500">أول تطبيق React</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">25 دقيقة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 2 -->
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <button class="module-header w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-all duration-200 ease-out" data-module="module2">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                                    <span class="font-medium text-gray-800">الوحدة الثانية: المكونات والخصائص</span>
+                                </div>
+                                <span class="text-sm text-gray-500">8 دروس • 4 ساعات</span>
+                            </button>
+                            <div id="module2" class="module-content hidden">
+                                <div class="p-4 space-y-3 border-t border-gray-200">
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-gray-500"></i>
+                                            <span class="text-gray-500">إنشاء المكونات</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">30 دقيقة</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-gray-500"></i>
+                                            <span class="text-gray-500">تمرير الخصائص</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">25 دقيقة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 3 -->
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <button class="module-header w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-all duration-200 ease-out" data-module="module3">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-chevron-down text-gray-500 transition-transform"></i>
+                                    <span class="font-medium text-gray-800">الوحدة الثالثة: إدارة الحالة</span>
+                                </div>
+                                <span class="text-sm text-gray-500">10 دروس • 5 ساعات</span>
+                            </button>
+                            <div id="module3" class="module-content hidden">
+                                <div class="p-4 space-y-3 border-t border-gray-200">
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-gray-500"></i>
+                                            <span class="text-gray-500">useState Hook</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">35 دقيقة</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fas fa-play-circle text-gray-500"></i>
+                                            <span class="text-gray-500">useEffect Hook</span>
+                                        </div>
+                                        <span class="text-sm text-gray-500">40 دقيقة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instructor Tab -->
+                <div id="instructor" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <!-- Instructor Profile -->
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <img class="w-32 h-32 rounded-full object-cover mx-auto sm:mx-0" src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_960_720.jpg" alt="أحمد محمد" />
+                            <div class="flex-1 text-center sm:text-right">
+                                <h3 class="text-2xl font-sans font-bold text-gray-800 mb-2">أحمد محمد</h3>
+                                <p class="text-lg text-gray-500 mb-4">مطور ويب خبير ومدرب معتمد</p>
+                                <div class="flex flex-wrap justify-center sm:justify-start gap-4 mb-4">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-star text-amber-500"></i>
+                                        <span class="text-sm">4.9 تقييم المدرب</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-users text-blue-800"></i>
+                                        <span class="text-sm">15,234 طالب</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-play-circle text-emerald-600"></i>
+                                        <span class="text-sm">25 دورة</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bio -->
+                        <div>
+                            <h4 class="text-lg font-sans font-semibold text-gray-800 mb-3">نبذة عن المدرب</h4>
+                            <p class="text-gray-500 leading-relaxed mb-4">
+                                أحمد محمد هو مطور ويب خبير مع أكثر من 8 سنوات من الخبرة في تطوير التطبيقات الحديثة. يعمل كمطور رئيسي في إحدى الشركات التقنية الرائدة ولديه شغف كبير بتعليم التكنولوجيا.
+                            </p>
+                            <p class="text-gray-500 leading-relaxed">
+                                حاصل على شهادات متعددة في تطوير الويب وقد ساعد آلاف الطلاب على تعلم البرمجة وتطوير مهاراتهم التقنية. يتميز بأسلوبه الواضح والمبسط في الشرح.
+                            </p>
+                        </div>
+
+                        <!-- Expertise -->
+                        <div>
+                            <h4 class="text-lg font-sans font-semibold text-gray-800 mb-3">مجالات الخبرة</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Node.js</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="reviews" class="tab-content hidden">
+                    <div class="space-y-6">
+                        <!-- Rating Summary -->
+                        <div class="flex flex-col sm:flex-row gap-6 p-6 bg-gray-50 rounded-lg">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-gray-800 mb-2">4.8</div>
+                                <div class="flex justify-center text-amber-500 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="text-sm text-gray-500">1,234 تقييم</div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-8">5</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                            <div class="bg-amber-500 h-2 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500 w-12">75%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-8">4</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                            <div class="bg-amber-500 h-2 rounded-full" style="width: 20%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500 w-12">20%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-8">3</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                            <div class="bg-amber-500 h-2 rounded-full" style="width: 3%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500 w-12">3%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-8">2</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                            <div class="bg-amber-500 h-2 rounded-full" style="width: 1%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500 w-12">1%</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm w-8">1</span>
+                                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                            <div class="bg-amber-500 h-2 rounded-full" style="width: 1%"></div>
+                                        </div>
+                                        <span class="text-sm text-gray-500 w-12">1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Individual Reviews -->
+                        <div class="space-y-6">
+                            <!-- Review 1 -->
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-start gap-4">
+                                    <img class="w-12 h-12 rounded-full object-cover" src="https://images.pixabay.com/photo/2017/06/26/02/47/man-2442565_960_720.jpg" alt="محمد علي" />
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-medium text-gray-800">محمد علي</span>
+                                            <div class="flex text-amber-500 text-sm">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="text-sm text-gray-500">منذ أسبوعين</span>
+                                        </div>
+                                        <p class="text-gray-500 leading-relaxed">
+                                            دورة ممتازة جداً! الشرح واضح ومفصل، والأمثلة العملية مفيدة جداً. تعلمت الكثير وأصبحت قادراً على بناء تطبيقات React بثقة. أنصح بها بشدة لكل من يريد تعلم React.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Review 2 -->
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-start gap-4">
+                                    <img class="w-12 h-12 rounded-full object-cover" src="https://images.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_960_720.jpg" alt="فاطمة أحمد" />
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-medium text-gray-800">فاطمة أحمد</span>
+                                            <div class="flex text-amber-500 text-sm">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <span class="text-sm text-gray-500">منذ شهر</span>
+                                        </div>
+                                        <p class="text-gray-500 leading-relaxed">
+                                            المدرب أحمد رائع في الشرح ويجعل المفاهيم المعقدة سهلة الفهم. الدورة منظمة بشكل ممتاز وتتدرج من البسيط إلى المعقد. الشيء الوحيد أنني كنت أتمنى المزيد من التمارين العملية.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Review 3 -->
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-start gap-4">
+                                    <img class="w-12 h-12 rounded-full object-cover" src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg" alt="خالد السعيد" />
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="font-medium text-gray-800">خالد السعيد</span>
+                                            <div class="flex text-amber-500 text-sm">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="text-sm text-gray-500">منذ 3 أسابيع</span>
+                                        </div>
+                                        <p class="text-gray-500 leading-relaxed">
+                                            أفضل دورة React باللغة العربية! المحتوى محدث ويغطي أحدث الممارسات. المشاريع العملية ممتازة وتساعد على تطبيق ما تعلمته. حصلت على وظيفة مطور React بعد إنهاء الدورة.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Load More Reviews -->
+                        <div class="text-center">
+                            <button class="px-6 py-2 border border-gray-200 text-gray-500 rounded-lg hover:bg-gray-50 transition-all duration-200 ease-out">
+                                عرض المزيد من التقييمات
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Courses -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-sans font-bold text-gray-800 mb-6">دورات ذات صلة</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Related Course 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 ease-out cursor-pointer" onclick="window.location.href='course_detail.html'">
+                    <div class="relative">
+                        <img class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400" alt="دورة Node.js" />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">متوسط</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-sans font-semibold text-gray-800 mb-2 line-clamp-2">تطوير APIs باستخدام Node.js</h3>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex text-amber-500">
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="far fa-star text-xs"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">(4.6)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-blue-800">199 ريال</span>
+                            <span class="text-xs text-gray-500">10 ساعات</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Course 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 ease-out cursor-pointer" onclick="window.location.href='course_detail.html'">
+                    <div class="relative">
+                        <img class="w-full h-48 object-cover" src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400" alt="دورة TypeScript" />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-blue-800 text-white text-xs px-2 py-1 rounded-full">متقدم</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-sans font-semibold text-gray-800 mb-2 line-clamp-2">إتقان TypeScript للمطورين</h3>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex text-amber-500">
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">(4.9)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-blue-800">249 ريال</span>
+                            <span class="text-xs text-gray-500">8 ساعات</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Course 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 ease-out cursor-pointer" onclick="window.location.href='course_detail.html'">
+                    <div class="relative">
+                        <img class="w-full h-48 object-cover" src="https://images.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg" alt="دورة JavaScript" />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-emerald-600 text-white text-xs px-2 py-1 rounded-full">مبتدئ</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-sans font-semibold text-gray-800 mb-2 line-clamp-2">JavaScript من الصفر للاحتراف</h3>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex text-amber-500">
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="far fa-star text-xs"></i>
+                            </div>
+                            <span class="text-xs text-gray-500">(4.7)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-lg font-semibold text-blue-800">99 ريال</span>
+                            <span class="text-xs text-gray-500">15 ساعات</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Bottom Bar (Mobile) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-40">
+        <div class="flex items-center justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-2xl font-bold text-blue-800">149 ريال</span>
+                    <span class="text-sm text-gray-500 line-through">299 ريال</span>
+                </div>
+                <span class="text-xs text-gray-500">خصم 50% لفترة محدودة</span>
+            </div>
+            <button class="bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 ease-out">
+                التسجيل الآن
+            </button>
+        </div>
+    </div>
+
+    <!-- Course Preview Modal -->
+    <div id="previewModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-black opacity-75"></div>
+            </div>
+
+            <div class="inline-block align-middle bg-white rounded-xl text-right overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-sans font-semibold text-gray-800">معاينة الدورة</h3>
+                        <button id="closePreview" class="text-gray-500 hover:text-gray-800">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Video Player -->
+                    <div class="relative bg-black rounded-lg overflow-hidden aspect-video mb-4">
+                        <video class="w-full h-full" controls poster="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800">
+                            <source src="#" type="video/mp4" />
+                            متصفحك لا يدعم تشغيل الفيديو.
+                        </video>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-gray-500 mb-4">هذه معاينة مجانية من الدورة. للوصول إلى المحتوى الكامل، يرجى التسجيل في الدورة.</p>
+                        <button class="bg-blue-800 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-out">
+                            التسجيل في الدورة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+            </div>
+
+            <div class="inline-block align-middle bg-white rounded-xl text-right overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-sans font-semibold text-gray-800">مشاركة الدورة</h3>
+                        <button id="closeShare" class="text-gray-500 hover:text-gray-800">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button class="w-full flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all duration-200 ease-out">
+                            <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                            <span>مشاركة عبر واتساب</span>
+                        </button>
+                        <button class="w-full flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all duration-200 ease-out">
+                            <i class="fab fa-twitter text-blue-400 text-xl"></i>
+                            <span>مشاركة عبر تويتر</span>
+                        </button>
+                        <button class="w-full flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all duration-200 ease-out">
+                            <i class="fab fa-facebook text-blue-600 text-xl"></i>
+                            <span>مشاركة عبر فيسبوك</span>
+                        </button>
+                        <button id="copyLink" class="w-full flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all duration-200 ease-out">
+                            <i class="fas fa-link text-gray-500 text-xl"></i>
+                            <span>نسخ الرابط</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="fixed bottom-16 left-0 right-0 bg-white border-t border-gray-200 md:hidden z-30">
+        <div class="flex items-center justify-around py-2">
+            <a href="course_catalog.html" class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">
+                <i class="fas fa-th-large text-lg"></i>
+                <span class="text-xs mt-1">الكتالوج</span>
+            </a>
+            <a href="student_dashboard.html" class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">دوراتي</span>
+            </a>
+            <a href="quiz_assessment.html" class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">
+                <i class="fas fa-clipboard-check text-lg"></i>
+                <span class="text-xs mt-1">الاختبارات</span>
+            </a>
+            <a href="user_profile_management.html" class="flex flex-col items-center py-2 px-3 text-gray-500 hover:text-blue-800 transition-all duration-200 ease-out">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">الملف الشخصي</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                tabBtns.forEach(b => {
+                    b.classList.remove('border-blue-800', 'text-blue-800');
+                    b.classList.add('border-transparent', 'text-gray-500');
+                });
+                
+                // Add active class to clicked tab
+                btn.classList.add('border-blue-800', 'text-blue-800');
+                btn.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Show target tab content
+                document.getElementById(targetTab).classList.remove('hidden');
+            });
+        });
+
+        // Module accordion functionality
+        const moduleHeaders = document.querySelectorAll('.module-header');
+        
+        moduleHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const targetModule = header.getAttribute('data-module');
+                const moduleContent = document.getElementById(targetModule);
+                const chevron = header.querySelector('.fa-chevron-down');
+                
+                if (moduleContent.classList.contains('hidden')) {
+                    moduleContent.classList.remove('hidden');
+                    chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    moduleContent.classList.add('hidden');
+                    chevron.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Preview modal functionality
+        const previewBtn = document.getElementById('previewBtn');
+        const previewModal = document.getElementById('previewModal');
+        const closePreview = document.getElementById('closePreview');
+
+        previewBtn.addEventListener('click', () => {
+            previewModal.classList.remove('hidden');
+        });
+
+        closePreview.addEventListener('click', () => {
+            previewModal.classList.add('hidden');
+        });
+
+        // Share modal functionality
+        const shareBtn = document.getElementById('shareBtn');
+        const shareModal = document.getElementById('shareModal');
+        const closeShare = document.getElementById('closeShare');
+        const copyLink = document.getElementById('copyLink');
+
+        shareBtn.addEventListener('click', () => {
+            shareModal.classList.remove('hidden');
+        });
+
+        closeShare.addEventListener('click', () => {
+            shareModal.classList.add('hidden');
+        });
+
+        copyLink.addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href);
+            alert('تم نسخ الرابط!');
+            shareModal.classList.add('hidden');
+        });
+
+        // Bookmark functionality
+        const bookmarkBtn = document.getElementById('bookmarkBtn');
+        
+        bookmarkBtn.addEventListener('click', () => {
+            const icon = bookmarkBtn.querySelector('i');
+            if (icon.classList.contains('far')) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                bookmarkBtn.classList.add('text-blue-800', 'border-blue-800');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                bookmarkBtn.classList.remove('text-blue-800', 'border-blue-800');
+            }
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === previewModal) {
+                previewModal.classList.add('hidden');
+            }
+            if (e.target === shareModal) {
+                shareModal.classList.add('hidden');
+            }
+        });
+
+        // Smooth scroll for curriculum navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

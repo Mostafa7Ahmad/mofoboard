@@ -10,18 +10,16 @@ class CheckRole
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next,$roles)
+    public function handle(Request $request, Closure $next, $roles)
     {
 
-      
-        if (auth()->check() && in_array(auth()->user()->power, explode('|', $roles))  ) {
+        if (auth()->check() && in_array(auth()->user()->power, explode('|', $roles))) {
             return $next($request);
         }
         abort(403);
+
         return redirect('login');
     }
 }

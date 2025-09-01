@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('contact_replies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade'); 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('contact_id')->nullable();
-            $table->foreign('contact_id')->references('id')->on("contacts")->onDelete('cascade'); 
+            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->tinyInteger('is_support_reply')->default(0);
             $table->text('content')->nullable();
             $table->timestamps();

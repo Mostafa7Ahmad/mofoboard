@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة الطالب - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="bg-background min-h-screen">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-surface shadow-card-sm border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z" />
+                            <path d="M16 6L7 9.5v7.5c0 3.33 2.31 6.45 5.4 7.2 3.09-.75 5.4-3.87 5.4-7.2V9.5L16 6z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                    <div class="hidden md:block mr-4">
+                        <h1 class="text-xl font-heading font-semibold text-text-primary">منصة التعلم</h1>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-text-secondary"></i>
+                        </div>
+                        <input type="text"
+                            class="block w-full pr-10 pl-3 py-2 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal"
+                            placeholder="ابحث في دوراتك..." />
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span
+                            class="absolute -top-1 -left-1 h-4 w-4 bg-error text-white text-xs rounded-full flex items-center justify-center">5</span>
+                    </button>
+
+                    <!-- User Avatar -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 space-x-reverse"
+                            onclick="window.location.href='user_profile_management.html'">
+                            <img class="h-8 w-8 rounded-full object-cover"
+                                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="صورة المستخدم"
+                                />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Main Content Area -->
+            <div class="flex-1">
+                <!-- Welcome Banner -->
+                <section class="bg-gradient-to-l from-primary to-primary-700 rounded-xl p-6 mb-6 text-white">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="mb-4 md:mb-0">
+                            <h2 class="text-2xl font-heading font-semibold mb-2">مرحباً، أحمد محمد!</h2>
+                            <p class="text-primary-100">استمر في رحلة التعلم وحقق أهدافك</p>
+                        </div>
+                        <div class="flex items-center space-x-6 space-x-reverse">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold">12</div>
+                                <div class="text-sm text-primary-100">دورة مسجلة</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold">8</div>
+                                <div class="text-sm text-primary-100">دورة مكتملة</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold">156</div>
+                                <div class="text-sm text-primary-100">ساعة تعلم</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Continue Learning Section -->
+                <section class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-heading font-semibold text-text-primary">استمر في التعلم</h3>
+                        <a href="course_catalog.html"
+                            class="text-primary hover:text-primary-700 text-sm font-medium transition-micro">
+                            عرض الكل <i class="fas fa-arrow-left mr-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Course Progress Card 1 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal">
+                            <div class="relative">
+                                <img class="w-full h-40 object-cover"
+                                    src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                    alt="دورة تطوير الويب"
+                                    />
+                                <div class="absolute top-3 right-3">
+                                    <span class="bg-secondary text-white text-xs px-2 py-1 rounded-full">75%
+                                        مكتمل</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">تطوير مواقع
+                                    الويب الحديثة باستخدام React</h4>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <img class="w-5 h-5 rounded-full object-cover"
+                                        src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_960_720.jpg"
+                                        alt="المدرب"
+                                        />
+                                    <span class="text-xs text-text-secondary">أحمد محمد</span>
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="mb-3">
+                                    <div class="flex items-center justify-between text-xs text-text-secondary mb-1">
+                                        <span>التقدم</span>
+                                        <span>9 من 12 درس</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <div class="text-xs text-text-secondary">
+                                        <i class="far fa-clock mr-1"></i>
+                                        <span>الدرس التالي: 25 دقيقة</span>
+                                    </div>
+                                    <button onclick="window.location.href='video_course_player.html'"
+                                        class="px-4 py-2 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                        متابعة
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Progress Card 2 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal">
+                            <div class="relative">
+                                <img class="w-full h-40 object-cover"
+                                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400"
+                                    alt="دورة إدارة الأعمال"
+                                    />
+                                <div class="absolute top-3 right-3">
+                                    <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">45% مكتمل</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">إدارة الأعمال
+                                    الرقمية والتسويق الإلكتروني</h4>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <img class="w-5 h-5 rounded-full object-cover"
+                                        src="https://images.pixabay.com/photo/2017/06/26/02/47/man-2442565_960_720.jpg"
+                                        alt="المدرب"
+                                        />
+                                    <span class="text-xs text-text-secondary">سارة أحمد</span>
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="mb-3">
+                                    <div class="flex items-center justify-between text-xs text-text-secondary mb-1">
+                                        <span>التقدم</span>
+                                        <span>5 من 11 درس</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-accent h-2 rounded-full" style="width: 45%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <div class="text-xs text-text-secondary">
+                                        <i class="far fa-clock mr-1"></i>
+                                        <span>الدرس التالي: 18 دقيقة</span>
+                                    </div>
+                                    <button onclick="window.location.href='video_course_player.html'"
+                                        class="px-4 py-2 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                        متابعة
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Progress Card 3 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal">
+                            <div class="relative">
+                                <img class="w-full h-40 object-cover"
+                                    src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                    alt="دورة التصميم الجرافيكي"
+                                    />
+                                <div class="absolute top-3 right-3">
+                                    <span class="bg-error text-white text-xs px-2 py-1 rounded-full">20% مكتمل</span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">التصميم
+                                    الجرافيكي المتقدم باستخدام Adobe</h4>
+                                <div class="flex items-center gap-2 mb-3">
+                                    <img class="w-5 h-5 rounded-full object-cover"
+                                        src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg"
+                                        alt="المدرب"
+                                        />
+                                    <span class="text-xs text-text-secondary">محمد علي</span>
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="mb-3">
+                                    <div class="flex items-center justify-between text-xs text-text-secondary mb-1">
+                                        <span>التقدم</span>
+                                        <span>3 من 15 درس</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-error h-2 rounded-full" style="width: 20%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <div class="text-xs text-text-secondary">
+                                        <i class="far fa-clock mr-1"></i>
+                                        <span>الدرس التالي: 35 دقيقة</span>
+                                    </div>
+                                    <button onclick="window.location.href='video_course_player.html'"
+                                        class="px-4 py-2 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                        متابعة
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Achievements Section -->
+                <section class="mb-8">
+                    <h3 class="text-xl font-heading font-semibold text-text-primary mb-4">الإنجازات الأخيرة</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Achievement Card 1 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <div
+                                class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-trophy text-secondary text-xl"></i>
+                            </div>
+                            <h4 class="font-heading font-semibold text-text-primary mb-1">دورة مكتملة</h4>
+                            <p class="text-xs text-text-secondary">أكملت دورة JavaScript</p>
+                            <span class="text-xs text-secondary">منذ يومين</span>
+                        </div>
+
+                        <!-- Achievement Card 2 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <div
+                                class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-certificate text-accent text-xl"></i>
+                            </div>
+                            <h4 class="font-heading font-semibold text-text-primary mb-1">شهادة جديدة</h4>
+                            <p class="text-xs text-text-secondary">شهادة في تطوير الويب</p>
+                            <span class="text-xs text-accent">منذ 3 أيام</span>
+                        </div>
+
+                        <!-- Achievement Card 3 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <div
+                                class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-fire text-primary text-xl"></i>
+                            </div>
+                            <h4 class="font-heading font-semibold text-text-primary mb-1">سلسلة تعلم</h4>
+                            <p class="text-xs text-text-secondary">15 يوم متتالي</p>
+                            <span class="text-xs text-primary">نشط</span>
+                        </div>
+
+                        <!-- Achievement Card 4 -->
+                        <div
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <div
+                                class="w-12 h-12 bg-error-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-star text-error text-xl"></i>
+                            </div>
+                            <h4 class="font-heading font-semibold text-text-primary mb-1">تقييم ممتاز</h4>
+                            <p class="text-xs text-text-secondary">حصلت على 95% في الاختبار</p>
+                            <span class="text-xs text-error">منذ أسبوع</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Actions -->
+                <section class="mb-8 lg:hidden">
+                    <h3 class="text-xl font-heading font-semibold text-text-primary mb-4">إجراءات سريعة</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <button onclick="window.location.href='course_catalog.html'"
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <i class="fas fa-bookmark text-primary text-xl mb-2"></i>
+                            <div class="text-sm font-medium text-text-primary">المفضلة</div>
+                        </button>
+                        <button
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <i class="fas fa-download text-secondary text-xl mb-2"></i>
+                            <div class="text-sm font-medium text-text-primary">التحميلات</div>
+                        </button>
+                        <button
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <i class="fas fa-comments text-accent text-xl mb-2"></i>
+                            <div class="text-sm font-medium text-text-primary">المناقشات</div>
+                        </button>
+                        <button onclick="window.location.href='quiz_assessment.html'"
+                            class="bg-surface rounded-xl shadow-card-sm border border-border p-4 text-center hover-lift transition-normal">
+                            <i class="fas fa-clipboard-check text-error text-xl mb-2"></i>
+                            <div class="text-sm font-medium text-text-primary">الاختبارات</div>
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar (Desktop) -->
+            <aside class="hidden lg:block w-80 flex-shrink-0">
+                <!-- Quick Stats -->
+                <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6 mb-6">
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-4">إحصائيات سريعة</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-play text-primary text-sm"></i>
+                                </div>
+                                <span class="text-sm text-text-secondary">ساعات المشاهدة</span>
+                            </div>
+                            <span class="font-semibold text-text-primary">156 ساعة</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-secondary-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-secondary text-sm"></i>
+                                </div>
+                                <span class="text-sm text-text-secondary">دروس مكتملة</span>
+                            </div>
+                            <span class="font-semibold text-text-primary">89 درس</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-accent-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-certificate text-accent text-sm"></i>
+                                </div>
+                                <span class="text-sm text-text-secondary">الشهادات</span>
+                            </div>
+                            <span class="font-semibold text-text-primary">8 شهادات</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-error-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-fire text-error text-sm"></i>
+                                </div>
+                                <span class="text-sm text-text-secondary">سلسلة التعلم</span>
+                            </div>
+                            <span class="font-semibold text-text-primary">15 يوم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar Widget -->
+                <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6 mb-6">
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-4">الجدول الزمني</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 p-3 bg-primary-50 rounded-lg">
+                            <div class="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary">جلسة مباشرة</div>
+                                <div class="text-xs text-text-secondary">React المتقدم - اليوم 7:00 م</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-accent-50 rounded-lg">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary">موعد تسليم</div>
+                                <div class="text-xs text-text-secondary">مشروع التصميم - غداً</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6 mb-6">
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-4">إجراءات سريعة</h3>
+                    <div class="space-y-3">
+                        <button onclick="window.location.href='course_catalog.html'"
+                            class="w-full flex items-center gap-3 p-3 text-right hover:bg-primary-50 rounded-lg transition-micro">
+                            <i class="fas fa-bookmark text-primary"></i>
+                            <span class="text-sm text-text-primary">المفضلة</span>
+                        </button>
+                        <button
+                            class="w-full flex items-center gap-3 p-3 text-right hover:bg-secondary-50 rounded-lg transition-micro">
+                            <i class="fas fa-download text-secondary"></i>
+                            <span class="text-sm text-text-primary">التحميلات</span>
+                        </button>
+                        <button
+                            class="w-full flex items-center gap-3 p-3 text-right hover:bg-accent-50 rounded-lg transition-micro">
+                            <i class="fas fa-comments text-accent"></i>
+                            <span class="text-sm text-text-primary">المناقشات</span>
+                        </button>
+                        <button onclick="window.location.href='quiz_assessment.html'"
+                            class="w-full flex items-center gap-3 p-3 text-right hover:bg-error-50 rounded-lg transition-micro">
+                            <i class="fas fa-clipboard-check text-error"></i>
+                            <span class="text-sm text-text-primary">الاختبارات</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Learning Recommendations -->
+                <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-4">دورات مقترحة</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-micro"
+                            onclick="window.location.href='course_detail.html'">
+                            <img class="w-12 h-12 rounded-lg object-cover"
+                                src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400"
+                                alt="دورة Python"
+                                />
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary line-clamp-1">تعلم Python للمبتدئين
+                                </div>
+                                <div class="text-xs text-text-secondary">د. عبدالله الشمري</div>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <div class="flex text-accent text-xs">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">(4.9)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-micro"
+                            onclick="window.location.href='course_detail.html'">
+                            <img class="w-12 h-12 rounded-lg object-cover"
+                                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400"
+                                alt="دورة التصوير"
+                                />
+                            <div class="flex-1">
+                                <div class="text-sm font-medium text-text-primary line-clamp-1">فن التصوير الاحترافي
+                                </div>
+                                <div class="text-xs text-text-secondary">نورا العتيبي</div>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <div class="flex text-accent text-xs">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">(4.5)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-border md:hidden z-40">
+        <div class="flex items-center justify-around py-2">
+            <a href="student_dashboard.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">الرئيسية</span>
+            </a>
+            <a href="course_catalog.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-th-large text-lg"></i>
+                <span class="text-xs mt-1">الكتالوج</span>
+            </a>
+            <a href="quiz_assessment.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-clipboard-check text-lg"></i>
+                <span class="text-xs mt-1">الاختبارات</span>
+            </a>
+            <a href="user_profile_management.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">الملف الشخصي</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Progress animation on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBars = document.querySelectorAll('.bg-secondary, .bg-accent, .bg-error');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1s ease-out';
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+
+        // Achievement celebration animation
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.addEventListener('click', function () {
+                this.classList.add('animate-celebrate');
+                setTimeout(() => {
+                    this.classList.remove('animate-celebrate');
+                }, 600);
+            });
+        });
+
+        // Notification count animation
+        function updateNotificationCount() {
+            const notificationBadge = document.querySelector('.fa-bell + span');
+            if (notificationBadge) {
+                notificationBadge.classList.add('animate-pulse');
+                setTimeout(() => {
+                    notificationBadge.classList.remove('animate-pulse');
+                }, 1000);
+            }
+        }
+
+        // Simulate real-time updates
+        setInterval(updateNotificationCount, 30000);
+    </script>
+    
+</body>
+
+</html>

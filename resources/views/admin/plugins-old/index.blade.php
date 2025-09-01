@@ -13,7 +13,7 @@
 				<div class="col-12 col-lg-4 p-2 text-lg-end">
 					@can('plugins-create')
 					<a href="{{route('admin.plugins.create')}}">
-					<span class="btn btn-primary"><span class="fas fa-plus"></span> إضافة جديد</span>
+					<span class="btn btn-primary"><span class="fas mx-1fa-plus"></span> إضافة جديد</span>
 					</a>
 					@endcan
 				</div>
@@ -33,7 +33,7 @@
 					</div>
 					<div class="col-12 p-0">
 						<div class="col-12 p-0 font-2 text-center" style="font-weight:bold">
-							@if($plugin->isEnabled()) <span class="fas fa-check-circle text-success"></span> @endif {{$plugin->get('title')}}
+							@if($plugin->isEnabled()) <span class="fas mx-1fa-check-circle text-success"></span> @endif {{$plugin->get('title')}}
 						</div>
 						<div class="col-12 px-0 py-3 text-center" style="text-align: justify;">
 							{{$plugin->get('description')}}

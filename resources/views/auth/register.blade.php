@@ -7,7 +7,7 @@
 
 
 body {
-    background: #fff !important;
+    /* background: #fff !important; */
 }
 
 </style>
@@ -107,10 +107,10 @@ body {
                             </div>
                             <ul style="list-style:none;" class="p-0 m-0">
                                 @if (Route::has('login'))
-                                <li class=" d-block"><a href="{{route('login')}}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas fa-circle font-small"></span> لديك حساب بالفعل</a></li>
+                                <li class=" d-block"><a href="{{route('login')}}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas mx-1fa-circle font-small"></span> لديك حساب بالفعل</a></li>
                                 @endif
                                 @if (Route::has('password.request'))
-                                <li class="d-block"><a href="{{ route('password.request') }}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas fa-circle font-small"></span> نسيت كلمة المرور</a></li>
+                                <li class="d-block"><a href="{{ route('password.request') }}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas mx-1fa-circle font-small"></span> نسيت كلمة المرور</a></li>
                                 @endif
                             </ul>
                         </div>

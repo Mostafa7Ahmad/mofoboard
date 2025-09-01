@@ -12,14 +12,14 @@
 		<div class="col-12 px-0">
 			<div class="col-12 p-0 row">
 				<div class="col-12 col-lg-4 py-3 px-3">
-					<span class="fas fa-users"></span>	المستخدمين
+					<span class="fas mx-1fa-users"></span>	المستخدمين
 				</div>
 				<div class="col-12 col-lg-4 p-0">
 				</div>
 				<div class="col-12 col-lg-4 p-2 text-lg-end">
 					@can('users-create')
 					<a href="{{route('admin.users.create')}}">
-					<span class="btn btn-primary"><span class="fas fa-plus"></span> إضافة جديد</span>
+					<span class="btn btn-primary"><span class="fas mx-1fa-plus"></span> إضافة جديد</span>
 					</a>
 					@endcan
 				</div>

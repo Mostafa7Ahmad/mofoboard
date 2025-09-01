@@ -10,7 +10,7 @@
 		<div class="col-12 col-lg-8 p-0 main-box">
 			<div class="col-12 px-0">
 				<div class="col-12 px-3 py-3">
-				 	<span class="fas fa-info-circle"></span> تعديل رابط تحويل
+				 	<span class="fas mx-1fa-info mx-2"></span> تعديل رابط تحويل
 				</div>
 				<div class="col-12 divider" style="min-height: 2px;"></div>
 			</div>

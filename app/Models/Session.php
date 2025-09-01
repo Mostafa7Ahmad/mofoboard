@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    use HasFactory;    
-    protected $guarded = ['id','created_at','updated_at'];
+    use HasFactory;
+
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 }

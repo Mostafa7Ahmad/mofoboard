@@ -75,8 +75,8 @@ return [
         /*
          * Change this if you want to name the related pivots other than defaults
          */
-        'role_pivot_key' => null, //default 'role_id',
-        'permission_pivot_key' => null, //default 'permission_id',
+        'role_pivot_key' => null, // default 'role_id',
+        'permission_pivot_key' => null, // default 'permission_id',
 
         /*
          * Change this if you want to name the related model primary key other than
@@ -168,9 +168,9 @@ return [
             'user-roles' => 'r,u',
             'roles' => 'c,r,u,d',
             'tags' => 'c,r,u,d',
-            'plugins'=>'c,r,u,d',
+            'plugins' => 'c,r,u,d',
             'notifications' => 'c,r,u,d',
-            'error-reports'=>"c,r,u,d",
+            'error-reports' => 'c,r,u,d',
             'articles' => 'c,r,u,d',
             'categories' => 'c,r,u,d',
             'contacts' => 'c,r,u,d',
@@ -192,7 +192,7 @@ return [
             'roles' => 'r',
             'tags' => 'c,r,u,d',
             'notifications' => 'c,r,u,d',
-            'error-reports'=>"c,r,u,d",
+            'error-reports' => 'c,r,u,d',
             'articles' => 'c,r,u,d',
             'categories' => 'c,r,u,d',
             'contacts' => 'c,r,u,d',
@@ -205,13 +205,13 @@ return [
             'traffics' => 'c,r,u,d',
             'profile' => 'r,u',
         ],
-        'customer_support'=>[
+        'customer_support' => [
             'profile' => 'r,u',
-            'articles'=>"r",
-            'faqs'=>"r",
-            'announcements'=>"r",
-            'notifications'=>"r",
-            'contacts'=>"c",
+            'articles' => 'r',
+            'faqs' => 'r',
+            'announcements' => 'r',
+            'notifications' => 'r',
+            'contacts' => 'c',
             'contacts' => 'c,r,u,d',
         ],
         'editor' => [
@@ -222,18 +222,18 @@ return [
             'categories' => 'c,r,u,d',
             'tags' => 'c,r,u,d',
             'profile' => 'r,u',
-            'articles'=>"r",
-            'faqs'=>"r",
-            'announcements'=>"r",
-            'notifications'=>"r",
-            'contacts'=>"c",
+            'articles' => 'r',
+            'faqs' => 'r',
+            'announcements' => 'r',
+            'notifications' => 'r',
+            'contacts' => 'c',
             'articles' => 'c,r,u,d',
             'faqs' => 'c,r,u,d',
         ],
         'user' => [
             'profile' => 'r,u',
-            'notifications'=>"r",
-            'contacts'=>"c"
+            'notifications' => 'r',
+            'contacts' => 'c',
         ],
     ],
 
@@ -241,7 +241,7 @@ return [
         'c' => 'create',
         'r' => 'read',
         'u' => 'update',
-        'd' => 'delete'
-    ]
-    
+        'd' => 'delete',
+    ],
+
 ];

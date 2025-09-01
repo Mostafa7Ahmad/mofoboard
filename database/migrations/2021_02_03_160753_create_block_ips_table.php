@@ -16,11 +16,11 @@ class CreateBlockIpsTable extends Migration
         Schema::create('block_ips', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('state_id')->nullable();
             $table->string('country')->nullable();
             $table->string('description')->nullable();
-            $table->string('ip')->index(); 
+            $table->string('ip')->index();
             $table->string('status')->default('block');
             $table->string('note')->nullable();
 

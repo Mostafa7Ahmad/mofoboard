@@ -10,24 +10,26 @@ class BackendFileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:hub-files-create', ['only' => ['create','store']]);
-        $this->middleware('can:hub-files-read',   ['only' => ['show', 'index']]);
-        $this->middleware('can:hub-files-update',   ['only' => ['edit','update']]);
-        $this->middleware('can:hub-files-delete',   ['only' => ['delete']]);
+        $this->middleware('can:hub-files-create', ['only' => ['create', 'store']]);
+        $this->middleware('can:hub-files-read', ['only' => ['show', 'index']]);
+        $this->middleware('can:hub-files-update', ['only' => ['edit', 'update']]);
+        $this->middleware('can:hub-files-delete', ['only' => ['delete']]);
     }
-
 
     public function index(Request $request)
     {
-        $files = Media::where(function($q)use($request){
+        $files = Media::where(function ($q) use ($request) {
 
-            if($request->id!=null)
-                $q->where('id',$request->id);
-            if($request->user_id!=null)
-                $q->where('user_id',$request->user_id);
-            
-        })->orderBy('id','DESC')->paginate();
-        return view('admin.files.index',compact('files'));
+            if ($request->id != null) {
+                $q->where('id', $request->id);
+            }
+            if ($request->user_id != null) {
+                $q->where('user_id', $request->user_id);
+            }
+
+        })->orderBy('id', 'DESC')->paginate();
+
+        return view('admin.files.index', compact('files'));
     }
 
     /**
@@ -37,52 +39,57 @@ class BackendFileController extends Controller
      */
     public function create()
     {
-        if(!auth()->user()->can('hub-files-create'))abort(403);
+        if (! auth()->user()->can('hub-files-create')) {
+            abort(403);
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        if(!auth()->user()->can('hub-files-create'))abort(403);
+        if (! auth()->user()->can('hub-files-create')) {
+            abort(403);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function show(Media $media)
     {
-        if(!auth()->user()->can('hub-files-read'))abort(403);
+        if (! auth()->user()->can('hub-files-read')) {
+            abort(403);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function edit(Media $media)
     {
-        if(!auth()->user()->can('hub-files-update'))abort(403);
+        if (! auth()->user()->can('hub-files-update')) {
+            abort(403);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Media $media)
     {
-        if(!auth()->user()->can('hub-files-update'))abort(403);
+        if (! auth()->user()->can('hub-files-update')) {
+            abort(403);
+        }
     }
 
     /**
@@ -93,10 +100,13 @@ class BackendFileController extends Controller
      */
     public function destroy(Media $file)
     {
-        if(!auth()->user()->can('hub-files-delete'))abort(403);
+        if (! auth()->user()->can('hub-files-delete')) {
+            abort(403);
+        }
         $file->forceDelete();
-        //you have to remove it if you want
+        // you have to remove it if you want
         flash()->success(__('utils/toastr.process_success_message'));
+
         return redirect()->back();
     }
 }

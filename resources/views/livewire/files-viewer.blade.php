@@ -12,7 +12,7 @@
             @if(count($files)==0)
             <div class="col-12 d-flex justify-content-center align-items-center" style="height: 300px;">
                 <div class="col-12 d-inline-block text-center">
-                    <span class="fal fa-images font-12" style="color:#ff9800"></span><br><br> <span class="fas fa-info-circle"></span>  لا يوجد ملفات
+                    <span class="fal fa-images font-12" style="color:#ff9800"></span><br><br> <span class="fas mx-1fa-info mx-2"></span>  لا يوجد ملفات
                 </div>
             </div>
             @endif

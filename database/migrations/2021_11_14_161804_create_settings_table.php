@@ -18,7 +18,7 @@ class CreateSettingsTable extends Migration
             $table->string('key')->nullable();
             $table->longText('value')->nullable();
             $table->integer('order')->default(0);
-            $table->string('category')->default("OTHER");
+            $table->string('category')->default('OTHER');
 
             /*$table->string('website_name')->nullable();
             $table->string('website_logo')->nullable();
@@ -27,7 +27,7 @@ class CreateSettingsTable extends Migration
             $table->string('website_cover')->nullable();
             $table->text('address')->nullable();
             $table->text('website_bio')->nullable();
-            
+
 
             //contact
             $table->text('contact_email')->nullable();
@@ -49,7 +49,7 @@ class CreateSettingsTable extends Migration
             $table->text('github_link')->nullable();
 
 
-            //pages 
+            //pages
             $table->longText('contact_page')->nullable();
 
             //other links
@@ -61,13 +61,12 @@ class CreateSettingsTable extends Migration
             $table->string('main_color')->default('#7b60fb');
             $table->string('hover_color')->default('#7b60fb');
             $table->string('dashboard_dark_mode')->default(0);
-            
+
 
             //code
             $table->longText('header_code')->nullable();
             $table->longText('footer_code')->nullable();
             $table->longText('robots_txt')->nullable();*/
-
 
             $table->timestamps();
         });

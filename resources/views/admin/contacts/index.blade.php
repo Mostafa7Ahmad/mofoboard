@@ -11,7 +11,7 @@
 		<div class="col-12 px-0">
 			<div class="col-12 p-0 row">
 				<div class="col-12 col-lg-4 py-3 px-3">
-					<span class="fas fa-contacts"></span> الاتصالات
+					<span class="fas mx-1fa-contacts"></span> الاتصالات
 				</div>
 				<div class="col-12 col-lg-4 p-0">
 				</div>
@@ -105,7 +105,7 @@
 							@can('contacts-delete',$contact)
 							<form method="POST" action="{{route('admin.contacts.destroy',$contact)}}" class="d-inline-block">@csrf @method("DELETE")
 								<button class="btn  btn-outline-danger btn-sm font-1 mx-1" onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
-									<span class="fas fa-trash "></span> حذف
+									<span class="fas mx-1fa-trash "></span> حذف
 								</button>
 							</form>
 							@endcan

@@ -61,7 +61,7 @@
                         متصل بالفعل
                     </div>
                     <div class="col-12 pt-3">
-                        <span class="fas fa-check-circle text-success font-12"></span>
+                        <span class="fas mx-1fa-check-circle text-success font-12"></span>
                     </div>
                 </div>
                 @endif
@@ -72,7 +72,7 @@
                         حالة التحميل
                     </div>
                     <div class="col-12 pt-3">
-                        <span class="fas fa-times text-danger"></span> فشل تحميل الاضافة
+                        <span class="fas mx-1fa-times text-danger"></span> فشل تحميل الاضافة
                     </div>
                 </div>
 

@@ -37,11 +37,11 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
 
             \MainHelper::make_error_report([
-                'error'=>$e->getMessage(),
-                'error_code'=>500,
-                'details'=>"Error : ".$e->getFile()." Line : ". $e->getLine() . json_encode(request()->instance())
+                'error' => $e->getMessage(),
+                'error_code' => 500,
+                'details' => 'Error : '.$e->getFile().' Line : '.$e->getLine().json_encode(request()->instance()),
             ]);
-            
+
         });
     }
 }

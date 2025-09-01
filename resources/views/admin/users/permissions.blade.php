@@ -9,7 +9,7 @@
 
 			<div class="col-12 px-0">
 				<div class="col-12 px-3 py-3">
-				 	<span class="fas fa-info-circle"></span> صلاحيات المستخدم
+				 	<span class="fas mx-1fa-info mx-2"></span> صلاحيات المستخدم
 				</div>
 				<div class="col-12 divider" style="min-height: 2px;"></div>
 			</div>

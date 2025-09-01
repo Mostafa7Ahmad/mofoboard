@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Units;
+
 use Nwidart\Modules\Facades\Module;
 
 class ModulesUnit
@@ -8,10 +9,13 @@ class ModulesUnit
     public function isModuleInstalled($module_name)
     {
         $plugin = Module::findorFail($module_name);
+
         return $plugin->isEnabled();
 
     }
-    public function ShareDataModules($function_name, $arguments = null) {
+
+    public function ShareDataModules($function_name, $arguments = null)
+    {
 
         $modules = Module::toCollection()->toArray();
 
@@ -22,13 +26,13 @@ class ModulesUnit
             }
         }
         $data = [];
-        if (!empty($installed_modules)) {
+        if (! empty($installed_modules)) {
             foreach ($installed_modules as $module) {
-                $class = 'Modules\\' . $module['name'] . '\Http\Controllers\DataShareController';
+                $class = 'Modules\\'.$module['name'].'\Http\Controllers\DataShareController';
                 if (class_exists($class)) {
-                    $class_object = new $class();
+                    $class_object = new $class;
                     if (method_exists($class_object, $function_name)) {
-                        if (!empty($arguments)) {
+                        if (! empty($arguments)) {
                             $data[$module['name']] = call_user_func([$class_object, $function_name], $arguments);
                         } else {
                             $data[$module['name']] = call_user_func([$class_object, $function_name]);

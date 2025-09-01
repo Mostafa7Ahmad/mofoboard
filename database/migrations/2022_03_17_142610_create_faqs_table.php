@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('faqs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('question')->nullable();
             $table->longText('answer')->nullable();
             $table->tinyInteger('is_featured')->default(0);

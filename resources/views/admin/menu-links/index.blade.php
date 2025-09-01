@@ -6,14 +6,14 @@
 		<div class="col-12 px-0">
 			<div class="col-12 p-0 row">
 				<div class="col-12 col-lg-4 py-3 px-3">
-					<span class="fas fa-links"></span> الصفحات
+					<span class="fas mx-1fa-links"></span> الصفحات
 				</div>
 				<div class="col-12 col-lg-4 p-0">
 				</div>
 				<div class="col-12 col-lg-4 p-2 text-lg-end">
 					@can('menu-links-create')
 					<a href="{{route('admin.menu-links.create',['menu_id'=>request()->get('menu_id')])}}">
-					<span class="btn btn-primary"><span class="fas fa-plus"></span> إضافة جديد</span>
+					<span class="btn btn-primary"><span class="fas mx-1fa-plus"></span> إضافة جديد</span>
 					</a>
 					@endcan
 				</div>

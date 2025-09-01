@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+<body class="bg-background min-h-screen flex justify-center items-center">
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <!-- Header Section -->
+            <div class="text-center">
+                <div class="mx-auto h-12 w-12 bg-primary rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-user text-white text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-heading font-bold text-text-primary mb-2">مرحباً بعودتك</h2>
+                <p class="text-text-secondary">سجل دخولك للوصول إلى دوراتك التعليمية</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="mt-8 space-y-6" id="loginForm">
+                <div id="errorMessage" class="hidden bg-error/10 border border-error/20 text-error px-4 py-3 rounded-lg text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="errorText">حدث خطأ في تسجيل الدخول</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                            البريد الإلكتروني
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-text-secondary"></i>
+                            </div>
+                            <input id="email" name="email" type="email" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="أدخل بريدك الإلكتروني" />
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-text-primary mb-2">
+                            كلمة المرور
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-text-secondary"></i>
+                            </div>
+                            <input id="password" name="password" type="password" required class="block w-full pr-10 pl-10 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="أدخل كلمة المرور" />
+                            <button type="button" class="absolute inset-y-0 left-0 pl-3 flex items-center" id="togglePassword">
+                                <i class="fas fa-eye text-text-secondary hover:text-text-primary transition-micro"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember" name="remember" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-border rounded transition-micro" />
+                        <label for="remember" class="mr-2 block text-sm text-text-secondary">
+                            تذكرني
+                        </label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" class="text-primary hover:text-primary-700 transition-micro" id="forgotPasswordLink">
+                            نسيت كلمة المرور؟
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-normal disabled:opacity-50 disabled:cursor-not-allowed" id="loginButton">
+                        <span id="loginButtonText">تسجيل الدخول</span>
+                        <span id="loginSpinner" class="hidden absolute inset-0 flex items-center justify-center">
+                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Social Login Divider -->
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-border"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-background text-text-secondary">أو</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Login Buttons -->
+                <div class="grid grid-cols-2 gap-3">
+                    <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-border rounded-lg bg-surface text-text-secondary hover:bg-gray-50 transition-normal" id="googleLogin">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24">
+                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        <span class="mr-2">Google</span>
+                    </button>
+                    
+                    <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-border rounded-lg bg-surface text-text-secondary hover:bg-gray-50 transition-normal" id="appleLogin">
+                        <i class="fab fa-apple text-lg"></i>
+                        <span class="mr-2">Apple</span>
+                    </button>
+                </div>
+
+                <!-- Register Link -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-text-secondary">
+                        ليس لديك حساب؟
+                        <a href="registration.html" class="text-primary hover:text-primary-700 font-medium transition-micro">
+                            إنشاء حساب جديد
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div class="inline-block align-bottom bg-surface rounded-xl text-right overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-surface px-6 pt-6 pb-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-heading font-semibold text-text-primary">نسيت كلمة المرور؟</h3>
+                        <button id="closeForgotPassword" class="text-text-secondary hover:text-text-primary transition-micro">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <p class="text-text-secondary mb-6">أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور</p>
+                    
+                    <form id="forgotPasswordForm">
+                        <div class="mb-6">
+                            <label for="forgotEmail" class="block text-sm font-medium text-text-primary mb-2">
+                                البريد الإلكتروني
+                            </label>
+                            <input id="forgotEmail" name="forgotEmail" type="email" required class="block w-full px-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="أدخل بريدك الإلكتروني" />
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button type="submit" class="flex-1 py-2 px-4 bg-primary text-white rounded-lg hover:bg-primary-700 transition-normal" id="sendResetButton">
+                                إرسال الرابط
+                            </button>
+                            <button type="button" class="flex-1 py-2 px-4 border border-border text-text-secondary rounded-lg hover:bg-gray-50 transition-normal" id="cancelForgotPassword">
+                                إلغاء
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginForm = document.getElementById('loginForm');
+        const loginButton = document.getElementById('loginButton');
+        const loginButtonText = document.getElementById('loginButtonText');
+        const loginSpinner = document.getElementById('loginSpinner');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');  
+        
+        // Modal Elements
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+        const closeForgotPassword = document.getElementById('closeForgotPassword');
+        const cancelForgotPassword = document.getElementById('cancelForgotPassword');
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+
+        // Toggle Password Visibility
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+
+        // Show Error Message
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
+
+        // Hide Error Message
+        function hideError() {
+            errorMessage.classList.add('hidden');
+        }
+
+        // Show Loading State
+        function setLoading(loading) {
+            if (loading) {
+                loginButton.disabled = true;
+                loginButtonText.classList.add('opacity-0');
+                loginSpinner.classList.remove('hidden');
+            } else {
+                loginButton.disabled = false;
+                loginButtonText.classList.remove('opacity-0');
+                loginSpinner.classList.add('hidden');
+            }
+        }
+
+        // Login Form Submission
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            hideError();
+            
+            const formData = new FormData(loginForm);
+            const email = formData.get('email');
+            const password = formData.get('password');
+
+            // Basic Validation
+            if (!email || !password) {
+                showError('يرجى ملء جميع الحقول');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                showError('يرجى إدخال بريد إلكتروني صالح');
+                return;
+            }
+
+            setLoading(true);
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Mock successful login
+                if (email === 'instructor@example.com') {
+                    window.location.href = 'instructor_dashboard.html';
+                } else {
+                    window.location.href = 'student_dashboard.html';
+                }
+                
+            } catch (error) {
+                showError('حدث خطأ في تسجيل الدخول. يرجى المحاولة مرة أخرى.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // Email Validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Forgot Password Modal
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            forgotPasswordModal.classList.remove('hidden');
+        });
+
+        closeForgotPassword.addEventListener('click', function() {
+            forgotPasswordModal.classList.add('hidden');
+        });
+
+        cancelForgotPassword.addEventListener('click', function() {
+            forgotPasswordModal.classList.add('hidden');
+        });
+
+        // Forgot Password Form
+        forgotPasswordForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(forgotPasswordForm);
+            const email = formData.get('forgotEmail');
+
+            if (!email || !isValidEmail(email)) {
+                alert('يرجى إدخال بريد إلكتروني صالح');
+                return;
+            }
+
+            const sendResetButton = document.getElementById('sendResetButton');
+            sendResetButton.textContent = 'جارِ الإرسال...';
+            sendResetButton.disabled = true;
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                alert('تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني');
+                forgotPasswordModal.classList.add('hidden');
+                
+            } catch (error) {
+                alert('حدث خطأ في إرسال الرابط. يرجى المحاولة مرة أخرى.');
+            } finally {
+                sendResetButton.textContent = 'إرسال الرابط';
+                sendResetButton.disabled = false;
+            }
+        });
+
+        // Social Login Handlers
+        document.getElementById('googleLogin').addEventListener('click', function() {
+            alert('تسجيل الدخول عبر Google قريباً');
+        });
+
+        document.getElementById('appleLogin').addEventListener('click', function() {
+            alert('تسجيل الدخول عبر Apple قريباً');
+        });
+
+        // Auto-hide error message after 5 seconds
+        let errorTimeout;
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            
+            clearTimeout(errorTimeout);
+            errorTimeout = setTimeout(() => {
+                hideError();
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>

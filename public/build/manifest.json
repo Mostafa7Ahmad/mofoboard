@@ -1,13 +1,13 @@
 {
   "_main-!~{005}~.js": {
-    "file": "assets/main-DcD9-e9F.css",
+    "file": "assets/main-Srn3rFLL.css",
     "src": "_main-!~{005}~.js"
   },
-  "_main-BmQLPuOf.js": {
-    "file": "assets/main-BmQLPuOf.js",
+  "_main-_7BnexLQ.js": {
+    "file": "assets/main-_7BnexLQ.js",
     "name": "main",
     "css": [
-      "assets/main-DcD9-e9F.css"
+      "assets/main-Srn3rFLL.css"
     ]
   },
   "public/assets/fonts/custom/Custom.woff": {
@@ -283,37 +283,37 @@
     "src": "public/webfonts/fa-v4compatibility.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Di084ck6.css",
+    "file": "assets/app-BNgO84aY.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/dashboard.css": {
-    "file": "assets/dashboard-45cSAGeZ.css",
+    "file": "assets/dashboard-BxRz7Y5F.css",
     "src": "resources/css/dashboard.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CFOum4YU.js",
+    "file": "assets/app-BSKi6iCB.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_main-BmQLPuOf.js"
+      "_main-_7BnexLQ.js"
     ],
     "css": [
-      "assets/app-BKFG0Cpy.css"
+      "assets/app-zYjN1Mku.css"
     ]
   },
   "resources/js/dashboard.js": {
-    "file": "assets/dashboard-BO5oRpAv.js",
+    "file": "assets/dashboard-U1roX8Sg.js",
     "name": "dashboard",
     "src": "resources/js/dashboard.js",
     "isEntry": true,
     "imports": [
-      "_main-BmQLPuOf.js"
+      "_main-_7BnexLQ.js"
     ],
     "css": [
-      "assets/dashboard-DH4eK6Jk.css"
+      "assets/dashboard-DyBdm5i-.css"
     ]
   }
 }

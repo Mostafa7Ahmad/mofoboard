@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنشاء حساب جديد - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Header -->
+    <header class="bg-surface shadow-card-sm border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z"/>
+                            <path d="M16 6L7 9.5v7.5c0 3.33 2.31 6.45 5.4 7.2 3.09-.75 5.4-3.87 5.4-7.2V9.5L16 6z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="mr-4">
+                        <h1 class="text-xl font-heading font-semibold text-text-primary">منصة التعلم</h1>
+                    </div>
+                </div>
+
+                <!-- Back to Catalog -->
+                <div class="flex items-center">
+                    <a href="course_catalog.html" class="flex items-center text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        <span>العودة إلى الكتالوج</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-lg w-full space-y-8">
+            <!-- Header Section -->
+            <div class="text-center">
+                <div class="mx-auto h-12 w-12 bg-secondary rounded-full flex items-center justify-center mb-6">
+                    <i class="fas fa-user-plus text-white text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-heading font-bold text-text-primary mb-2">إنشاء حساب جديد</h2>
+                <p class="text-text-secondary">انضم إلينا وابدأ رحلتك التعليمية اليوم</p>
+            </div>
+
+            <!-- Registration Form -->
+            <form class="mt-8 space-y-6" id="registrationForm">
+                <div id="errorMessage" class="hidden bg-error/10 border border-error/20 text-error px-4 py-3 rounded-lg text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="errorText">حدث خطأ في إنشاء الحساب</span>
+                </div>
+
+                <div id="successMessage" class="hidden bg-success/10 border border-success/20 text-success px-4 py-3 rounded-lg text-sm">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span id="successText">تم إنشاء الحساب بنجاح!</span>
+                </div>
+
+                <!-- Progress Steps -->
+                <div class="flex items-center justify-center mb-8">
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium" id="step1">1</div>
+                            <span class="mr-2 text-sm font-medium text-primary">المعلومات الأساسية</span>
+                        </div>
+                        <div class="w-8 h-px bg-border"></div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-200 text-text-secondary rounded-full flex items-center justify-center text-sm font-medium" id="step2">2</div>
+                            <span class="mr-2 text-sm font-medium text-text-secondary">نوع الحساب</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Basic Information -->
+                <div id="stepOne" class="space-y-4">
+                    <!-- Full Name -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-text-primary mb-2">
+                                الاسم الأول *
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-user text-text-secondary"></i>
+                                </div>
+                                <input id="firstName" name="firstName" type="text" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="الاسم الأول" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-text-primary mb-2">
+                                الاسم الأخير *
+                            </label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-user text-text-secondary"></i>
+                                </div>
+                                <input id="lastName" name="lastName" type="text" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="الاسم الأخير" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                            البريد الإلكتروني *
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-text-secondary"></i>
+                            </div>
+                            <input id="email" name="email" type="email" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="البريد الإلكتروني" />
+                        </div>
+                        <div id="emailValidation" class="hidden mt-1 text-xs text-error">البريد الإلكتروني غير صالح</div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-text-primary mb-2">
+                            رقم الهاتف *
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-phone text-text-secondary"></i>
+                            </div>
+                            <input id="phone" name="phone" type="tel" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="05xxxxxxxx" />
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-text-primary mb-2">
+                            كلمة المرور *
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-text-secondary"></i>
+                            </div>
+                            <input id="password" name="password" type="password" required class="block w-full pr-10 pl-10 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="كلمة المرور" />
+                            <button type="button" class="absolute inset-y-0 left-0 pl-3 flex items-center" id="togglePassword">
+                                <i class="fas fa-eye text-text-secondary hover:text-text-primary transition-micro"></i>
+                            </button>
+                        </div>
+                        <!-- Password Strength Indicator -->
+                        <div class="mt-2">
+                            <div class="flex space-x-1 space-x-reverse">
+                                <div class="h-1 bg-gray-200 rounded-full flex-1" id="strength1"></div>
+                                <div class="h-1 bg-gray-200 rounded-full flex-1" id="strength2"></div>
+                                <div class="h-1 bg-gray-200 rounded-full flex-1" id="strength3"></div>
+                                <div class="h-1 bg-gray-200 rounded-full flex-1" id="strength4"></div>
+                            </div>
+                            <div class="mt-1 text-xs text-text-secondary" id="strengthText">كلمة المرور ضعيفة</div>
+                        </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">
+                            تأكيد كلمة المرور *
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-text-secondary"></i>
+                            </div>
+                            <input id="confirmPassword" name="confirmPassword" type="password" required class="block w-full pr-10 pl-10 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" placeholder="تأكيد كلمة المرور" />
+                            <button type="button" class="absolute inset-y-0 left-0 pl-3 flex items-center" id="toggleConfirmPassword">
+                                <i class="fas fa-eye text-text-secondary hover:text-text-primary transition-micro"></i>
+                            </button>
+                        </div>
+                        <div id="passwordMatch" class="hidden mt-1 text-xs text-error">كلمتا المرور غير متطابقتان</div>
+                    </div>
+
+                    <!-- Next Button -->
+                    <div class="mt-6">
+                        <button type="button" class="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-primary hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-normal" id="nextStepButton">
+                            المتابعة
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Account Type -->
+                <div id="stepTwo" class="hidden space-y-6">
+                    <div>
+                        <h3 class="text-lg font-heading font-semibold text-text-primary mb-4">اختر نوع الحساب</h3>
+                        
+                        <!-- Account Type Options -->
+                        <div class="grid grid-cols-1 gap-4">
+                            <!-- Student Account -->
+                            <label class="relative flex cursor-pointer rounded-xl border border-border p-4 hover:bg-gray-50 transition-normal" for="student">
+                                <input type="radio" name="accountType" value="student" id="student" checked class="sr-only" />
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <div class="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mr-4">
+                                            <h4 class="text-sm font-medium text-text-primary">طالب</h4>
+                                            <p class="text-sm text-text-secondary">أريد تعلم دورات جديدة والحصول على الشهادات</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <div class="student-check hidden w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+                                            <i class="fas fa-check text-white text-xs"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Instructor Account -->
+                            <label class="relative flex cursor-pointer rounded-xl border border-border p-4 hover:bg-gray-50 transition-normal" for="instructor">
+                                <input type="radio" name="accountType" value="instructor" id="instructor" class="sr-only" />
+                                <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <div class="w-12 h-12 bg-secondary-50 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-chalkboard-teacher text-secondary text-xl"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mr-4">
+                                            <h4 class="text-sm font-medium text-text-primary">مدرب</h4>
+                                            <p class="text-sm text-text-secondary">أريد إنشاء وبيع دوراتي التعليمية للطلاب</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <div class="instructor-check hidden w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+                                            <i class="fas fa-check text-white text-xs"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Additional Info for Instructors -->
+                        <div id="instructorInfo" class="hidden mt-4 p-4 bg-secondary-50 rounded-lg border border-secondary-200">
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="expertise" class="block text-sm font-medium text-text-primary mb-2">
+                                        مجال الخبرة
+                                    </label>
+                                    <select id="expertise" name="expertise" class="block w-full px-3 py-3 border border-border rounded-lg bg-surface text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal">
+                                        <option value>اختر مجال خبرتك</option>
+                                        <option value="technology">التكنولوجيا والبرمجة</option>
+                                        <option value="business">إدارة الأعمال</option>
+                                        <option value="design">التصميم والجرافيك</option>
+                                        <option value="languages">اللغات</option>
+                                        <option value="marketing">التسويق الرقمي</option>
+                                        <option value="photography">التصوير الفوتوغرافي</option>
+                                        <option value="other">أخرى</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="experience" class="block text-sm font-medium text-text-primary mb-2">
+                                        سنوات الخبرة
+                                    </label>
+                                    <select id="experience" name="experience" class="block w-full px-3 py-3 border border-border rounded-lg bg-surface text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal">
+                                        <option value>اختر سنوات خبرتك</option>
+                                        <option value="1-2">1-2 سنة</option>
+                                        <option value="3-5">3-5 سنوات</option>
+                                        <option value="6-10">6-10 سنوات</option>
+                                        <option value="10+">أكثر من 10 سنوات</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="flex items-start">
+                        <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-primary focus:ring-primary border-border rounded mt-1 transition-micro" />
+                        <label for="terms" class="mr-2 block text-sm text-text-secondary">
+                            أوافق على 
+                            <a href="#" class="text-primary hover:text-primary-700 transition-micro">شروط الخدمة</a> و 
+                            <a href="#" class="text-primary hover:text-primary-700 transition-micro">سياسة الخصوصية</a>
+                        </label>
+                    </div>
+
+                    <!-- Marketing Consent -->
+                    <div class="flex items-start">
+                        <input id="marketing" name="marketing" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-border rounded mt-1 transition-micro" />
+                        <label for="marketing" class="mr-2 block text-sm text-text-secondary">
+                            أرغب في تلقي تحديثات حول الدورات الجديدة والعروض الخاصة
+                        </label>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex gap-3 mt-6">
+                        <button type="button" class="flex-1 py-3 px-4 border border-border text-text-secondary rounded-lg hover:bg-gray-50 transition-normal" id="backButton">
+                            <i class="fas fa-arrow-right mr-2"></i>
+                            العودة
+                        </button>
+                        
+                        <button type="submit" class="flex-1 py-3 px-4 bg-secondary text-white rounded-lg hover:bg-secondary-700 transition-normal disabled:opacity-50 disabled:cursor-not-allowed" id="registerButton">
+                            <span id="registerButtonText">إنشاء الحساب</span>
+                            <span id="registerSpinner" class="hidden absolute inset-0 flex items-center justify-center">
+                                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-text-secondary">
+                        لديك حساب بالفعل؟
+                        <a href="login.html" class="text-primary hover:text-primary-700 font-medium transition-micro">
+                            تسجيل الدخول
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // DOM Elements
+        const registrationForm = document.getElementById('registrationForm');
+        const stepOne = document.getElementById('stepOne');
+        const stepTwo = document.getElementById('stepTwo');
+        const step1Indicator = document.getElementById('step1');
+        const step2Indicator = document.getElementById('step2');
+        const nextStepButton = document.getElementById('nextStepButton');
+        const backButton = document.getElementById('backButton');
+        const registerButton = document.getElementById('registerButton');
+        const registerButtonText = document.getElementById('registerButtonText');
+        const registerSpinner = document.getElementById('registerSpinner');
+        
+        // Form inputs
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const emailInput = document.getElementById('email');
+        const togglePassword = document.getElementById('togglePassword');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        
+        // Account type inputs
+        const studentRadio = document.getElementById('student');
+        const instructorRadio = document.getElementById('instructor');
+        const instructorInfo = document.getElementById('instructorInfo');
+        
+        // Messages
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const errorText = document.getElementById('errorText');
+        const successText = document.getElementById('successText');
+
+        // Password visibility toggles
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+
+        toggleConfirmPassword.addEventListener('click', function() {
+            const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPasswordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+
+        // Password strength checker
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            const strength = calculatePasswordStrength(password);
+            updatePasswordStrength(strength);
+        });
+
+        function calculatePasswordStrength(password) {
+            let score = 0;
+            if (password.length >= 8) score++;
+            if (/[a-z]/.test(password)) score++;
+            if (/[A-Z]/.test(password)) score++;
+            if (/[0-9]/.test(password)) score++;
+            if (/[^A-Za-z0-9]/.test(password)) score++;
+            return Math.min(score, 4);
+        }
+
+        function updatePasswordStrength(strength) {
+            const indicators = ['strength1', 'strength2', 'strength3', 'strength4'];
+            const strengthText = document.getElementById('strengthText');
+            const colors = ['bg-red-400', 'bg-orange-400', 'bg-yellow-400', 'bg-green-400'];
+            const texts = ['كلمة المرور ضعيفة جداً', 'كلمة المرور ضعيفة', 'كلمة المرور متوسطة', 'كلمة المرور قوية'];
+
+            indicators.forEach((id, index) => {
+                const element = document.getElementById(id);
+                element.className = 'h-1 rounded-full flex-1';
+                
+                if (index < strength) {
+                    element.classList.add(colors[strength - 1]);
+                } else {
+                    element.classList.add('bg-gray-200');
+                }
+            });
+
+            if (strength > 0) {
+                strengthText.textContent = texts[strength - 1];
+                strengthText.className = `mt-1 text-xs ${strength < 2 ? 'text-red-500' : strength < 3 ? 'text-yellow-500' : 'text-green-500'}`;
+            } else {
+                strengthText.textContent = 'أدخل كلمة المرور';
+                strengthText.className = 'mt-1 text-xs text-text-secondary';
+            }
+        }
+
+        // Email validation
+        emailInput.addEventListener('blur', function() {
+            const email = this.value;
+            const emailValidation = document.getElementById('emailValidation');
+            
+            if (email && !isValidEmail(email)) {
+                emailValidation.classList.remove('hidden');
+                this.classList.add('border-error');
+            } else {
+                emailValidation.classList.add('hidden');
+                this.classList.remove('border-error');
+            }
+        });
+
+        // Password match validation
+        confirmPasswordInput.addEventListener('blur', function() {
+            const password = passwordInput.value;
+            const confirmPassword = this.value;
+            const passwordMatch = document.getElementById('passwordMatch');
+            
+            if (confirmPassword && password !== confirmPassword) {
+                passwordMatch.classList.remove('hidden');
+                this.classList.add('border-error');
+            } else {
+                passwordMatch.classList.add('hidden');
+                this.classList.remove('border-error');
+            }
+        });
+
+        // Account type radio button handlers
+        studentRadio.addEventListener('change', function() {
+            if (this.checked) {
+                instructorInfo.classList.add('hidden');
+                updateAccountTypeUI('student');
+            }
+        });
+
+        instructorRadio.addEventListener('change', function() {
+            if (this.checked) {
+                instructorInfo.classList.remove('hidden');
+                updateAccountTypeUI('instructor');
+            }
+        });
+
+        function updateAccountTypeUI(type) {
+            const studentCheck = document.querySelector('.student-check');
+            const instructorCheck = document.querySelector('.instructor-check');
+            
+            if (type === 'student') {
+                studentCheck.classList.remove('hidden');
+                instructorCheck.classList.add('hidden');
+            } else {
+                studentCheck.classList.add('hidden');
+                instructorCheck.classList.remove('hidden');
+            }
+        }
+
+        // Initialize account type UI
+        updateAccountTypeUI('student');
+
+        // Step navigation
+        nextStepButton.addEventListener('click', function() {
+            if (validateStepOne()) {
+                goToStepTwo();
+            }
+        });
+
+        backButton.addEventListener('click', function() {
+            goToStepOne();
+        });
+
+        function validateStepOne() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = emailInput.value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
+                showError('يرجى ملء جميع الحقول المطلوبة');
+                return false;
+            }
+
+            if (!isValidEmail(email)) {
+                showError('يرجى إدخال بريد إلكتروني صالح');
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                showError('كلمتا المرور غير متطابقتان');
+                return false;
+            }
+
+            if (calculatePasswordStrength(password) < 2) {
+                showError('كلمة المرور ضعيفة. يرجى اختيار كلمة مرور أقوى');
+                return false;
+            }
+
+            return true;
+        }
+
+        function goToStepTwo() {
+            stepOne.classList.add('hidden');
+            stepTwo.classList.remove('hidden');
+            
+            step1Indicator.classList.add('bg-success');
+            step1Indicator.classList.remove('bg-primary');
+            step1Indicator.innerHTML = '<i class="fas fa-check text-xs"></i>';
+            
+            step2Indicator.classList.add('bg-primary', 'text-white');
+            step2Indicator.classList.remove('bg-gray-200', 'text-text-secondary');
+            
+            // Update step labels
+            document.querySelectorAll('span')[1].classList.add('text-primary');
+            document.querySelectorAll('span')[1].classList.remove('text-text-secondary');
+        }
+
+        function goToStepOne() {
+            stepTwo.classList.add('hidden');
+            stepOne.classList.remove('hidden');
+            
+            step1Indicator.classList.add('bg-primary');
+            step1Indicator.classList.remove('bg-success');
+            step1Indicator.textContent = '1';
+            
+            step2Indicator.classList.add('bg-gray-200', 'text-text-secondary');
+            step2Indicator.classList.remove('bg-primary', 'text-white');
+            
+            // Update step labels
+            document.querySelectorAll('span')[1].classList.add('text-text-secondary');
+            document.querySelectorAll('span')[1].classList.remove('text-primary');
+        }
+
+        // Form submission
+        registrationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                showError('يرجى الموافقة على شروط الخدمة وسياسة الخصوصية');
+                return;
+            }
+
+            setLoading(true);
+            hideError();
+
+            try {
+                const formData = new FormData(registrationForm);
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                
+                showSuccess('تم إنشاء حسابك بنجاح! يتم الآن إعادة التوجيه...');
+                
+                // Redirect based on account type
+                setTimeout(() => {
+                    const accountType = formData.get('accountType');
+                    if (accountType === 'instructor') {
+                        window.location.href = 'instructor_dashboard.html';
+                    } else {
+                        window.location.href = 'student_dashboard.html';
+                    }
+                }, 2000);
+                
+            } catch (error) {
+                showError('حدث خطأ في إنشاء الحساب. يرجى المحاولة مرة أخرى.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        // Utility functions
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showError(message) {
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+            
+            setTimeout(() => {
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            successText.textContent = message;
+            successMessage.classList.remove('hidden');
+            errorMessage.classList.add('hidden');
+        }
+
+        function hideError() {
+            errorMessage.classList.add('hidden');
+        }
+
+        function setLoading(loading) {
+            if (loading) {
+                registerButton.disabled = true;
+                registerButton.classList.add('relative');
+                registerButtonText.classList.add('opacity-0');
+                registerSpinner.classList.remove('hidden');
+            } else {
+                registerButton.disabled = false;
+                registerButton.classList.remove('relative');
+                registerButtonText.classList.remove('opacity-0');
+                registerSpinner.classList.add('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>

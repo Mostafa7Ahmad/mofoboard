@@ -4,28 +4,34 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\Image\Manipulations;
 use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Contact extends Model implements HasMedia
 {
-    use InteractsWithMedia;
     use HasFactory;
-    public $guarded=['id','created_at','updated_at'];
-    public function user(){
+    use InteractsWithMedia;
+
+    public $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function user()
+    {
         return $this->belongsTo(\App\Models\User::class);
     }
+
     public function replies()
     {
-        return $this->hasMany(\App\Models\ContactReply::class)/*->orderBy('id','DESC')*/;
+        return $this->hasMany(\App\Models\ContactReply::class)/* ->orderBy('id','DESC') */;
     }
-    public function files(){
-        return $this->hasMany(\App\Models\HubFile::class,'type_id')->where('type','CONTACT');
+
+    public function files()
+    {
+        return $this->hasMany(\App\Models\HubFile::class, 'type_id')->where('type', 'CONTACT');
     }
-    public function registerMediaConversions(Media $media = null): void
+
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this
             ->addMediaConversion('tiny')

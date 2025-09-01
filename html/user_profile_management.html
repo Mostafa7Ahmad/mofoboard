@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إدارة الملف الشخصي - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+<div class="bg-background min-h-screen">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-surface shadow-card-sm border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z" />
+                            <path d="M16 6L7 9.5v7.5c0 3.33 2.31 6.45 5.4 7.2 3.09-.75 5.4-3.87 5.4-7.2V9.5L16 6z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                    <div class="hidden md:block mr-4">
+                        <h1 class="text-xl font-heading font-semibold text-text-primary">منصة التعلم</h1>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-text-secondary"></i>
+                        </div>
+                        <input type="text"
+                            class="block w-full pr-10 pl-3 py-2 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal"
+                            placeholder="ابحث عن الدورات..." />
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span
+                            class="absolute -top-1 -left-1 h-4 w-4 bg-error text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+
+                    <!-- User Avatar -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 space-x-reverse">
+                            <img class="h-8 w-8 rounded-full object-cover"
+                                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="صورة المستخدم"
+                                />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Desktop Sidebar Navigation -->
+            <aside class="hidden lg:block w-80 flex-shrink-0">
+                <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6 sticky top-24">
+                    <nav class="space-y-2">
+                        <a href="#personal-info"
+                            class="flex items-center px-4 py-3 text-primary bg-primary-50 rounded-lg transition-micro">
+                            <i class="fas fa-user text-lg ml-3"></i>
+                            <span class="font-medium">المعلومات الشخصية</span>
+                        </a>
+                        <a href="#learning-preferences"
+                            class="flex items-center px-4 py-3 text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-micro">
+                            <i class="fas fa-cog text-lg ml-3"></i>
+                            <span>تفضيلات التعلم</span>
+                        </a>
+                        <a href="#certificates"
+                            class="flex items-center px-4 py-3 text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-micro">
+                            <i class="fas fa-certificate text-lg ml-3"></i>
+                            <span>الشهادات</span>
+                        </a>
+                        <a href="#account-settings"
+                            class="flex items-center px-4 py-3 text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-micro">
+                            <i class="fas fa-shield-alt text-lg ml-3"></i>
+                            <span>إعدادات الحساب</span>
+                        </a>
+                        <a href="#achievements"
+                            class="flex items-center px-4 py-3 text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-micro">
+                            <i class="fas fa-trophy text-lg ml-3"></i>
+                            <span>الإنجازات</span>
+                        </a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="flex-1">
+                <!-- Profile Header -->
+                <section class="bg-surface rounded-xl shadow-card-sm border border-border p-6 mb-6">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <!-- Profile Picture -->
+                        <div class="relative">
+                            <img class="w-24 h-24 rounded-full object-cover border-4 border-primary-100"
+                                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="صورة المستخدم"
+                                />
+                            <button
+                                class="absolute bottom-0 left-0 bg-primary text-white p-2 rounded-full hover:bg-primary-700 transition-micro">
+                                <i class="fas fa-camera text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- User Info -->
+                        <div class="flex-1 text-center sm:text-right">
+                            <h2 class="text-2xl font-heading font-semibold text-text-primary mb-2">سارة أحمد محمد</h2>
+                            <p class="text-text-secondary mb-4">انضمت في يناير 2024</p>
+
+                            <!-- Stats -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-heading font-semibold text-primary">12</div>
+                                    <div class="text-sm text-text-secondary">دورة مكتملة</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-heading font-semibold text-secondary">8</div>
+                                    <div class="text-sm text-text-secondary">شهادة</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-heading font-semibold text-accent">156</div>
+                                    <div class="text-sm text-text-secondary">ساعة تعلم</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col gap-2">
+                            <button
+                                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-700 transition-micro">
+                                تحرير الملف الشخصي
+                            </button>
+                            <button
+                                class="px-4 py-2 border border-border text-text-secondary rounded-lg hover:bg-gray-50 transition-micro">
+                                مشاركة الملف الشخصي
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mobile Tab Navigation -->
+                <div class="lg:hidden mb-6">
+                    <div class="flex overflow-x-auto scrollbar-hide border-b border-border">
+                        <button
+                            class="tab-btn active px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-primary text-primary"
+                            data-tab="personal-info">
+                            المعلومات الشخصية
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-text-secondary"
+                            data-tab="learning-preferences">
+                            تفضيلات التعلم
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-text-secondary"
+                            data-tab="certificates">
+                            الشهادات
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-text-secondary"
+                            data-tab="account-settings">
+                            إعدادات الحساب
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent text-text-secondary"
+                            data-tab="achievements">
+                            الإنجازات
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="space-y-6">
+                    <!-- Personal Information Tab -->
+                    <section id="personal-info" class="tab-content">
+                        <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                            <h3 class="text-lg font-heading font-semibold text-text-primary mb-6">المعلومات الشخصية</h3>
+
+                            <form class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary mb-2">الاسم
+                                            الأول</label>
+                                        <input type="text" value="سارة"
+                                            class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary mb-2">الاسم
+                                            الأخير</label>
+                                        <input type="text" value="أحمد محمد"
+                                            class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">البريد
+                                        الإلكتروني</label>
+                                    <input type="email" value="sara.ahmed@example.com"
+                                        class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">رقم الهاتف</label>
+                                    <input type="tel" value="+966 50 123 4567"
+                                        class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">نبذة شخصية</label>
+                                    <textarea rows="4"
+                                        class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal"
+                                        placeholder="اكتب نبذة عن نفسك...">مطورة ويب شغوفة بالتعلم المستمر وتطوير المهارات التقنية. أحب استكشاف التقنيات الجديدة وتطبيقها في مشاريع عملية.</textarea>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-2">الموقع</label>
+                                    <select
+                                        class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal">
+                                        <option>الرياض، المملكة العربية السعودية</option>
+                                        <option>جدة، المملكة العربية السعودية</option>
+                                        <option>الدمام، المملكة العربية السعودية</option>
+                                        <option>مكة المكرمة، المملكة العربية السعودية</option>
+                                    </select>
+                                </div>
+
+                                <div class="flex justify-end">
+                                    <button type="submit"
+                                        class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-700 transition-normal">
+                                        حفظ التغييرات
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Learning Preferences Tab -->
+                    <section id="learning-preferences" class="tab-content hidden">
+                        <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                            <h3 class="text-lg font-heading font-semibold text-text-primary mb-6">تفضيلات التعلم</h3>
+
+                            <div class="space-y-6">
+                                <!-- Language Preference -->
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-3">لغة المحتوى
+                                        المفضلة</label>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="radio" name="language" value="arabic" checked
+                                                class="text-primary focus:ring-primary" />
+                                            <span class="mr-3">العربية</span>
+                                        </label>
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="radio" name="language" value="english"
+                                                class="text-primary focus:ring-primary" />
+                                            <span class="mr-3">English</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Notification Settings -->
+                                <div>
+                                    <h4 class="text-sm font-medium text-text-primary mb-3">إعدادات الإشعارات</h4>
+                                    <div class="space-y-3">
+                                        <label
+                                            class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                            <span class="text-sm text-text-primary">إشعارات الدورات الجديدة</span>
+                                            <input type="checkbox" checked class="toggle-switch" />
+                                        </label>
+                                        <label
+                                            class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                            <span class="text-sm text-text-primary">تذكيرات المواعيد النهائية</span>
+                                            <input type="checkbox" checked class="toggle-switch" />
+                                        </label>
+                                        <label
+                                            class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                            <span class="text-sm text-text-primary">إشعارات الإنجازات</span>
+                                            <input type="checkbox" class="toggle-switch" />
+                                        </label>
+                                        <label
+                                            class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                            <span class="text-sm text-text-primary">النشرة الإخبارية الأسبوعية</span>
+                                            <input type="checkbox" checked class="toggle-switch" />
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Subject Interests -->
+                                <div>
+                                    <label class="block text-sm font-medium text-text-primary mb-3">المواضيع
+                                        المفضلة</label>
+                                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="checkbox" checked
+                                                class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="mr-3 text-sm">التكنولوجيا</span>
+                                        </label>
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="checkbox"
+                                                class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="mr-3 text-sm">الأعمال</span>
+                                        </label>
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="checkbox" checked
+                                                class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="mr-3 text-sm">التصميم</span>
+                                        </label>
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="checkbox"
+                                                class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="mr-3 text-sm">اللغات</span>
+                                        </label>
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="checkbox"
+                                                class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="mr-3 text-sm">التسويق</span>
+                                        </label>
+                                        <label
+                                            class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-primary-50 transition-micro">
+                                            <input type="checkbox" checked
+                                                class="rounded border-border text-primary focus:ring-primary" />
+                                            <span class="mr-3 text-sm">البرمجة</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-end">
+                                    <button
+                                        class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-700 transition-normal">
+                                        حفظ التفضيلات
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Certificates Tab -->
+                    <section id="certificates" class="tab-content hidden">
+                        <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-heading font-semibold text-text-primary">الشهادات المكتسبة</h3>
+                                <span class="text-sm text-text-secondary">8 شهادات</span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Certificate Card 1 -->
+                                <div class="border border-border rounded-xl p-4 hover:shadow-card-md transition-normal">
+                                    <div class="flex items-start gap-4">
+                                        <div
+                                            class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-certificate text-2xl text-primary"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-heading font-semibold text-text-primary mb-1">تطوير مواقع
+                                                الويب الحديثة</h4>
+                                            <p class="text-sm text-text-secondary mb-2">أحمد محمد • 15 ديسمبر 2024</p>
+                                            <div class="flex items-center gap-2">
+                                                <button
+                                                    class="text-xs bg-primary-50 text-primary px-3 py-1 rounded-full hover:bg-primary-100 transition-micro">
+                                                    <i class="fas fa-download ml-1"></i>
+                                                    تحميل
+                                                </button>
+                                                <button
+                                                    class="text-xs bg-secondary-50 text-secondary px-3 py-1 rounded-full hover:bg-secondary-100 transition-micro">
+                                                    <i class="fas fa-share ml-1"></i>
+                                                    مشاركة
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Certificate Card 2 -->
+                                <div class="border border-border rounded-xl p-4 hover:shadow-card-md transition-normal">
+                                    <div class="flex items-start gap-4">
+                                        <div
+                                            class="w-16 h-16 bg-secondary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-certificate text-2xl text-secondary"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-heading font-semibold text-text-primary mb-1">إدارة الأعمال
+                                                الرقمية</h4>
+                                            <p class="text-sm text-text-secondary mb-2">سارة أحمد • 28 نوفمبر 2024</p>
+                                            <div class="flex items-center gap-2">
+                                                <button
+                                                    class="text-xs bg-primary-50 text-primary px-3 py-1 rounded-full hover:bg-primary-100 transition-micro">
+                                                    <i class="fas fa-download ml-1"></i>
+                                                    تحميل
+                                                </button>
+                                                <button
+                                                    class="text-xs bg-secondary-50 text-secondary px-3 py-1 rounded-full hover:bg-secondary-100 transition-micro">
+                                                    <i class="fas fa-share ml-1"></i>
+                                                    مشاركة
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Certificate Card 3 -->
+                                <div class="border border-border rounded-xl p-4 hover:shadow-card-md transition-normal">
+                                    <div class="flex items-start gap-4">
+                                        <div
+                                            class="w-16 h-16 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-certificate text-2xl text-accent"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-heading font-semibold text-text-primary mb-1">التصميم
+                                                الجرافيكي المتقدم</h4>
+                                            <p class="text-sm text-text-secondary mb-2">محمد علي • 10 أكتوبر 2024</p>
+                                            <div class="flex items-center gap-2">
+                                                <button
+                                                    class="text-xs bg-primary-50 text-primary px-3 py-1 rounded-full hover:bg-primary-100 transition-micro">
+                                                    <i class="fas fa-download ml-1"></i>
+                                                    تحميل
+                                                </button>
+                                                <button
+                                                    class="text-xs bg-secondary-50 text-secondary px-3 py-1 rounded-full hover:bg-secondary-100 transition-micro">
+                                                    <i class="fas fa-share ml-1"></i>
+                                                    مشاركة
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Certificate Card 4 -->
+                                <div class="border border-border rounded-xl p-4 hover:shadow-card-md transition-normal">
+                                    <div class="flex items-start gap-4">
+                                        <div
+                                            class="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-certificate text-2xl text-primary"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-heading font-semibold text-text-primary mb-1">اللغة
+                                                الإنجليزية للمبتدئين</h4>
+                                            <p class="text-sm text-text-secondary mb-2">فاطمة خالد • 22 سبتمبر 2024</p>
+                                            <div class="flex items-center gap-2">
+                                                <button
+                                                    class="text-xs bg-primary-50 text-primary px-3 py-1 rounded-full hover:bg-primary-100 transition-micro">
+                                                    <i class="fas fa-download ml-1"></i>
+                                                    تحميل
+                                                </button>
+                                                <button
+                                                    class="text-xs bg-secondary-50 text-secondary px-3 py-1 rounded-full hover:bg-secondary-100 transition-micro">
+                                                    <i class="fas fa-share ml-1"></i>
+                                                    مشاركة
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Account Settings Tab -->
+                    <section id="account-settings" class="tab-content hidden">
+                        <div class="space-y-6">
+                            <!-- Password Change -->
+                            <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                                <h3 class="text-lg font-heading font-semibold text-text-primary mb-6">تغيير كلمة المرور
+                                </h3>
+
+                                <form class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary mb-2">كلمة المرور
+                                            الحالية</label>
+                                        <input type="password"
+                                            class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary mb-2">كلمة المرور
+                                            الجديدة</label>
+                                        <input type="password"
+                                            class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary mb-2">تأكيد كلمة
+                                            المرور الجديدة</label>
+                                        <input type="password"
+                                            class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal" />
+                                    </div>
+                                    <button type="submit"
+                                        class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-700 transition-normal">
+                                        تحديث كلمة المرور
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Privacy Settings -->
+                            <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                                <h3 class="text-lg font-heading font-semibold text-text-primary mb-6">إعدادات الخصوصية
+                                </h3>
+
+                                <div class="space-y-4">
+                                    <label
+                                        class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                        <div>
+                                            <span class="text-sm font-medium text-text-primary">إظهار الملف الشخصي
+                                                للعامة</span>
+                                            <p class="text-xs text-text-secondary">السماح للآخرين برؤية ملفك الشخصي</p>
+                                        </div>
+                                        <input type="checkbox" checked class="toggle-switch" />
+                                    </label>
+                                    <label
+                                        class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                        <div>
+                                            <span class="text-sm font-medium text-text-primary">إظهار الشهادات</span>
+                                            <p class="text-xs text-text-secondary">عرض الشهادات المكتسبة في الملف الشخصي
+                                            </p>
+                                        </div>
+                                        <input type="checkbox" checked class="toggle-switch" />
+                                    </label>
+                                    <label
+                                        class="flex items-center justify-between p-3 border border-border rounded-lg">
+                                        <div>
+                                            <span class="text-sm font-medium text-text-primary">السماح بالرسائل</span>
+                                            <p class="text-xs text-text-secondary">السماح للمدربين بإرسال رسائل مباشرة
+                                            </p>
+                                        </div>
+                                        <input type="checkbox" class="toggle-switch" />
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Subscription Management -->
+                            <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                                <h3 class="text-lg font-heading font-semibold text-text-primary mb-6">إدارة الاشتراك
+                                </h3>
+
+                                <div class="flex items-center justify-between p-4 bg-primary-50 rounded-lg mb-4">
+                                    <div>
+                                        <h4 class="font-medium text-text-primary">الخطة المميزة</h4>
+                                        <p class="text-sm text-text-secondary">تنتهي في 26 أغسطس 2025</p>
+                                    </div>
+                                    <span class="px-3 py-1 bg-secondary text-white text-sm rounded-full">نشط</span>
+                                </div>
+
+                                <div class="flex gap-3">
+                                    <button
+                                        class="px-4 py-2 border border-border text-text-secondary rounded-lg hover:bg-gray-50 transition-micro">
+                                        تغيير الخطة
+                                    </button>
+                                    <button
+                                        class="px-4 py-2 border border-error text-error rounded-lg hover:bg-red-50 transition-micro">
+                                        إلغاء الاشتراك
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Achievements Tab -->
+                    <section id="achievements" class="tab-content hidden">
+                        <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6">
+                            <h3 class="text-lg font-heading font-semibold text-text-primary mb-6">الإنجازات والأوسمة
+                            </h3>
+
+                            <!-- Achievement Stats -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                                <div class="text-center p-4 bg-primary-50 rounded-lg">
+                                    <div class="text-2xl font-heading font-semibold text-primary mb-1">156</div>
+                                    <div class="text-sm text-text-secondary">ساعة تعلم</div>
+                                </div>
+                                <div class="text-center p-4 bg-secondary-50 rounded-lg">
+                                    <div class="text-2xl font-heading font-semibold text-secondary mb-1">12</div>
+                                    <div class="text-sm text-text-secondary">دورة مكتملة</div>
+                                </div>
+                                <div class="text-center p-4 bg-accent-50 rounded-lg">
+                                    <div class="text-2xl font-heading font-semibold text-accent mb-1">8</div>
+                                    <div class="text-sm text-text-secondary">شهادة</div>
+                                </div>
+                                <div class="text-center p-4 bg-gray-100 rounded-lg">
+                                    <div class="text-2xl font-heading font-semibold text-text-primary mb-1">45</div>
+                                    <div class="text-sm text-text-secondary">يوم متتالي</div>
+                                </div>
+                            </div>
+
+                            <!-- Achievement Badges -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                <!-- Badge 1 -->
+                                <div
+                                    class="text-center p-4 border border-border rounded-lg hover:shadow-card-md transition-normal">
+                                    <div
+                                        class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-graduation-cap text-2xl text-primary"></i>
+                                    </div>
+                                    <h4 class="font-medium text-text-primary mb-1">المتعلم الأول</h4>
+                                    <p class="text-xs text-text-secondary">أكمل أول دورة</p>
+                                </div>
+
+                                <!-- Badge 2 -->
+                                <div
+                                    class="text-center p-4 border border-border rounded-lg hover:shadow-card-md transition-normal">
+                                    <div
+                                        class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-fire text-2xl text-secondary"></i>
+                                    </div>
+                                    <h4 class="font-medium text-text-primary mb-1">المثابر</h4>
+                                    <p class="text-xs text-text-secondary">30 يوم متتالي</p>
+                                </div>
+
+                                <!-- Badge 3 -->
+                                <div
+                                    class="text-center p-4 border border-border rounded-lg hover:shadow-card-md transition-normal">
+                                    <div
+                                        class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-star text-2xl text-accent"></i>
+                                    </div>
+                                    <h4 class="font-medium text-text-primary mb-1">النجم الساطع</h4>
+                                    <p class="text-xs text-text-secondary">حصل على 5 نجوم</p>
+                                </div>
+
+                                <!-- Badge 4 -->
+                                <div
+                                    class="text-center p-4 border border-border rounded-lg hover:shadow-card-md transition-normal">
+                                    <div
+                                        class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-trophy text-2xl text-primary"></i>
+                                    </div>
+                                    <h4 class="font-medium text-text-primary mb-1">البطل</h4>
+                                    <p class="text-xs text-text-secondary">أكمل 10 دورات</p>
+                                </div>
+
+                                <!-- Badge 5 -->
+                                <div
+                                    class="text-center p-4 border border-border rounded-lg hover:shadow-card-md transition-normal opacity-50">
+                                    <div
+                                        class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-crown text-2xl text-gray-400"></i>
+                                    </div>
+                                    <h4 class="font-medium text-text-secondary mb-1">الملك</h4>
+                                    <p class="text-xs text-text-secondary">أكمل 25 دورة</p>
+                                </div>
+
+                                <!-- Badge 6 -->
+                                <div
+                                    class="text-center p-4 border border-border rounded-lg hover:shadow-card-md transition-normal opacity-50">
+                                    <div
+                                        class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <i class="fas fa-rocket text-2xl text-gray-400"></i>
+                                    </div>
+                                    <h4 class="font-medium text-text-secondary mb-1">الصاروخ</h4>
+                                    <p class="text-xs text-text-secondary">100 ساعة تعلم</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-border md:hidden z-40">
+        <div class="flex items-center justify-around py-2">
+            <a href="course_catalog.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-th-large text-lg"></i>
+                <span class="text-xs mt-1">الكتالوج</span>
+            </a>
+            <a href="student_dashboard.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">دوراتي</span>
+            </a>
+            <a href="quiz_assessment.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-clipboard-check text-lg"></i>
+                <span class="text-xs mt-1">الاختبارات</span>
+            </a>
+            <a href="user_profile_management.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">الملف الشخصي</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const sidebarLinks = document.querySelectorAll('aside a');
+
+        function showTab(tabId) {
+            // Hide all tab contents
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Show selected tab content
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+
+            // Update mobile tab buttons
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active', 'border-primary', 'text-primary');
+                btn.classList.add('border-transparent', 'text-text-secondary');
+            });
+
+            const activeTabBtn = document.querySelector(`[data-tab="${tabId}"]`);
+            if (activeTabBtn) {
+                activeTabBtn.classList.add('active', 'border-primary', 'text-primary');
+                activeTabBtn.classList.remove('border-transparent', 'text-text-secondary');
+            }
+
+            // Update sidebar links
+            sidebarLinks.forEach(link => {
+                link.classList.remove('text-primary', 'bg-primary-50');
+                link.classList.add('text-text-secondary');
+            });
+
+            const activeSidebarLink = document.querySelector(`aside a[href="#${tabId}"]`);
+            if (activeSidebarLink) {
+                activeSidebarLink.classList.add('text-primary', 'bg-primary-50');
+                activeSidebarLink.classList.remove('text-text-secondary');
+            }
+        }
+
+        // Mobile tab button event listeners
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                showTab(tabId);
+            });
+        });
+
+        // Sidebar link event listeners
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = link.getAttribute('href').substring(1);
+                showTab(tabId);
+            });
+        });
+
+        // Toggle switches
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('change', function () {
+                // Add any toggle functionality here
+                console.log('Toggle changed:', this.checked);
+            });
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Add form submission logic here
+                alert('تم حفظ التغييرات بنجاح!');
+            });
+        });
+
+        // Certificate download buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('تحميل')) {
+                button.addEventListener('click', function () {
+                    alert('جاري تحميل الشهادة...');
+                });
+            }
+            if (button.textContent.includes('مشاركة')) {
+                button.addEventListener('click', function () {
+                    alert('تم نسخ رابط الشهادة للمشاركة!');
+                });
+            }
+        });
+    </script>
+</div>
+
+</html>

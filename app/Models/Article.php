@@ -4,46 +4,59 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\Image\Manipulations;
 use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Article extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    public $guarded=['id','created_at','updated_at'];
-    public function getRouteKeyName(){
+
+    public $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
+
     public function item_seens()
     {
-        return $this->hasMany(\App\Models\ItemSeen::class,'type_id','id')->where('type',"ARTICLE");
+        return $this->hasMany(\App\Models\ItemSeen::class, 'type_id', 'id')->where('type', 'ARTICLE');
     }
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsTo(\App\Models\User::class);
     }
-    public function categories(){
-        return $this->belongsToMany(\App\Models\Category::class,'article_categories');
+
+    public function categories()
+    {
+        return $this->belongsToMany(\App\Models\Category::class, 'article_categories');
     }
-    public function comments(){
-        return $this->hasMany(\App\Models\ArticleComment::class,'article_id');
+
+    public function comments()
+    {
+        return $this->hasMany(\App\Models\ArticleComment::class, 'article_id');
     }
-    public function main_image($type='thumb'){
-        if($this->main_image==null)
+
+    public function main_image($type = 'thumb')
+    {
+        if ($this->main_image == null) {
             return env('DEFAULT_IMAGE');
-        else
-            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($this->main_image,$type);
+        } else {
+            return env('STORAGE_URL').'/'.\MainHelper::get_conversion($this->main_image, $type);
+        }
     }
-    public function tags(){
-        return $this->belongsToMany(\App\Models\Tag::class,'article_tags');
+
+    public function tags()
+    {
+        return $this->belongsToMany(\App\Models\Tag::class, 'article_tags');
 
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this
             ->addMediaConversion('tiny')
@@ -74,5 +87,4 @@ class Article extends Model implements HasMedia
             return $this->where('slug', $value)->firstOrFail();
         });
     }
-
 }

@@ -16,7 +16,7 @@ class CreateReportErrorsTable extends Migration
         Schema::create('report_errors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('title')->nullable();
             $table->string('code');
             $table->text('url');

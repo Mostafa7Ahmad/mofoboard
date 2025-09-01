@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنشاء حساب جديد - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Background Pattern -->
+    <div class="fixed inset-0 bg-gradient-to-br from-secondary-50 to-secondary-100 opacity-50"></div>
+    
+    <!-- Main Container -->
+    <div class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-2xl w-full space-y-8">
+            <!-- Logo and Header -->
+            <div class="text-center">
+                <div class="mx-auto flex justify-center">
+                    <div class="bg-secondary rounded-full p-3 shadow-card-md">
+                        <svg class="h-12 w-12 text-white" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z"/>
+                            <path d="M16 6L7 9.5v7.5c0 3.33 2.31 6.45 5.4 7.2 3.09-.75 5.4-3.87 5.4-7.2V9.5L16 6z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="mt-6 text-center text-3xl font-heading font-bold text-text-primary">
+                    انضم إلى منصة التعلم
+                </h2>
+                <p class="mt-2 text-center text-sm text-text-secondary">
+                    ابدأ رحلتك التعليمية معنا اليوم
+                </p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="bg-surface rounded-xl shadow-card-sm border border-border p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-text-primary">خطوة <span id="currentStep">1</span> من 3</span>
+                    <span class="text-sm text-text-secondary" id="stepDescription">المعلومات الأساسية</span>
+                </div>
+                <div class="w-full bg-border rounded-full h-2">
+                    <div class="bg-secondary h-2 rounded-full transition-all duration-500" id="progressBar" style="width: 33.33%"></div>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-surface rounded-xl shadow-card-lg border border-border p-8">
+                <form class="space-y-6" id="registrationForm">
+                    <!-- Step 1: Basic Information -->
+                    <div id="step1" class="step-content">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Full Name -->
+                            <div class="md:col-span-2">
+                                <label for="fullName" class="block text-sm font-medium text-text-primary mb-2">
+                                    الاسم الكامل
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-user text-text-secondary"></i>
+                                    </div>
+                                    <input id="fullName" name="fullName" type="text" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal" placeholder="أدخل اسمك الكامل" />
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                                    البريد الإلكتروني
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-envelope text-text-secondary"></i>
+                                    </div>
+                                    <input id="email" name="email" type="email" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal" placeholder="example@domain.com" />
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-text-primary mb-2">
+                                    رقم الهاتف
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-phone text-text-secondary"></i>
+                                    </div>
+                                    <input id="phone" name="phone" type="tel" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal" placeholder="+966 50 123 4567" />
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-text-primary mb-2">
+                                    كلمة المرور
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-lock text-text-secondary"></i>
+                                    </div>
+                                    <input id="password" name="password" type="password" required class="block w-full pr-10 pl-10 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal" placeholder="أدخل كلمة مرور قوية" />
+                                    <button type="button" id="togglePassword" class="absolute inset-y-0 left-0 pl-3 flex items-center hover:text-secondary transition-micro">
+                                        <i class="fas fa-eye text-text-secondary" id="eyeIcon"></i>
+                                    </button>
+                                </div>
+                                <!-- Password Strength Indicator -->
+                                <div class="mt-2">
+                                    <div class="flex justify-between text-xs text-text-secondary mb-1">
+                                        <span>قوة كلمة المرور</span>
+                                        <span id="strengthText">ضعيف</span>
+                                    </div>
+                                    <div class="w-full bg-border rounded-full h-1">
+                                        <div class="h-1 rounded-full transition-all duration-300" id="strengthBar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div>
+                                <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">
+                                    تأكيد كلمة المرور
+                                </label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-lock text-text-secondary"></i>
+                                    </div>
+                                    <input id="confirmPassword" name="confirmPassword" type="password" required class="block w-full pr-10 pl-3 py-3 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal" placeholder="أعد كتابة كلمة المرور" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Email Verification -->
+                    <div id="step2" class="step-content hidden">
+                        <div class="text-center mb-6">
+                            <div class="mx-auto flex justify-center mb-4">
+                                <div class="bg-accent-100 rounded-full p-3">
+                                    <i class="fas fa-envelope-circle-check text-accent text-2xl"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">
+                                تأكيد البريد الإلكتروني
+                            </h3>
+                            <p class="text-sm text-text-secondary">
+                                تم إرسال رسالة تأكيد إلى <span id="emailDisplay" class="font-medium text-text-primary"></span>
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label for="verificationCode" class="block text-sm font-medium text-text-primary mb-2">
+                                    رمز التأكيد
+                                </label>
+                                <input id="verificationCode" name="verificationCode" type="text" maxlength="6" class="block w-full py-3 px-4 text-center border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal font-mono text-lg tracking-widest" placeholder="000000" />
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <button type="button" id="resendCode" class="text-sm font-medium text-secondary hover:text-secondary-700 transition-micro" disabled>
+                                    إعادة الإرسال خلال (<span id="resendTimer">60</span>)
+                                </button>
+                                <span class="text-xs text-text-secondary">
+                                    لم تستلم الرسالة؟ تحقق من البريد المهمل
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Profile Setup -->
+                    <div id="step3" class="step-content hidden">
+                        <div class="space-y-6">
+                            <!-- Avatar Upload -->
+                            <div class="text-center">
+                                <div class="relative inline-block">
+                                    <div class="w-24 h-24 bg-secondary-100 rounded-full flex items-center justify-center mx-auto">
+                                        <i class="fas fa-user text-secondary text-2xl" id="avatarIcon"></i>
+                                        <img id="avatarPreview" class="w-24 h-24 rounded-full object-cover hidden" />
+                                    </div>
+                                    <label for="avatar" class="absolute bottom-0 right-1/2 transform translate-x-1/2 translate-y-1/2 bg-secondary text-white rounded-full p-2 cursor-pointer hover:bg-secondary-700 transition-micro">
+                                        <i class="fas fa-camera text-xs"></i>
+                                        <input id="avatar" name="avatar" type="file" accept="image/*" class="sr-only" />
+                                    </label>
+                                </div>
+                                <p class="mt-2 text-sm text-text-secondary">صورة الملف الشخصي (اختياري)</p>
+                            </div>
+
+                            <!-- Learning Interests -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-3">
+                                    اختر مجالات اهتمامك (اختياري)
+                                </label>
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                    <label class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-secondary-50 transition-micro">
+                                        <input type="checkbox" name="interests" value="technology" class="sr-only" />
+                                        <div class="flex items-center">
+                                            <i class="fas fa-laptop-code text-secondary ml-2"></i>
+                                            <span class="text-sm">التكنولوجيا</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-secondary-50 transition-micro">
+                                        <input type="checkbox" name="interests" value="business" class="sr-only" />
+                                        <div class="flex items-center">
+                                            <i class="fas fa-briefcase text-secondary ml-2"></i>
+                                            <span class="text-sm">الأعمال</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-secondary-50 transition-micro">
+                                        <input type="checkbox" name="interests" value="design" class="sr-only" />
+                                        <div class="flex items-center">
+                                            <i class="fas fa-palette text-secondary ml-2"></i>
+                                            <span class="text-sm">التصميم</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-secondary-50 transition-micro">
+                                        <input type="checkbox" name="interests" value="languages" class="sr-only" />
+                                        <div class="flex items-center">
+                                            <i class="fas fa-language text-secondary ml-2"></i>
+                                            <span class="text-sm">اللغات</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-secondary-50 transition-micro">
+                                        <input type="checkbox" name="interests" value="marketing" class="sr-only" />
+                                        <div class="flex items-center">
+                                            <i class="fas fa-bullhorn text-secondary ml-2"></i>
+                                            <span class="text-sm">التسويق</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-border rounded-lg cursor-pointer hover:bg-secondary-50 transition-micro">
+                                        <input type="checkbox" name="interests" value="photography" class="sr-only" />
+                                        <div class="flex items-center">
+                                            <i class="fas fa-camera text-secondary ml-2"></i>
+                                            <span class="text-sm">التصوير</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Language Preferences -->
+                            <div>
+                                <label for="language" class="block text-sm font-medium text-text-primary mb-2">
+                                    لغة المنصة المفضلة
+                                </label>
+                                <select id="language" name="language" class="block w-full py-3 px-3 border border-border rounded-lg bg-surface text-text-primary focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-normal">
+                                    <option value="ar">العربية</option>
+                                    <option value="en">English</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div id="termsSection" class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-secondary focus:ring-secondary border-border rounded" />
+                            </div>
+                            <div class="mr-3 text-sm">
+                                <label for="terms" class="text-text-secondary">
+                                    أوافق على 
+                                    <button type="button" class="text-secondary hover:text-secondary-700 transition-micro" id="showTerms">
+                                        شروط الخدمة
+                                    </button>
+                                    و
+                                    <button type="button" class="text-secondary hover:text-secondary-700 transition-micro" id="showPrivacy">
+                                        سياسة الخصوصية
+                                    </button>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="marketing" name="marketing" type="checkbox" class="h-4 w-4 text-secondary focus:ring-secondary border-border rounded" />
+                            </div>
+                            <div class="mr-3 text-sm">
+                                <label for="marketing" class="text-text-secondary">
+                                    أرغب في استلام توصيات الدورات والعروض الخاصة عبر البريد الإلكتروني
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between pt-6">
+                        <button type="button" id="prevBtn" class="px-6 py-3 border border-border text-sm font-medium rounded-lg text-text-secondary bg-surface hover:bg-gray-50 transition-normal hidden">
+                            <i class="fas fa-arrow-right ml-2"></i>
+                            السابق
+                        </button>
+
+                        <button type="button" id="nextBtn" class="px-6 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-secondary hover:bg-secondary-700 transition-normal mr-auto">
+                            التالي
+                            <i class="fas fa-arrow-left mr-2"></i>
+                        </button>
+
+                        <button type="submit" id="submitBtn" class="px-6 py-3 border border-transparent text-sm font-medium rounded-lg text-white bg-secondary hover:bg-secondary-700 transition-normal mr-auto hidden">
+                            <i class="fas fa-user-plus ml-2"></i>
+                            إنشاء الحساب
+                        </button>
+                    </div>
+
+                    <!-- Error/Success Messages -->
+                    <div id="errorMessage" class="hidden bg-error-50 border border-error-200 text-error-800 px-4 py-3 rounded-lg">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-circle text-error"></i>
+                            </div>
+                            <div class="mr-3">
+                                <p class="text-sm" id="errorText">حدث خطأ أثناء التسجيل</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="successMessage" class="hidden bg-success-50 border border-success-200 text-success-800 px-4 py-3 rounded-lg">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-check-circle text-success"></i>
+                            </div>
+                            <div class="mr-3">
+                                <p class="text-sm">تم إنشاء حسابك بنجاح! مرحباً بك في منصة التعلم</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Social Registration Options -->
+                <div class="mt-6" id="socialSection">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-border"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-surface text-text-secondary">أو سجل باستخدام</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-3 gap-3">
+                        <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-border rounded-lg bg-surface text-sm font-medium text-text-secondary hover:bg-gray-50 transition-micro">
+                            <i class="fab fa-google text-lg text-red-500"></i>
+                        </button>
+
+                        <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-border rounded-lg bg-surface text-sm font-medium text-text-secondary hover:bg-gray-50 transition-micro">
+                            <i class="fab fa-facebook-f text-lg text-blue-600"></i>
+                        </button>
+
+                        <button type="button" class="w-full inline-flex justify-center py-2 px-4 border border-border rounded-lg bg-surface text-sm font-medium text-text-secondary hover:bg-gray-50 transition-micro">
+                            <i class="fab fa-apple text-lg text-gray-800"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Login Link -->
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-text-secondary">
+                        لديك حساب بالفعل؟
+                        <a href="user_login.html" class="font-medium text-secondary hover:text-secondary-700 transition-micro">
+                            تسجيل الدخول
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div class="inline-block align-bottom bg-surface rounded-xl text-right overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+                <div class="bg-surface px-6 pt-6 pb-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-heading font-semibold text-text-primary">شروط الخدمة</h3>
+                        <button id="closeTermsModal" class="text-text-secondary hover:text-text-primary">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="max-h-96 overflow-y-auto text-sm text-text-secondary space-y-4">
+                        <p>مرحباً بك في منصة التعلم. باستخدام خدماتنا، فإنك توافق على هذه الشروط...</p>
+                        <p>1. القبول بالشروط: باستخدام هذه المنصة، فإنك توافق على الالتزام بجميع الشروط والأحكام...</p>
+                        <p>2. استخدام الخدمة: يحق لك استخدام المنصة للأغراض التعليمية المشروعة فقط...</p>
+                        <p>3. الملكية الفكرية: جميع المحتويات محمية بحقوق الطبع والنشر...</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-3 text-left">
+                    <button type="button" class="px-4 py-2 bg-secondary text-white text-sm font-medium rounded-lg hover:bg-secondary-700 transition-normal" id="acceptTerms">
+                        موافق
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-surface rounded-lg p-6 shadow-card-lg">
+            <div class="flex items-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary ml-3"></div>
+                <span class="text-text-primary">جاري إنشاء الحساب...</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStepDisplay();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Password toggle
+            document.getElementById('togglePassword').addEventListener('click', function() {
+                const password = document.getElementById('password');
+                const eyeIcon = document.getElementById('eyeIcon');
+                
+                if (password.type === 'password') {
+                    password.type = 'text';
+                    eyeIcon.classList.remove('fa-eye');
+                    eyeIcon.classList.add('fa-eye-slash');
+                } else {
+                    password.type = 'password';
+                    eyeIcon.classList.remove('fa-eye-slash');
+                    eyeIcon.classList.add('fa-eye');
+                }
+            });
+
+            // Password strength checker
+            document.getElementById('password').addEventListener('input', checkPasswordStrength);
+
+            // Navigation buttons
+            document.getElementById('nextBtn').addEventListener('click', nextStep);
+            document.getElementById('prevBtn').addEventListener('click', prevStep);
+
+            // Form submission
+            document.getElementById('registrationForm').addEventListener('submit', handleSubmit);
+
+            // Interest selection
+            document.querySelectorAll('input[name="interests"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const label = this.closest('label');
+                    if (this.checked) {
+                        label.classList.add('bg-secondary-50', 'border-secondary');
+                    } else {
+                        label.classList.remove('bg-secondary-50', 'border-secondary');
+                    }
+                });
+            });
+
+            // Avatar upload
+            document.getElementById('avatar').addEventListener('change', handleAvatarUpload);
+
+            // Email verification
+            document.getElementById('verificationCode').addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                if (this.value.length === 6) {
+                    // Auto-verify
+                    setTimeout(() => {
+                        nextStep();
+                    }, 500);
+                }
+            });
+
+            // Terms modal
+            document.getElementById('showTerms').addEventListener('click', () => {
+                document.getElementById('termsModal').classList.remove('hidden');
+            });
+
+            document.getElementById('closeTermsModal').addEventListener('click', () => {
+                document.getElementById('termsModal').classList.add('hidden');
+            });
+
+            document.getElementById('acceptTerms').addEventListener('click', () => {
+                document.getElementById('terms').checked = true;
+                document.getElementById('termsModal').classList.add('hidden');
+            });
+
+            // Social registration
+            document.querySelectorAll('#socialSection button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('.fab');
+                    let provider = 'unknown';
+                    
+                    if (icon.classList.contains('fa-google')) {
+                        provider = 'Google';
+                    } else if (icon.classList.contains('fa-facebook-f')) {
+                        provider = 'Facebook';
+                    } else if (icon.classList.contains('fa-apple')) {
+                        provider = 'Apple';
+                    }
+                    
+                    // Simulate social registration
+                    const loadingOverlay = document.getElementById('loadingOverlay');
+                    loadingOverlay.querySelector('span').textContent = `جاري التسجيل باستخدام ${provider}...`;
+                    loadingOverlay.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        loadingOverlay.classList.add('hidden');
+                        showSuccess();
+                        setTimeout(() => {
+                            window.location.href = 'student_dashboard.html';
+                        }, 2000);
+                    }, 2000);
+                });
+            });
+
+            // Resend code timer
+            startResendTimer();
+        }
+
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            
+            let strength = 0;
+            let text = 'ضعيف';
+            let color = 'bg-error';
+            
+            if (password.length >= 8) strength += 25;
+            if (/[A-Z]/.test(password)) strength += 25;
+            if (/[a-z]/.test(password)) strength += 25;
+            if (/[0-9]/.test(password)) strength += 15;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 10;
+            
+            if (strength >= 75) {
+                text = 'قوي';
+                color = 'bg-success';
+            } else if (strength >= 50) {
+                text = 'متوسط';
+                color = 'bg-warning';
+            } else if (strength >= 25) {
+                text = 'ضعيف';
+                color = 'bg-error';
+            }
+            
+            strengthBar.style.width = `${Math.min(strength, 100)}%`;
+            strengthBar.className = `h-1 rounded-full transition-all duration-300 ${color}`;
+            strengthText.textContent = text;
+        }
+
+        function updateStepDisplay() {
+            // Update progress bar
+            const progressBar = document.getElementById('progressBar');
+            const percentage = (currentStep / totalSteps) * 100;
+            progressBar.style.width = `${percentage}%`;
+            
+            // Update step indicator
+            document.getElementById('currentStep').textContent = currentStep;
+            
+            // Update step description
+            const descriptions = {
+                1: 'المعلومات الأساسية',
+                2: 'تأكيد البريد الإلكتروني',
+                3: 'إعداد الملف الشخصي'
+            };
+            document.getElementById('stepDescription').textContent = descriptions[currentStep];
+            
+            // Show/hide step content
+            document.querySelectorAll('.step-content').forEach(content => content.classList.add('hidden'));
+            document.getElementById(`step${currentStep}`).classList.remove('hidden');
+            
+            // Show/hide navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const socialSection = document.getElementById('socialSection');
+            const termsSection = document.getElementById('termsSection');
+            
+            if (currentStep === 1) {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+                socialSection.classList.remove('hidden');
+                termsSection.classList.remove('hidden');
+            } else if (currentStep === totalSteps) {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                socialSection.classList.add('hidden');
+                termsSection.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+                socialSection.classList.add('hidden');
+                termsSection.classList.add('hidden');
+            }
+        }
+
+        function validateStep(step) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.classList.add('hidden');
+            
+            if (step === 1) {
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const terms = document.getElementById('terms').checked;
+                
+                if (!fullName || !email || !phone || !password || !confirmPassword) {
+                    showError('يرجى ملء جميع الحقول المطلوبة');
+                    return false;
+                }
+                
+                if (password !== confirmPassword) {
+                    showError('كلمة المرور وتأكيد كلمة المرور غير متطابقان');
+                    return false;
+                }
+                
+                if (password.length < 8) {
+                    showError('كلمة المرور يجب أن تكون 8 أحرف على الأقل');
+                    return false;
+                }
+                
+                if (!terms) {
+                    showError('يجب الموافقة على الشروط والأحكام');
+                    return false;
+                }
+                
+                // Simulate email sending
+                document.getElementById('emailDisplay').textContent = email;
+            }
+            
+            if (step === 2) {
+                const code = document.getElementById('verificationCode').value;
+                if (!code || code.length !== 6) {
+                    showError('يرجى إدخال رمز التأكيد المكون من 6 أرقام');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        function nextStep() {
+            if (!validateStep(currentStep)) return;
+            
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepDisplay();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            if (!validateStep(currentStep)) return;
+            
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            loadingOverlay.classList.remove('hidden');
+            
+            // Simulate registration process
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+                showSuccess();
+                
+                // Redirect after success
+                setTimeout(() => {
+                    window.location.href = 'student_dashboard.html';
+                }, 3000);
+            }, 3000);
+        }
+
+        function handleAvatarUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const avatarPreview = document.getElementById('avatarPreview');
+                    const avatarIcon = document.getElementById('avatarIcon');
+                    
+                    avatarPreview.src = e.target.result;
+                    avatarPreview.classList.remove('hidden');
+                    avatarIcon.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function startResendTimer() {
+            let timeLeft = 60;
+            const resendBtn = document.getElementById('resendCode');
+            const timer = document.getElementById('resendTimer');
+            
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timer.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    resendBtn.disabled = false;
+                    resendBtn.innerHTML = 'إعادة الإرسال';
+                    resendBtn.addEventListener('click', function() {
+                        // Simulate resending code
+                        this.disabled = true;
+                        this.innerHTML = 'تم إعادة الإرسال';
+                        setTimeout(() => {
+                            startResendTimer();
+                        }, 2000);
+                    });
+                }
+            }, 1000);
+        }
+
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            errorText.textContent = message;
+            errorMessage.classList.remove('hidden');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                errorMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        function showSuccess() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>

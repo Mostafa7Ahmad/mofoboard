@@ -3,72 +3,72 @@
 return [
 
     [
-        'category'=>"أدوات مفيدة",
-        'category_slug'=>"usefull_tools",
-        'slug'=>"sticky_message",
-        'title'=>"شريط الاعلان العلوي",
-        'image'=>"/images/plugins/header_message.png",
-        'description'=>"إعلان الهيدر هو إعلان يظهر عادةً في الجزء العلوي من صفحات الويب، غالبًا ما يتميز بتصميم مستطيل عريض يمكن أن يشمل نصوصًا، صورًا، أو عناصر تفاعلية. يكون الهدف منه جذب انتباه المستخدم فور دخوله الصفحة، ويمكن استخدامه لعرض عروض ترويجية، أخبار مهمة، أو رسائل تسويقية."
+        'category' => 'أدوات مفيدة',
+        'category_slug' => 'usefull_tools',
+        'slug' => 'sticky_message',
+        'title' => 'شريط الاعلان العلوي',
+        'image' => '/images/plugins/header_message.png',
+        'description' => 'إعلان الهيدر هو إعلان يظهر عادةً في الجزء العلوي من صفحات الويب، غالبًا ما يتميز بتصميم مستطيل عريض يمكن أن يشمل نصوصًا، صورًا، أو عناصر تفاعلية. يكون الهدف منه جذب انتباه المستخدم فور دخوله الصفحة، ويمكن استخدامه لعرض عروض ترويجية، أخبار مهمة، أو رسائل تسويقية.',
     ],
     [
-        'category'=>"أدوات مفيدة",
-        'category_slug'=>"usefull_tools",
-        'slug'=>"navbar_main_button",
-        'title'=>"الزر الرئيسي للشريط العلوي",
-        'image'=>"/images/plugins/navbar_main_button.png",
-        'description'=>"الزر في الـ navbar (شريط التنقل) هو عنصر تفاعلي يتم استخدامه ضمن الشريط العلوي للواجهة لتوفير خيارات التنقل السريعة بين صفحات أو أقسام الموقع. يُستخدم هذا الزر لعدة أغراض"
+        'category' => 'أدوات مفيدة',
+        'category_slug' => 'usefull_tools',
+        'slug' => 'navbar_main_button',
+        'title' => 'الزر الرئيسي للشريط العلوي',
+        'image' => '/images/plugins/navbar_main_button.png',
+        'description' => 'الزر في الـ navbar (شريط التنقل) هو عنصر تفاعلي يتم استخدامه ضمن الشريط العلوي للواجهة لتوفير خيارات التنقل السريعة بين صفحات أو أقسام الموقع. يُستخدم هذا الزر لعدة أغراض',
     ],
     [
-        'category'=>"أدوات مفيدة",
-        'category_slug'=>"usefull_tools",
-        'slug'=>"images_compress",
-        'title'=>"تقليص حجم الصور تلقائياً عند الرفع",
-        'image'=>"/images/plugins/images_compress.png",
-        'description'=>"يمكنك من خلال هذه الاضافة ضغط الصور المرفوعة في جميع الصفحات في الموقع تلقائياً مع المحافظة قدر الامكان على جودة الصور ويمكنك ايقافها قبل الرفع اذا أردت عدم ضغط الصور"
+        'category' => 'أدوات مفيدة',
+        'category_slug' => 'usefull_tools',
+        'slug' => 'images_compress',
+        'title' => 'تقليص حجم الصور تلقائياً عند الرفع',
+        'image' => '/images/plugins/images_compress.png',
+        'description' => 'يمكنك من خلال هذه الاضافة ضغط الصور المرفوعة في جميع الصفحات في الموقع تلقائياً مع المحافظة قدر الامكان على جودة الصور ويمكنك ايقافها قبل الرفع اذا أردت عدم ضغط الصور',
     ],
     [
-        'category'=>"أدوات مفيدة",
-        'category_slug'=>"usefull_tools",
-        'slug'=>"general_popup",
-        'title'=>"نافذة منبثقة PopUp",
-        'image'=>"/images/plugins/general_popup.png",
-        'description'=>"يمكنك من خلال هذه الاضافة تنبيه الزوار بأي رسائل تحتاجها بشكل مباشر وكذلك اتخاذ اجراء مباشرةً بكل بساطة",
-        'initial_values'=>[
-            'settings'=>[
-                'popup_id'=>str()->ulid(),
-                'title'=>"تذكير",
-                'description'=>"مرحباً بك في موقعنا الالكتروني",
-                'html_content'=>null,
+        'category' => 'أدوات مفيدة',
+        'category_slug' => 'usefull_tools',
+        'slug' => 'general_popup',
+        'title' => 'نافذة منبثقة PopUp',
+        'image' => '/images/plugins/general_popup.png',
+        'description' => 'يمكنك من خلال هذه الاضافة تنبيه الزوار بأي رسائل تحتاجها بشكل مباشر وكذلك اتخاذ اجراء مباشرةً بكل بساطة',
+        'initial_values' => [
+            'settings' => [
+                'popup_id' => str()->ulid(),
+                'title' => 'تذكير',
+                'description' => 'مرحباً بك في موقعنا الالكتروني',
+                'html_content' => null,
 
-                'btn_url'=>"#",
-                'btn_url_in_new_tab'=>0,
-                'btn_text'=>"حسناً",
+                'btn_url' => '#',
+                'btn_url_in_new_tab' => 0,
+                'btn_text' => 'حسناً',
 
-                'delay_to_show'=>3000,
-                'reopen_after_hours'=>720
-            ]
-        ]
+                'delay_to_show' => 3000,
+                'reopen_after_hours' => 720,
+            ],
+        ],
     ],
 
     [
-        'category'=>"أدوات مفيدة",
-        'category_slug'=>"usefull_tools",
-        'slug'=>"cross_pages_code",
-        'title'=>"كود مشترك في الصفحات",
-        'image'=>"/images/plugins/cross_pages_code.png",
-        'description'=>"يمكنك عبر هذه الاضافة اضافة كود مخصص يتم طباعته في جميع الصفحات في الموقع بشكل مباشر",
-        'initial_values'=>[
-            'settings'=>[
-                'top_navbar_enable'=>0,
-                'top_navbar_code'=>'',
-                'bottom_navbar_enable'=>0,
-                'bottom_navbar_code'=>'',
-                'top_footer_enable'=>0,
-                'top_footer_code'=>'',
-                'bottom_footer_enable'=>0,
-                'bottom_footer_code'=>'',
-            ]
-        ]
+        'category' => 'أدوات مفيدة',
+        'category_slug' => 'usefull_tools',
+        'slug' => 'cross_pages_code',
+        'title' => 'كود مشترك في الصفحات',
+        'image' => '/images/plugins/cross_pages_code.png',
+        'description' => 'يمكنك عبر هذه الاضافة اضافة كود مخصص يتم طباعته في جميع الصفحات في الموقع بشكل مباشر',
+        'initial_values' => [
+            'settings' => [
+                'top_navbar_enable' => 0,
+                'top_navbar_code' => '',
+                'bottom_navbar_enable' => 0,
+                'bottom_navbar_code' => '',
+                'top_footer_enable' => 0,
+                'top_footer_code' => '',
+                'bottom_footer_enable' => 0,
+                'bottom_footer_code' => '',
+            ],
+        ],
 
     ],
     /*[
@@ -104,29 +104,27 @@ return [
 
     ],*/
 
-    
     [
-        'category'=>"أدوات مفيدة",
-        'category_slug'=>"usefull_tools",
-        'slug'=>"smtp_email_config",
-        'title'=>"اعدادات الارسال SMTP",
-        'image'=>"/images/plugins/smtp_email_config.png",
-        'description'=>"يمكنك عبر هذه الآداة استخدام الارسال عبر اعدادات SMTP مخصصة بشكل مباشر دون التقيد بحد أقصى للارسال",
-        'initial_values'=>[
-            'settings'=>[
-                'MAIL_MAILER'=>'smtp',
-                'MAIL_HOST'=>'smtp.google.com',
-                'MAIL_PORT'=>587,
-                'MAIL_USERNAME'=>'support@domain.com',
-                'MAIL_PASSWORD'=>'',
-                'MAIL_ENCRYPTION'=>'null',
-                'MAIL_FROM_ADDRESS'=>"support@domain.com",
-                'MAIL_FROM_NAME'=>"Domain",
-            ]
-        ]
+        'category' => 'أدوات مفيدة',
+        'category_slug' => 'usefull_tools',
+        'slug' => 'smtp_email_config',
+        'title' => 'اعدادات الارسال SMTP',
+        'image' => '/images/plugins/smtp_email_config.png',
+        'description' => 'يمكنك عبر هذه الآداة استخدام الارسال عبر اعدادات SMTP مخصصة بشكل مباشر دون التقيد بحد أقصى للارسال',
+        'initial_values' => [
+            'settings' => [
+                'MAIL_MAILER' => 'smtp',
+                'MAIL_HOST' => 'smtp.google.com',
+                'MAIL_PORT' => 587,
+                'MAIL_USERNAME' => 'support@domain.com',
+                'MAIL_PASSWORD' => '',
+                'MAIL_ENCRYPTION' => 'null',
+                'MAIL_FROM_ADDRESS' => 'support@domain.com',
+                'MAIL_FROM_NAME' => 'Domain',
+            ],
+        ],
 
     ],
-
 
     /*[
         'category'=>"أدوات مفيدة",
@@ -156,75 +154,71 @@ return [
         ]
     ],*/
 
-
-
     [
-        'category'=>"التسجيل",
-        'category_slug'=>"registeration",
-        'slug'=>"login_with_google",
-        'title'=>"تسجيل الدخول عبر Google",
-        'image'=>"/images/plugins/login_with_google.png",
-        'description'=>"يمكنك من خلال هذه الاضافة انشاء حساب وتسجيل الدخول في الموقع الخاص بك عبر Google مباشرةً وهذا يساعد في تسريع عملية التسجيل في الموقع الخاص بك"
+        'category' => 'التسجيل',
+        'category_slug' => 'registeration',
+        'slug' => 'login_with_google',
+        'title' => 'تسجيل الدخول عبر Google',
+        'image' => '/images/plugins/login_with_google.png',
+        'description' => 'يمكنك من خلال هذه الاضافة انشاء حساب وتسجيل الدخول في الموقع الخاص بك عبر Google مباشرةً وهذا يساعد في تسريع عملية التسجيل في الموقع الخاص بك',
     ],
     [
-        'category'=>"التسجيل",
-        'category_slug'=>"registeration",
-        'slug'=>"login_with_facebook",
-        'title'=>"تسجيل الدخول عبر Facebook",
-        'image'=>"/images/plugins/login_with_facebook.png",
-        'description'=>"يمكنك من خلال هذه الاضافة انشاء حساب وتسجيل الدخول في الموقع الخاص بك عبر Facebook مباشرةً وهذا يساعد في تسريع عملية التسجيل في الموقع الخاص بك"
+        'category' => 'التسجيل',
+        'category_slug' => 'registeration',
+        'slug' => 'login_with_facebook',
+        'title' => 'تسجيل الدخول عبر Facebook',
+        'image' => '/images/plugins/login_with_facebook.png',
+        'description' => 'يمكنك من خلال هذه الاضافة انشاء حساب وتسجيل الدخول في الموقع الخاص بك عبر Facebook مباشرةً وهذا يساعد في تسريع عملية التسجيل في الموقع الخاص بك',
     ],
 
     [
-        'category'=>"الحماية",
-        'category_slug'=>"security",
-        'slug'=>"google_recaptcha",
-        'title'=>"جوجل Recaptcha",
-        'image'=>"/images/plugins/google_recaptcha.png",
-        'description'=>"يمكنك من خلال هذه الاضافة تفعيل جوجل ريكابشا عند التسجيل وفي استمارة تواصل معنا لتجنب الرسائل المزعجة والروبوتات التي من الممكن أن تستهدف موقعك"
+        'category' => 'الحماية',
+        'category_slug' => 'security',
+        'slug' => 'google_recaptcha',
+        'title' => 'جوجل Recaptcha',
+        'image' => '/images/plugins/google_recaptcha.png',
+        'description' => 'يمكنك من خلال هذه الاضافة تفعيل جوجل ريكابشا عند التسجيل وفي استمارة تواصل معنا لتجنب الرسائل المزعجة والروبوتات التي من الممكن أن تستهدف موقعك',
     ],
 
-    
-
     [
-        'category'=>"احصائيات",
-        'category_slug'=>"analytics",
-        'slug'=>"google_analytics",
-        'title'=>"تحليلات جوجل",
-        'image'=>"/images/plugins/google-analytics.png",
-        'description'=>"هي أداة مجانية من تطوير جوجل تُستخدم لتتبع وجمع البيانات المتعلقة بأداء المواقع الإلكترونية وتطبيقات الجوال. تساعد هذه الأداة أصحاب المواقع على فهم سلوك المستخدمين، مصادر الزيارات، وتحليل الأداء بشكل مفصل لاتخاذ قرارات تسويقية قائمة على البيانات"
+        'category' => 'احصائيات',
+        'category_slug' => 'analytics',
+        'slug' => 'google_analytics',
+        'title' => 'تحليلات جوجل',
+        'image' => '/images/plugins/google-analytics.png',
+        'description' => 'هي أداة مجانية من تطوير جوجل تُستخدم لتتبع وجمع البيانات المتعلقة بأداء المواقع الإلكترونية وتطبيقات الجوال. تساعد هذه الأداة أصحاب المواقع على فهم سلوك المستخدمين، مصادر الزيارات، وتحليل الأداء بشكل مفصل لاتخاذ قرارات تسويقية قائمة على البيانات',
     ],
     [
-        'category'=>"احصائيات",
-        'category_slug'=>"analytics",
-        'slug'=>"google_tag_manager",
-        'title'=>"جوجل تاج مانيجر",
-        'image'=>"/images/plugins/google-tag-manager.png",
-        'description'=>"Google Tag Manager هو نظام إدارة العلامات (Tags) يتيح لك إضافة وتتبع أكواد التحليلات والتسويق بسهولة، دون الحاجة إلى تعديل شفرة الموقع في كل مرة. يمكن من خلاله إدارة علامات مثل Google Analytics وFacebook Pixel وأدوات أخرى، مما يبسط العمل على المسوّقين والمطورين."
+        'category' => 'احصائيات',
+        'category_slug' => 'analytics',
+        'slug' => 'google_tag_manager',
+        'title' => 'جوجل تاج مانيجر',
+        'image' => '/images/plugins/google-tag-manager.png',
+        'description' => 'Google Tag Manager هو نظام إدارة العلامات (Tags) يتيح لك إضافة وتتبع أكواد التحليلات والتسويق بسهولة، دون الحاجة إلى تعديل شفرة الموقع في كل مرة. يمكن من خلاله إدارة علامات مثل Google Analytics وFacebook Pixel وأدوات أخرى، مما يبسط العمل على المسوّقين والمطورين.',
     ],
     [
-        'category'=>"تسويق",
-        'category_slug'=>"marketing",
-        'slug'=>"facebook_pixel",
-        'title'=>"فيسبوك بيكسل",
-        'image'=>"/images/plugins/facebook-pixel.png",
-        'description'=>"Facebook Pixel هو كود JavaScript يُضاف إلى موقعك لتتبع نشاط الزوار وتحليل تفاعلهم مع المحتوى. يساعدك في قياس فعالية حملات الإعلانات من خلال تتبع التحويلات (مثل شراء منتج أو إكمال نموذج). كما يتيح لك إعادة استهداف الزوار على Facebook وإنشاء جمهور مخصص للإعلانات."
+        'category' => 'تسويق',
+        'category_slug' => 'marketing',
+        'slug' => 'facebook_pixel',
+        'title' => 'فيسبوك بيكسل',
+        'image' => '/images/plugins/facebook-pixel.png',
+        'description' => 'Facebook Pixel هو كود JavaScript يُضاف إلى موقعك لتتبع نشاط الزوار وتحليل تفاعلهم مع المحتوى. يساعدك في قياس فعالية حملات الإعلانات من خلال تتبع التحويلات (مثل شراء منتج أو إكمال نموذج). كما يتيح لك إعادة استهداف الزوار على Facebook وإنشاء جمهور مخصص للإعلانات.',
     ],
     [
-        'category'=>"تسويق",
-        'category_slug'=>"marketing",
-        'slug'=>"tiktok_pixel",
-        'title'=>"تيكتوك بيكسل",
-        'image'=>"/images/plugins/tiktok-pixel.png",
-        'description'=>"Tiktok Pixel هو كود JavaScript يُضاف إلى موقعك لتتبع نشاط الزوار وتحليل تفاعلهم مع المحتوى. يساعدك في قياس فعالية حملات الإعلانات من خلال تتبع التحويلات (مثل شراء منتج أو إكمال نموذج). كما يتيح لك إعادة استهداف الزوار على Tiktok وإنشاء جمهور مخصص للإعلانات."
+        'category' => 'تسويق',
+        'category_slug' => 'marketing',
+        'slug' => 'tiktok_pixel',
+        'title' => 'تيكتوك بيكسل',
+        'image' => '/images/plugins/tiktok-pixel.png',
+        'description' => 'Tiktok Pixel هو كود JavaScript يُضاف إلى موقعك لتتبع نشاط الزوار وتحليل تفاعلهم مع المحتوى. يساعدك في قياس فعالية حملات الإعلانات من خلال تتبع التحويلات (مثل شراء منتج أو إكمال نموذج). كما يتيح لك إعادة استهداف الزوار على Tiktok وإنشاء جمهور مخصص للإعلانات.',
     ],
     [
-        'category'=>"تسويق",
-        'category_slug'=>"marketing",
-        'slug'=>"utm_url_builder",
-        'title'=>"منشئ روابط الحملات الاعلانية",
-        'image'=>"/images/plugins/utm_url_builder.png",
-        'description'=>"هي أداة لإنشاء روابط URL تتضمن معلمات UTM لتتبع مصادر الزيارات وتحليل أداء الحملات التسويقية، مثل utm_source (المصدر)، utm_medium (الوسيط)، وutm_campaign (الحملة). تساعد على معرفة من أين يأتي الزوار وكيفية وصولهم للموقع لتحسين استراتيجيات التسويق."
+        'category' => 'تسويق',
+        'category_slug' => 'marketing',
+        'slug' => 'utm_url_builder',
+        'title' => 'منشئ روابط الحملات الاعلانية',
+        'image' => '/images/plugins/utm_url_builder.png',
+        'description' => 'هي أداة لإنشاء روابط URL تتضمن معلمات UTM لتتبع مصادر الزيارات وتحليل أداء الحملات التسويقية، مثل utm_source (المصدر)، utm_medium (الوسيط)، وutm_campaign (الحملة). تساعد على معرفة من أين يأتي الزوار وكيفية وصولهم للموقع لتحسين استراتيجيات التسويق.',
     ],
     /*[
         'category'=>"تسويق",
@@ -332,56 +326,56 @@ return [
         ]
     ],*/
     [
-        'category'=>"دعم",
-        'category_slug'=>"support",
-        'slug'=>"freshchat",
-        'title'=>"فريش شات",
-        'image'=>"/images/plugins/freshchat.png",
-        'description'=>"Freshchat هو نظام محادثة مباشر (Live Chat) مخصص لتحسين تجربة العملاء من خلال تواصل فوري وسلس. يوفر منصة موحدة للتفاعل مع العملاء عبر قنوات متعددة مثل الموقع الإلكتروني، تطبيقات الهاتف، والبريد الإلكتروني، مما يسهل إدارة المحادثات وتعزيز رضا العملاء."
+        'category' => 'دعم',
+        'category_slug' => 'support',
+        'slug' => 'freshchat',
+        'title' => 'فريش شات',
+        'image' => '/images/plugins/freshchat.png',
+        'description' => 'Freshchat هو نظام محادثة مباشر (Live Chat) مخصص لتحسين تجربة العملاء من خلال تواصل فوري وسلس. يوفر منصة موحدة للتفاعل مع العملاء عبر قنوات متعددة مثل الموقع الإلكتروني، تطبيقات الهاتف، والبريد الإلكتروني، مما يسهل إدارة المحادثات وتعزيز رضا العملاء.',
     ],
     [
-        'category'=>"دعم",
-        'category_slug'=>"support",
-        'slug'=>"crisp",
-        'title'=>"كريسب",
-        'image'=>"/images/plugins/crisp.png",
-        'description'=>"Crisp هو نظام محادثة مباشر (Live Chat) ودعم عملاء يوفر تجربة شاملة للتواصل مع الزوار والعملاء. يتيح التواصل الفوري من خلال الدردشة، إلى جانب ميزات متقدمة مثل الردود التلقائية وتكاملات مع تطبيقات أخرى. يهدف إلى تعزيز التفاعل مع العملاء وزيادة المبيعات عبر موقعك."
-    ],
-    
-    [
-        'category'=>"كود مخصص",
-        'category_slug'=>"custom_codes",
-        'slug'=>"header_code",
-        'title'=>"كود هيدر مخصص",
-        'image'=>"/images/plugins/header_code.png",
-        'description'=>"إضافة Plugin لإدراج كود في الهيدر (Header) شائعة في منصات إدارة المحتوى، مثل WordPress، وتتيح للمستخدمين إضافة أكواد HTML أو CSS أو JavaScript بسهولة في قسم <head> من صفحات الموقع. يُستخدم هذا النوع من الإضافات لأغراض متعددة"
+        'category' => 'دعم',
+        'category_slug' => 'support',
+        'slug' => 'crisp',
+        'title' => 'كريسب',
+        'image' => '/images/plugins/crisp.png',
+        'description' => 'Crisp هو نظام محادثة مباشر (Live Chat) ودعم عملاء يوفر تجربة شاملة للتواصل مع الزوار والعملاء. يتيح التواصل الفوري من خلال الدردشة، إلى جانب ميزات متقدمة مثل الردود التلقائية وتكاملات مع تطبيقات أخرى. يهدف إلى تعزيز التفاعل مع العملاء وزيادة المبيعات عبر موقعك.',
     ],
 
     [
-        'category'=>"كود مخصص",
-        'category_slug'=>"custom_codes",
-        'slug'=>"footer_code",
-        'title'=>"كود فوتر مخصص",
-        'image'=>"/images/plugins/footer_code.png",
-        'description'=>"إضافة أكواد إلى الفوتر تُستخدم لتحسين أداء الموقع، أو إدراج أكواد تتبع، أو تكامل مع خدمات أخرى. يمكن إضافة هذه الأكواد باستخدام Plugins دون الحاجة إلى تعديل مباشر في الملفات البرمجية، مما يسهل العملية للمستخدمين غير المتمرسين في البرمجة."
+        'category' => 'كود مخصص',
+        'category_slug' => 'custom_codes',
+        'slug' => 'header_code',
+        'title' => 'كود هيدر مخصص',
+        'image' => '/images/plugins/header_code.png',
+        'description' => 'إضافة Plugin لإدراج كود في الهيدر (Header) شائعة في منصات إدارة المحتوى، مثل WordPress، وتتيح للمستخدمين إضافة أكواد HTML أو CSS أو JavaScript بسهولة في قسم <head> من صفحات الموقع. يُستخدم هذا النوع من الإضافات لأغراض متعددة',
+    ],
+
+    [
+        'category' => 'كود مخصص',
+        'category_slug' => 'custom_codes',
+        'slug' => 'footer_code',
+        'title' => 'كود فوتر مخصص',
+        'image' => '/images/plugins/footer_code.png',
+        'description' => 'إضافة أكواد إلى الفوتر تُستخدم لتحسين أداء الموقع، أو إدراج أكواد تتبع، أو تكامل مع خدمات أخرى. يمكن إضافة هذه الأكواد باستخدام Plugins دون الحاجة إلى تعديل مباشر في الملفات البرمجية، مما يسهل العملية للمستخدمين غير المتمرسين في البرمجة.',
     ],
     [
-        'category'=>"كود مخصص",
-        'category_slug'=>"custom_codes",
-        'slug'=>"ads_text",
-        'title'=>"كود Ads.txt",
-        'image'=>"/images/plugins/ads_text.png",
-        'description'=>"ads.txt هو اختصار لـ Authorized Digital Sellers، وهو معيار طوره IAB Tech Lab للمساعدة في مكافحة الاحتيال في الإعلانات الرقمية. هذا الملف يتم وضعه في الجذر الأساسي للموقع (root) ويحدد البائعين المصرح لهم ببيع الإعلانات نيابة عنك. وجود هذا الملف يساعد في ضمان أن إعلاناتك تُعرض من خلال منصات موثوقة فقط."
+        'category' => 'كود مخصص',
+        'category_slug' => 'custom_codes',
+        'slug' => 'ads_text',
+        'title' => 'كود Ads.txt',
+        'image' => '/images/plugins/ads_text.png',
+        'description' => 'ads.txt هو اختصار لـ Authorized Digital Sellers، وهو معيار طوره IAB Tech Lab للمساعدة في مكافحة الاحتيال في الإعلانات الرقمية. هذا الملف يتم وضعه في الجذر الأساسي للموقع (root) ويحدد البائعين المصرح لهم ببيع الإعلانات نيابة عنك. وجود هذا الملف يساعد في ضمان أن إعلاناتك تُعرض من خلال منصات موثوقة فقط.',
     ],
     [
-        'category'=>"كود مخصص",
-        'category_slug'=>"custom_codes",
-        'slug'=>"robots_code",
-        'title'=>"كود Robots",
-        'image'=>"/images/plugins/robots_code.png",
-        'description'=>"robots.txt هو ملف نصي يُستخدم في المواقع الإلكترونية للتحكم في كيفية وصول روبوتات محركات البحث والزواحف (مثل Googlebot) إلى محتوى الموقع. الهدف من هذا الملف هو إعطاء تعليمات لهذه الروبوتات حول الصفحات أو الأقسام التي يمكن أو لا يمكن فهرستها."
+        'category' => 'كود مخصص',
+        'category_slug' => 'custom_codes',
+        'slug' => 'robots_code',
+        'title' => 'كود Robots',
+        'image' => '/images/plugins/robots_code.png',
+        'description' => 'robots.txt هو ملف نصي يُستخدم في المواقع الإلكترونية للتحكم في كيفية وصول روبوتات محركات البحث والزواحف (مثل Googlebot) إلى محتوى الموقع. الهدف من هذا الملف هو إعطاء تعليمات لهذه الروبوتات حول الصفحات أو الأقسام التي يمكن أو لا يمكن فهرستها.',
     ],
- /*   [
+    /*   [
         'category'=>"شركات الشحن",
         'category_slug'=>"shipping_companies",
         'slug'=>"shipping_with_bosta",
@@ -389,11 +383,6 @@ return [
         'image'=>"/images/plugins/shipping_with_bosta.png",
         'description'=>"بوسطة هي شركة رائدة في مجال الخدمات اللوجستية والتكنولوجيا، تأسست في مصر عام 2017 بهدف تبسيط وتسهيل عمليات الشحن والتوصيل داخل البلاد. تقدم بوسطة مجموعة متنوعة من الخدمات المصممة لتلبية احتياجات الأفراد والشركات على حد سواء."
     ],*/
-
-
-
-    
- 
 
     /*[
         'category'=>"مدفوعات",
@@ -446,8 +435,4 @@ return [
     ],
     */
 
-
-    
-
 ];
-

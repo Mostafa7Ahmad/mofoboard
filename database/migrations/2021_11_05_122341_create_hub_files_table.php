@@ -16,7 +16,7 @@ class CreateHubFilesTable extends Migration
         Schema::create('hub_files', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade'); 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('path')->nullable();
             $table->string('original_name')->nullable();
             $table->string('name')->index();

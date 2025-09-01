@@ -14,12 +14,13 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $users = \App\Models\User::count();
-        if($users==0)
+        if ($users == 0) {
             \App\Models\User::create([
-                'name'=>"مسؤول",
-                'email'=>env('DEFAULT_EMAIL'),
-                'email_verified_at'=>date("Y-m-d h:i:s"), 
-                'password'=>bcrypt(env('DEFAULT_PASSWORD'))
+                'name' => 'مصطفي احمد',
+                'email' => env('DEFAULT_EMAIL'),
+                'email_verified_at' => date('Y-m-d h:i:s'),
+                'password' => bcrypt(env('DEFAULT_PASSWORD')),
             ]);
+        }
     }
 }

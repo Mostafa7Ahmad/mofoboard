@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مشغل الفيديو - تطوير مواقع الويب الحديثة</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Collapsible Header -->
+    <header id="courseHeader" class="sticky top-0 z-50 bg-surface shadow-card-sm border-b border-border transition-normal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Back Button & Course Info -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button onclick="window.location.href='course_detail.html'" class="p-2 text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-arrow-right text-lg"></i>
+                    </button>
+                    <div class="hidden sm:block">
+                        <h1 class="text-lg font-heading font-semibold text-text-primary">تطوير مواقع الويب الحديثة باستخدام React</h1>
+                        <p class="text-sm text-text-secondary">الدرس 3: إنشاء المكونات التفاعلية</p>
+                    </div>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="hidden md:flex items-center space-x-2 space-x-reverse">
+                        <span class="text-sm text-text-secondary">التقدم:</span>
+                        <div class="w-32 bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full transition-normal" style="width: 35%"></div>
+                        </div>
+                        <span class="text-sm font-medium text-primary">35%</span>
+                    </div>
+                    
+                    <!-- Header Actions -->
+                    <button id="toggleSidebar" class="hidden lg:block p-2 text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                    
+                    <!-- User Avatar -->
+                    <button onclick="window.location.href='user_profile_management.html'" class="flex items-center">
+                        <img class="h-8 w-8 rounded-full object-cover" src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400" alt="صورة المستخدم" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col lg:flex-row min-h-screen">
+        <!-- Video Player Section -->
+        <div class="flex-1 bg-black">
+            <!-- Video Container -->
+            <div class="relative w-full" style="padding-bottom: 56.25%;">
+                <video id="courseVideo" class="absolute inset-0 w-full h-full" poster="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800">
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                    <track kind="subtitles" src="#" srclang="ar" label="العربية" default />
+                    <track kind="subtitles" src="#" srclang="en" label="English" />
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+
+                <!-- Custom Video Controls -->
+                <div id="videoControls" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 transition-normal">
+                    <!-- Progress Bar -->
+                    <div class="mb-4">
+                        <div class="relative">
+                            <input type="range" id="progressBar" class="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer" min="0" max="100" value="0" />
+                            <div id="progressFill" class="absolute top-0 left-0 h-1 bg-primary rounded-lg pointer-events-none" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-xs text-white mt-1">
+                            <span id="currentTime">00:00</span>
+                            <span id="totalTime">00:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Control Buttons -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <!-- Play/Pause -->
+                            <button id="playPauseBtn" class="text-white hover:text-primary transition-micro">
+                                <i class="fas fa-play text-xl"></i>
+                            </button>
+                            
+                            <!-- Volume -->
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <button id="muteBtn" class="text-white hover:text-primary transition-micro">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <input type="range" id="volumeSlider" class="w-16 h-1 bg-white/30 rounded-lg appearance-none cursor-pointer" min="0" max="100" value="100" />
+                            </div>
+
+                            <!-- Time Display -->
+                            <div class="text-white text-sm">
+                                <span id="timeDisplay">00:00 / 00:00</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <!-- Playback Speed -->
+                            <div class="relative">
+                                <button id="speedBtn" class="text-white hover:text-primary transition-micro text-sm">
+                                    1x
+                                </button>
+                                <div id="speedMenu" class="hidden absolute bottom-full right-0 mb-2 bg-surface border border-border rounded-lg shadow-card-md">
+                                    <div class="py-1">
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-speed="0.5">0.5x</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-speed="0.75">0.75x</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right bg-primary-50" data-speed="1">1x</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-speed="1.25">1.25x</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-speed="1.5">1.5x</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-speed="2">2x</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quality -->
+                            <div class="relative">
+                                <button id="qualityBtn" class="text-white hover:text-primary transition-micro text-sm">
+                                    720p
+                                </button>
+                                <div id="qualityMenu" class="hidden absolute bottom-full right-0 mb-2 bg-surface border border-border rounded-lg shadow-card-md">
+                                    <div class="py-1">
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-quality="360p">360p</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-quality="480p">480p</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right bg-primary-50" data-quality="720p">720p</button>
+                                        <button class="block w-full px-4 py-2 text-sm text-text-primary hover:bg-primary-50 text-right" data-quality="1080p">1080p</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subtitles -->
+                            <button id="subtitlesBtn" class="text-white hover:text-primary transition-micro">
+                                <i class="fas fa-closed-captioning"></i>
+                            </button>
+
+                            <!-- Picture in Picture -->
+                            <button id="pipBtn" class="text-white hover:text-primary transition-micro">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+
+                            <!-- Fullscreen -->
+                            <button id="fullscreenBtn" class="text-white hover:text-primary transition-micro">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Overlay -->
+                <div id="loadingOverlay" class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                    <div class="text-white text-center">
+                        <i class="fas fa-spinner fa-spin text-3xl mb-2"></i>
+                        <p>جاري التحميل...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson Navigation -->
+            <div class="bg-surface border-t border-border p-4">
+                <div class="flex items-center justify-between">
+                    <button id="prevLessonBtn" class="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-primary-50 text-primary rounded-lg hover:bg-primary-100 transition-micro">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>الدرس السابق</span>
+                    </button>
+                    
+                    <div class="text-center">
+                        <p class="text-sm text-text-secondary">الدرس 3 من 12</p>
+                        <p class="font-medium text-text-primary">إنشاء المكونات التفاعلية</p>
+                    </div>
+                    
+                    <button id="nextLessonBtn" class="flex items-center space-x-2 space-x-reverse px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-700 transition-micro">
+                        <span>الدرس التالي</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="w-full lg:w-96 bg-surface border-r border-border transform lg:transform-none transition-normal">
+            <!-- Sidebar Tabs -->
+            <div class="border-b border-border">
+                <nav class="flex">
+                    <button class="tab-btn active flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-primary text-primary" data-tab="transcript">
+                        النص التفاعلي
+                    </button>
+                    <button class="tab-btn flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-transparent text-text-secondary hover:text-primary transition-micro" data-tab="notes">
+                        الملاحظات
+                    </button>
+                    <button class="tab-btn flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-transparent text-text-secondary hover:text-primary transition-micro" data-tab="discussion">
+                        النقاش
+                    </button>
+                    <button class="tab-btn flex-1 px-4 py-3 text-sm font-medium text-center border-b-2 border-transparent text-text-secondary hover:text-primary transition-micro" data-tab="resources">
+                        المصادر
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="h-96 lg:h-screen lg:pb-32 overflow-y-auto">
+                <!-- Transcript Tab -->
+                <div id="transcript-tab" class="tab-content p-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-medium text-text-primary">النص التفاعلي</h3>
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <button class="text-xs px-2 py-1 bg-primary-50 text-primary rounded" data-lang="ar">عربي</button>
+                                <button class="text-xs px-2 py-1 bg-gray-100 text-text-secondary rounded" data-lang="en">English</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Transcript Items -->
+                        <div class="space-y-3">
+                            <div class="transcript-item p-3 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro" data-time="0">
+                                <div class="flex items-start space-x-3 space-x-reverse">
+                                    <span class="text-xs text-primary font-mono bg-primary-100 px-2 py-1 rounded">00:00</span>
+                                    <p class="text-sm text-text-primary flex-1">مرحباً بكم في هذا الدرس حول إنشاء المكونات التفاعلية في React. سنتعلم اليوم كيفية بناء مكونات قابلة لإعادة الاستخدام.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="transcript-item p-3 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro" data-time="15">
+                                <div class="flex items-start space-x-3 space-x-reverse">
+                                    <span class="text-xs text-primary font-mono bg-primary-100 px-2 py-1 rounded">00:15</span>
+                                    <p class="text-sm text-text-primary flex-1">أولاً، دعونا نفهم ما هي المكونات في React. المكونات هي أجزاء من الكود يمكن إعادة استخدامها لبناء واجهات المستخدم.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="transcript-item p-3 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro" data-time="35">
+                                <div class="flex items-start space-x-3 space-x-reverse">
+                                    <span class="text-xs text-primary font-mono bg-primary-100 px-2 py-1 rounded">00:35</span>
+                                    <p class="text-sm text-text-primary flex-1">يمكننا إنشاء مكون بسيط باستخدام دالة JavaScript. هذا المكون سيعرض محتوى HTML ويمكن استخدامه في أي مكان في التطبيق.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="transcript-item p-3 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro" data-time="55">
+                                <div class="flex items-start space-x-3 space-x-reverse">
+                                    <span class="text-xs text-primary font-mono bg-primary-100 px-2 py-1 rounded">00:55</span>
+                                    <p class="text-sm text-text-primary flex-1">الآن سنتعلم كيفية إضافة التفاعل إلى المكونات باستخدام useState hook. هذا يسمح للمكون بتذكر المعلومات وتحديث العرض عند تغييرها.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Tab -->
+                <div id="notes-tab" class="tab-content hidden p-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-medium text-text-primary">ملاحظاتي</h3>
+                            <button id="addNoteBtn" class="px-3 py-1 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                <i class="fas fa-plus ml-1"></i>
+                                إضافة ملاحظة
+                            </button>
+                        </div>
+
+                        <!-- Add Note Form -->
+                        <div id="noteForm" class="hidden bg-primary-50 p-4 rounded-lg">
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-text-primary mb-1">الوقت الحالي: <span id="currentTimeNote">00:00</span></label>
+                            </div>
+                            <textarea id="noteText" class="w-full p-3 border border-border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3" placeholder="اكتب ملاحظتك هنا..."></textarea>
+                            <div class="flex justify-end space-x-2 space-x-reverse mt-3">
+                                <button id="cancelNote" class="px-3 py-1 text-text-secondary hover:text-text-primary transition-micro">إلغاء</button>
+                                <button id="saveNote" class="px-4 py-1 bg-primary text-white rounded-lg hover:bg-primary-700 transition-micro">حفظ</button>
+                            </div>
+                        </div>
+
+                        <!-- Notes List -->
+                        <div class="space-y-3" id="notesList">
+                            <div class="note-item bg-accent-50 p-3 rounded-lg">
+                                <div class="flex items-start justify-between mb-2">
+                                    <span class="text-xs text-accent font-mono bg-accent-100 px-2 py-1 rounded">00:15</span>
+                                    <button class="text-text-secondary hover:text-error transition-micro">
+                                        <i class="fas fa-trash text-xs"></i>
+                                    </button>
+                                </div>
+                                <p class="text-sm text-text-primary">نقطة مهمة: المكونات في React تشبه الدوال في JavaScript</p>
+                                <span class="text-xs text-text-secondary">منذ دقيقتين</span>
+                            </div>
+                            
+                            <div class="note-item bg-accent-50 p-3 rounded-lg">
+                                <div class="flex items-start justify-between mb-2">
+                                    <span class="text-xs text-accent font-mono bg-accent-100 px-2 py-1 rounded">00:55</span>
+                                    <button class="text-text-secondary hover:text-error transition-micro">
+                                        <i class="fas fa-trash text-xs"></i>
+                                    </button>
+                                </div>
+                                <p class="text-sm text-text-primary">useState hook مهم جداً لإدارة الحالة في المكونات الوظيفية</p>
+                                <span class="text-xs text-text-secondary">منذ دقيقة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discussion Tab -->
+                <div id="discussion-tab" class="tab-content hidden p-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-medium text-text-primary">نقاش الدرس</h3>
+                            <span class="text-sm text-text-secondary">12 تعليق</span>
+                        </div>
+
+                        <!-- Add Comment Form -->
+                        <div class="bg-primary-50 p-4 rounded-lg">
+                            <textarea class="w-full p-3 border border-border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3" placeholder="اطرح سؤالاً أو شارك رأيك..."></textarea>
+                            <div class="flex justify-end mt-3">
+                                <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-700 transition-micro">نشر التعليق</button>
+                            </div>
+                        </div>
+
+                        <!-- Comments List -->
+                        <div class="space-y-4">
+                            <div class="comment-item border-b border-border pb-4">
+                                <div class="flex items-start space-x-3 space-x-reverse">
+                                    <img class="w-8 h-8 rounded-full object-cover" src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_960_720.jpg" alt="صورة المستخدم" />
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 space-x-reverse mb-1">
+                                            <span class="font-medium text-text-primary">محمد أحمد</span>
+                                            <span class="text-xs text-text-secondary">منذ ساعتين</span>
+                                        </div>
+                                        <p class="text-sm text-text-primary mb-2">شرح ممتاز! هل يمكن توضيح الفرق بين useState و useEffect؟</p>
+                                        <div class="flex items-center space-x-4 space-x-reverse">
+                                            <button class="text-xs text-text-secondary hover:text-primary transition-micro">
+                                                <i class="fas fa-thumbs-up ml-1"></i>
+                                                إعجاب (5)
+                                            </button>
+                                            <button class="text-xs text-text-secondary hover:text-primary transition-micro">رد</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comment-item border-b border-border pb-4">
+                                <div class="flex items-start space-x-3 space-x-reverse">
+                                    <img class="w-8 h-8 rounded-full object-cover" src="https://images.pixabay.com/photo/2017/06/26/02/47/man-2442565_960_720.jpg" alt="صورة المدرب" />
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 space-x-reverse mb-1">
+                                            <span class="font-medium text-text-primary">أحمد محمد</span>
+                                            <span class="text-xs bg-secondary text-white px-2 py-0.5 rounded-full">مدرب</span>
+                                            <span class="text-xs text-text-secondary">منذ ساعة</span>
+                                        </div>
+                                        <p class="text-sm text-text-primary mb-2">سؤال ممتاز! useState يُستخدم لإدارة الحالة المحلية، بينما useEffect يُستخدم للتأثيرات الجانبية مثل استدعاء API. سنغطي useEffect في الدرس القادم بالتفصيل.</p>
+                                        <div class="flex items-center space-x-4 space-x-reverse">
+                                            <button class="text-xs text-text-secondary hover:text-primary transition-micro">
+                                                <i class="fas fa-thumbs-up ml-1"></i>
+                                                إعجاب (12)
+                                            </button>
+                                            <button class="text-xs text-text-secondary hover:text-primary transition-micro">رد</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources Tab -->
+                <div id="resources-tab" class="tab-content hidden p-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-medium text-text-primary">مصادر الدرس</h3>
+                            <span class="text-sm text-text-secondary">4 ملفات</span>
+                        </div>
+
+                        <!-- Resources List -->
+                        <div class="space-y-3">
+                            <div class="resource-item flex items-center justify-between p-3 border border-border rounded-lg hover:bg-primary-50 transition-micro">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <div class="w-10 h-10 bg-error-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-file-pdf text-error"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">ملاحظات الدرس - المكونات التفاعلية</p>
+                                        <p class="text-sm text-text-secondary">PDF • 2.5 MB</p>
+                                    </div>
+                                </div>
+                                <button class="px-3 py-1 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                    <i class="fas fa-download ml-1"></i>
+                                    تحميل
+                                </button>
+                            </div>
+
+                            <div class="resource-item flex items-center justify-between p-3 border border-border rounded-lg hover:bg-primary-50 transition-micro">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <div class="w-10 h-10 bg-accent-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-code text-accent"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">أكواد المشروع - React Components</p>
+                                        <p class="text-sm text-text-secondary">ZIP • 1.2 MB</p>
+                                    </div>
+                                </div>
+                                <button class="px-3 py-1 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                    <i class="fas fa-download ml-1"></i>
+                                    تحميل
+                                </button>
+                            </div>
+
+                            <div class="resource-item flex items-center justify-between p-3 border border-border rounded-lg hover:bg-primary-50 transition-micro">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <div class="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-link text-secondary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">مراجع إضافية - React Documentation</p>
+                                        <p class="text-sm text-text-secondary">رابط خارجي</p>
+                                    </div>
+                                </div>
+                                <button class="px-3 py-1 bg-primary text-white text-sm rounded-lg hover:bg-primary-700 transition-micro">
+                                    <i class="fas fa-external-link-alt ml-1"></i>
+                                    فتح
+                                </button>
+                            </div>
+
+                            <div class="resource-item flex items-center justify-between p-3 border border-border rounded-lg hover:bg-primary-50 transition-micro">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-clipboard-check text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">اختبار الدرس - المكونات التفاعلية</p>
+                                        <p class="text-sm text-text-secondary">10 أسئلة • 15 دقيقة</p>
+                                    </div>
+                                </div>
+                                <button onclick="window.location.href='quiz_assessment.html'" class="px-3 py-1 bg-secondary text-white text-sm rounded-lg hover:bg-secondary-700 transition-micro">
+                                    <i class="fas fa-play ml-1"></i>
+                                    بدء الاختبار
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bookmarks Section -->
+                        <div class="mt-6">
+                            <h4 class="font-medium text-text-primary mb-3">العلامات المرجعية</h4>
+                            <div class="space-y-2">
+                                <div class="bookmark-item flex items-center justify-between p-2 bg-accent-50 rounded-lg">
+                                    <div class="flex items-center space-x-2 space-x-reverse">
+                                        <i class="fas fa-bookmark text-accent text-sm"></i>
+                                        <span class="text-sm text-text-primary">شرح useState</span>
+                                    </div>
+                                    <span class="text-xs text-accent font-mono">00:55</span>
+                                </div>
+                                
+                                <div class="bookmark-item flex items-center justify-between p-2 bg-accent-50 rounded-lg">
+                                    <div class="flex items-center space-x-2 space-x-reverse">
+                                        <i class="fas fa-bookmark text-accent text-sm"></i>
+                                        <span class="text-sm text-text-primary">مثال عملي</span>
+                                    </div>
+                                    <span class="text-xs text-accent font-mono">02:30</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Course Outline Sidebar (Desktop) -->
+    <div id="courseOutline" class="hidden fixed top-16 left-0 w-80 h-full bg-surface border-r border-border shadow-card-md z-40 transform -translate-x-full transition-normal">
+        <div class="p-4 border-b border-border">
+            <h3 class="font-heading font-semibold text-text-primary">محتوى الدورة</h3>
+            <p class="text-sm text-text-secondary">12 درس • 8 ساعات</p>
+        </div>
+        
+        <div class="overflow-y-auto h-full pb-20">
+            <div class="p-4 space-y-2">
+                <!-- Course Sections -->
+                <div class="course-section">
+                    <h4 class="font-medium text-text-primary mb-2">الفصل الأول: مقدمة في React</h4>
+                    <div class="space-y-1 mr-4">
+                        <div class="lesson-item flex items-center justify-between p-2 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fas fa-check-circle text-secondary text-sm"></i>
+                                <span class="text-sm text-text-primary">ما هو React؟</span>
+                            </div>
+                            <span class="text-xs text-text-secondary">12:30</span>
+                        </div>
+                        
+                        <div class="lesson-item flex items-center justify-between p-2 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fas fa-check-circle text-secondary text-sm"></i>
+                                <span class="text-sm text-text-primary">إعداد بيئة التطوير</span>
+                            </div>
+                            <span class="text-xs text-text-secondary">15:45</span>
+                        </div>
+                        
+                        <div class="lesson-item flex items-center justify-between p-2 bg-primary-50 rounded-lg">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fas fa-play-circle text-primary text-sm"></i>
+                                <span class="text-sm text-primary font-medium">إنشاء المكونات التفاعلية</span>
+                            </div>
+                            <span class="text-xs text-primary">18:20</span>
+                        </div>
+                        
+                        <div class="lesson-item flex items-center justify-between p-2 rounded-lg hover:bg-primary-50 cursor-pointer transition-micro">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <i class="fas fa-circle text-text-secondary text-sm"></i>
+                                <span class="text-sm text-text-secondary">إدارة الحالة مع useState</span>
+                            </div>
+                            <span class="text-xs text-text-secondary">22:10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-border lg:hidden z-40">
+        <div class="flex items-center justify-around py-2">
+            <button class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro" onclick="window.location.href='course_catalog.html'">
+                <i class="fas fa-th-large text-lg"></i>
+                <span class="text-xs mt-1">الكتالوج</span>
+            </button>
+            <button class="flex flex-col items-center py-2 px-3 text-primary" onclick="window.location.href='student_dashboard.html'">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">دوراتي</span>
+            </button>
+            <button class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro" onclick="window.location.href='quiz_assessment.html'">
+                <i class="fas fa-clipboard-check text-lg"></i>
+                <span class="text-xs mt-1">الاختبارات</span>
+            </button>
+            <button class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro" onclick="window.location.href='user_profile_management.html'">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">الملف الشخصي</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Floating Action Button -->
+    <button id="bookmarkBtn" class="fab w-14 h-14 bg-accent text-white hover:bg-accent-600 transition-normal">
+        <i class="fas fa-bookmark text-lg"></i>
+    </button>
+
+    <script>
+        // Video Player Functionality
+        const video = document.getElementById('courseVideo');
+        const videoControls = document.getElementById('videoControls');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const totalTimeSpan = document.getElementById('totalTime');
+        const timeDisplay = document.getElementById('timeDisplay');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const muteBtn = document.getElementById('muteBtn');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Show/Hide Controls
+        let controlsTimeout;
+        
+        function showControls() {
+            videoControls.style.opacity = '1';
+            clearTimeout(controlsTimeout);
+            controlsTimeout = setTimeout(() => {
+                if (!video.paused) {
+                    videoControls.style.opacity = '0';
+                }
+            }, 3000);
+        }
+
+        video.addEventListener('mousemove', showControls);
+        video.addEventListener('click', togglePlayPause);
+        videoControls.addEventListener('mouseenter', () => {
+            clearTimeout(controlsTimeout);
+            videoControls.style.opacity = '1';
+        });
+        
+        videoControls.addEventListener('mouseleave', () => {
+            if (!video.paused) {
+                controlsTimeout = setTimeout(() => {
+                    videoControls.style.opacity = '0';
+                }, 1000);
+            }
+        });
+
+        // Play/Pause functionality
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause text-xl"></i>';
+                loadingOverlay.style.display = 'none';
+            } else {
+                video.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+            }
+        }
+
+        playPauseBtn.addEventListener('click', togglePlayPause);
+
+        // Progress bar functionality
+        video.addEventListener('timeupdate', () => {
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.value = progress;
+            progressFill.style.width = progress + '%';
+            
+            currentTimeSpan.textContent = formatTime(video.currentTime);
+            timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+        });
+
+        video.addEventListener('loadedmetadata', () => {
+            totalTimeSpan.textContent = formatTime(video.duration);
+            timeDisplay.textContent = `00:00 / ${formatTime(video.duration)}`;
+        });
+
+        progressBar.addEventListener('input', () => {
+            const time = (progressBar.value / 100) * video.duration;
+            video.currentTime = time;
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', () => {
+            video.volume = volumeSlider.value / 100;
+            updateVolumeIcon();
+        });
+
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            updateVolumeIcon();
+        });
+
+        function updateVolumeIcon() {
+            const icon = muteBtn.querySelector('i');
+            if (video.muted || video.volume === 0) {
+                icon.className = 'fas fa-volume-mute';
+            } else if (video.volume < 0.5) {
+                icon.className = 'fas fa-volume-down';
+            } else {
+                icon.className = 'fas fa-volume-up';
+            }
+        }
+
+        // Speed control
+        const speedBtn = document.getElementById('speedBtn');
+        const speedMenu = document.getElementById('speedMenu');
+
+        speedBtn.addEventListener('click', () => {
+            speedMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('[data-speed]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const speed = parseFloat(btn.dataset.speed);
+                video.playbackRate = speed;
+                speedBtn.textContent = speed + 'x';
+                speedMenu.classList.add('hidden');
+                
+                // Update active state
+                document.querySelectorAll('[data-speed]').forEach(b => b.classList.remove('bg-primary-50'));
+                btn.classList.add('bg-primary-50');
+            });
+        });
+
+        // Quality control
+        const qualityBtn = document.getElementById('qualityBtn');
+        const qualityMenu = document.getElementById('qualityMenu');
+
+        qualityBtn.addEventListener('click', () => {
+            qualityMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('[data-quality]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const quality = btn.dataset.quality;
+                qualityBtn.textContent = quality;
+                qualityMenu.classList.add('hidden');
+                
+                // Update active state
+                document.querySelectorAll('[data-quality]').forEach(b => b.classList.remove('bg-primary-50'));
+                btn.classList.add('bg-primary-50');
+            });
+        });
+
+        // Fullscreen functionality
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                video.requestFullscreen();
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+            } else {
+                document.exitFullscreen();
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            }
+        });
+
+        // Picture in Picture
+        const pipBtn = document.getElementById('pipBtn');
+        
+        pipBtn.addEventListener('click', () => {
+            if (video.requestPictureInPicture) {
+                video.requestPictureInPicture();
+            }
+        });
+
+        // Subtitles toggle
+        const subtitlesBtn = document.getElementById('subtitlesBtn');
+        let subtitlesEnabled = false;
+
+        subtitlesBtn.addEventListener('click', () => {
+            subtitlesEnabled = !subtitlesEnabled;
+            if (subtitlesEnabled) {
+                subtitlesBtn.classList.add('text-primary');
+                subtitlesBtn.classList.remove('text-white');
+            } else {
+                subtitlesBtn.classList.remove('text-primary');
+                subtitlesBtn.classList.add('text-white');
+            }
+        });
+
+        // Format time helper
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                
+                // Update active tab
+                tabBtns.forEach(b => {
+                    b.classList.remove('active', 'border-primary', 'text-primary');
+                    b.classList.add('border-transparent', 'text-text-secondary');
+                });
+                btn.classList.add('active', 'border-primary', 'text-primary');
+                btn.classList.remove('border-transparent', 'text-text-secondary');
+                
+                // Show corresponding content
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(tabId + '-tab').classList.remove('hidden');
+            });
+        });
+
+        // Transcript functionality
+        document.querySelectorAll('.transcript-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const time = parseInt(item.dataset.time);
+                video.currentTime = time;
+                if (video.paused) {
+                    video.play();
+                }
+            });
+        });
+
+        // Notes functionality
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const noteForm = document.getElementById('noteForm');
+        const cancelNote = document.getElementById('cancelNote');
+        const saveNote = document.getElementById('saveNote');
+        const noteText = document.getElementById('noteText');
+        const currentTimeNote = document.getElementById('currentTimeNote');
+        const notesList = document.getElementById('notesList');
+
+        addNoteBtn.addEventListener('click', () => {
+            noteForm.classList.remove('hidden');
+            currentTimeNote.textContent = formatTime(video.currentTime);
+            noteText.focus();
+        });
+
+        cancelNote.addEventListener('click', () => {
+            noteForm.classList.add('hidden');
+            noteText.value = '';
+        });
+
+        saveNote.addEventListener('click', () => {
+            if (noteText.value.trim()) {
+                const noteItem = document.createElement('div');
+                noteItem.className = 'note-item bg-accent-50 p-3 rounded-lg';
+                noteItem.innerHTML = `
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="text-xs text-accent font-mono bg-accent-100 px-2 py-1 rounded">${currentTimeNote.textContent}</span>
+                        <button class="text-text-secondary hover:text-error transition-micro">
+                            <i class="fas fa-trash text-xs"></i>
+                        </button>
+                    </div>
+                    <p class="text-sm text-text-primary">${noteText.value}</p>
+                    <span class="text-xs text-text-secondary">الآن</span>
+                `;
+                
+                notesList.insertBefore(noteItem, notesList.firstChild);
+                noteForm.classList.add('hidden');
+                noteText.value = '';
+                
+                // Add delete functionality
+                noteItem.querySelector('.fa-trash').addEventListener('click', () => {
+                    noteItem.remove();
+                });
+            }
+        });
+
+        // Sidebar toggle
+        const toggleSidebar = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const courseOutline = document.getElementById('courseOutline');
+
+        toggleSidebar.addEventListener('click', () => {
+            courseOutline.classList.toggle('-translate-x-full');
+        });
+
+        // Bookmark functionality
+        const bookmarkBtn = document.getElementById('bookmarkBtn');
+        
+        bookmarkBtn.addEventListener('click', () => {
+            const currentTime = formatTime(video.currentTime);
+            // Add bookmark logic here
+            bookmarkBtn.classList.add('animate-celebrate');
+            setTimeout(() => {
+                bookmarkBtn.classList.remove('animate-celebrate');
+            }, 600);
+        });
+
+        // Lesson navigation
+        const prevLessonBtn = document.getElementById('prevLessonBtn');
+        const nextLessonBtn = document.getElementById('nextLessonBtn');
+
+        prevLessonBtn.addEventListener('click', () => {
+            // Navigate to previous lesson
+            console.log('Previous lesson');
+        });
+
+        nextLessonBtn.addEventListener('click', () => {
+            // Navigate to next lesson
+            console.log('Next lesson');
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName.toLowerCase() === 'textarea' || e.target.tagName.toLowerCase() === 'input') {
+                return;
+            }
+            
+            switch(e.code) {
+                case 'Space':
+                    e.preventDefault();
+                    togglePlayPause();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    video.currentTime = Math.max(0, video.currentTime - 10);
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    video.currentTime = Math.min(video.duration, video.currentTime + 10);
+                    break;
+                case 'KeyF':
+                    e.preventDefault();
+                    fullscreenBtn.click();
+                    break;
+                case 'KeyM':
+                    e.preventDefault();
+                    muteBtn.click();
+                    break;
+            }
+        });
+
+        // Mobile gestures
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        video.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        video.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (Math.abs(deltaX) > 50) {
+                    if (deltaX > 0) {
+                        // Swipe right - forward 10 seconds
+                        video.currentTime = Math.min(video.duration, video.currentTime + 10);
+                    } else {
+                        // Swipe left - backward 10 seconds
+                        video.currentTime = Math.max(0, video.currentTime - 10);
+                    }
+                }
+            }
+        });
+
+        // Auto-hide header on scroll (mobile)
+        let lastScrollY = window.scrollY;
+        const header = document.getElementById('courseHeader');
+
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth < 1024) {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+            }
+        });
+
+        // Initialize video
+        video.addEventListener('loadstart', () => {
+            loadingOverlay.style.display = 'flex';
+        });
+
+        video.addEventListener('canplay', () => {
+            loadingOverlay.style.display = 'none';
+        });
+
+        // Close menus when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!speedBtn.contains(e.target) && !speedMenu.contains(e.target)) {
+                speedMenu.classList.add('hidden');
+            }
+            if (!qualityBtn.contains(e.target) && !qualityMenu.contains(e.target)) {
+                qualityMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>

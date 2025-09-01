@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Config;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class AttachSuperAdminPermissions extends Seeder
 {
@@ -17,6 +15,6 @@ class AttachSuperAdminPermissions extends Seeder
     public function run()
     {
         $user = User::firstOrFail();
-        $user->assignRole("superadmin");        
+        $user->assignRole('superadmin');
     }
 }

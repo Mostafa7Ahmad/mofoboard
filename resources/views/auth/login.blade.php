@@ -14,7 +14,7 @@
         background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
     }
     body{
-        background:#fff!important;
+        /* background:#fff!important; */
     }
 </style>
 
@@ -120,10 +120,10 @@
                             </div>
                             <ul style="list-style:none;" class="p-0 m-0">
                                 @if (Route::has('register'))
-                                <li class=" d-block"><a href="{{route('register')}}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas fa-circle font-small" ></span> لا أملك حساب بعد</a></li>
+                                <li class=" d-block"><a href="{{route('register')}}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas mx-1fa-circle font-small" ></span> لا أملك حساب بعد</a></li>
                                 @endif
                                 @if (Route::has('password.request'))
-                                <li class="d-block"><a href="{{ route('password.request') }}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas fa-circle font-small" ></span> نسيت كلمة المرور</a></li>
+                                <li class="d-block"><a href="{{ route('password.request') }}" class="naskh py-2 d-block" style="text-decoration: none!important;"><span class="fas mx-1fa-circle font-small" ></span> نسيت كلمة المرور</a></li>
                                 @endif
                             </ul>
                         </div>

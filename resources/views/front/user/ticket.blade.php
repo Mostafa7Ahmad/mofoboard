@@ -55,7 +55,7 @@
                     <textarea name="message" class="form-control" placeholder="اكتب رسالتك هنا" minlength="10" required style="min-height:20px"></textarea>
                 </div>
                 <div style="width:70px;height: 70px;" class="d-flex p-1">
-                    <button class="btn btn-warning d-flex align-items-center justify-content-center rounded-pill p-0 " style="height: 100%;width: 100%;"><span class="fas fa-paper-plane font-4"></span></button></div>
+                    <button class="btn btn-warning d-flex align-items-center justify-content-center rounded-pill p-0 " style="height: 100%;width: 100%;"><span class="fas mx-1fa-paper-plane font-4"></span></button></div>
                 </div>
             </div>
             <div class="footer-form">

@@ -16,7 +16,7 @@ class CreateRedirectionsTable extends Migration
         Schema::create('redirections', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('url')->nullable();
             $table->text('new_url')->nullable();
             $table->string('code')->nullable();

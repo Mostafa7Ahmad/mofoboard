@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>كتالوج الدورات - منصة التعلم</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="bg-background min-h-screen">
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-surface shadow-card-sm border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z" />
+                            <path d="M16 6L7 9.5v7.5c0 3.33 2.31 6.45 5.4 7.2 3.09-.75 5.4-3.87 5.4-7.2V9.5L16 6z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                    <div class="hidden md:block mr-4">
+                        <h1 class="text-xl font-heading font-semibold text-text-primary">منصة التعلم</h1>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-text-secondary"></i>
+                        </div>
+                        <input type="text" id="searchInput"
+                            class="block w-full pr-10 pl-3 py-2 border border-border rounded-lg bg-surface text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-normal"
+                            placeholder="ابحث عن الدورات..." />
+                        <!-- Search Suggestions Dropdown -->
+                        <div id="searchSuggestions"
+                            class="hidden absolute top-full right-0 left-0 mt-1 bg-surface border border-border rounded-lg shadow-card-md z-60">
+                            <div class="p-2">
+                                <div
+                                    class="px-3 py-2 text-sm text-text-secondary hover:bg-primary-50 rounded cursor-pointer">
+                                    برمجة الويب</div>
+                                <div
+                                    class="px-3 py-2 text-sm text-text-secondary hover:bg-primary-50 rounded cursor-pointer">
+                                    تصميم الجرافيك</div>
+                                <div
+                                    class="px-3 py-2 text-sm text-text-secondary hover:bg-primary-50 rounded cursor-pointer">
+                                    إدارة الأعمال</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <!-- Filter Button (Mobile) -->
+                    <button id="mobileFilterBtn"
+                        class="md:hidden p-2 text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-filter text-lg"></i>
+                    </button>
+
+                    <!-- Notifications -->
+                    <button class="relative p-2 text-text-secondary hover:text-primary transition-micro">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span
+                            class="absolute -top-1 -left-1 h-4 w-4 bg-error text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+
+                    <!-- User Avatar -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 space-x-reverse">
+                            <img class="h-8 w-8 rounded-full object-cover"
+                                src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="صورة المستخدم"
+                                />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Desktop Sidebar Filters -->
+            <aside class="hidden lg:block w-80 flex-shrink-0">
+                <div class="bg-surface rounded-xl shadow-card-sm border border-border p-6 sticky top-24">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-lg font-heading font-semibold text-text-primary">تصفية النتائج</h2>
+                        <button class="text-sm text-primary hover:text-primary-700 transition-micro">إعادة
+                            تعيين</button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-medium text-text-primary mb-3">الفئة</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">التكنولوجيا</span>
+                                <span class="mr-auto text-xs text-text-secondary">(124)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">الأعمال</span>
+                                <span class="mr-auto text-xs text-text-secondary">(89)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">التصميم</span>
+                                <span class="mr-auto text-xs text-text-secondary">(67)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">اللغات</span>
+                                <span class="mr-auto text-xs text-text-secondary">(45)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-medium text-text-primary mb-3">نطاق السعر</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">مجاني</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">أقل من 50 ريال</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">50 - 200 ريال</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="price" class="text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">أكثر من 200 ريال</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Level -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-medium text-text-primary mb-3">مستوى الصعوبة</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">مبتدئ</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">متوسط</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">متقدم</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Duration -->
+                    <div>
+                        <h3 class="text-sm font-medium text-text-primary mb-3">المدة</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">أقل من ساعة</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">1-3 ساعات</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">3-6 ساعات</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary" />
+                                <span class="mr-2 text-sm text-text-secondary">أكثر من 6 ساعات</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="flex-1">
+                <!-- Filter Chips and Sort -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+                    <!-- Filter Chips -->
+                    <div class="flex items-center gap-2 overflow-x-auto scrollbar-hide">
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <span class="px-3 py-1.5 bg-primary text-white text-sm rounded-full">الكل</span>
+                            <span
+                                class="px-3 py-1.5 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100 cursor-pointer transition-micro">التكنولوجيا</span>
+                            <span
+                                class="px-3 py-1.5 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100 cursor-pointer transition-micro">الأعمال</span>
+                            <span
+                                class="px-3 py-1.5 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100 cursor-pointer transition-micro">التصميم</span>
+                            <span
+                                class="px-3 py-1.5 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100 cursor-pointer transition-micro">اللغات</span>
+                        </div>
+                    </div>
+
+                    <!-- Sort and Results Count -->
+                    <div class="flex items-center gap-4">
+                        <span class="text-sm text-text-secondary">325 دورة</span>
+                        <div class="relative">
+                            <select
+                                class="appearance-none bg-surface border border-border rounded-lg px-4 py-2 pl-8 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>الأكثر صلة</option>
+                                <option>الأكثر شعبية</option>
+                                <option>الأحدث</option>
+                                <option>السعر: من الأقل للأعلى</option>
+                                <option>السعر: من الأعلى للأقل</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="courseGrid">
+                    <!-- Course Card 1 -->
+                    <div class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal cursor-pointer"
+                        onclick="window.location.href='course_detail.html'">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover"
+                                src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="دورة تطوير الويب"
+                                />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-secondary text-white text-xs px-2 py-1 rounded-full">مبتدئ</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <button
+                                    class="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-micro">
+                                    <i class="far fa-heart text-text-secondary hover:text-error"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img class="w-6 h-6 rounded-full object-cover"
+                                    src="https://images.pixabay.com/photo/2016/11/18/19/07/happy-1836445_960_720.jpg"
+                                    alt="المدرب"
+                                    />
+                                <span class="text-xs text-text-secondary">أحمد محمد</span>
+                            </div>
+                            <h3 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">تطوير مواقع الويب
+                                الحديثة باستخدام React</h3>
+                            <div class="flex items-center gap-1 mb-3">
+                                <div class="flex text-accent">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-text-secondary">(4.8)</span>
+                                <span class="text-xs text-text-secondary">• 1,234 طالب</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg font-semibold text-primary">149 ريال</span>
+                                    <span class="text-sm text-text-secondary line-through">299 ريال</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-text-secondary">
+                                    <i class="far fa-clock"></i>
+                                    <span>12 ساعة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal cursor-pointer"
+                        onclick="window.location.href='course_detail.html'">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover"
+                                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400"
+                                alt="دورة إدارة الأعمال"
+                                />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">متوسط</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <button
+                                    class="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-micro">
+                                    <i class="fas fa-heart text-error"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img class="w-6 h-6 rounded-full object-cover"
+                                    src="https://images.pixabay.com/photo/2017/06/26/02/47/man-2442565_960_720.jpg"
+                                    alt="المدرب"
+                                    />
+                                <span class="text-xs text-text-secondary">سارة أحمد</span>
+                            </div>
+                            <h3 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">إدارة الأعمال
+                                الرقمية والتسويق الإلكتروني</h3>
+                            <div class="flex items-center gap-1 mb-3">
+                                <div class="flex text-accent">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="far fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-text-secondary">(4.6)</span>
+                                <span class="text-xs text-text-secondary">• 892 طالب</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg font-semibold text-primary">مجاني</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-text-secondary">
+                                    <i class="far fa-clock"></i>
+                                    <span>8 ساعات</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal cursor-pointer"
+                        onclick="window.location.href='course_detail.html'">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover"
+                                src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="دورة التصميم الجرافيكي"
+                                />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">متقدم</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <button
+                                    class="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-micro">
+                                    <i class="far fa-heart text-text-secondary hover:text-error"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img class="w-6 h-6 rounded-full object-cover"
+                                    src="https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_960_720.jpg"
+                                    alt="المدرب"
+                                    />
+                                <span class="text-xs text-text-secondary">محمد علي</span>
+                            </div>
+                            <h3 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">التصميم الجرافيكي
+                                المتقدم باستخدام Adobe Creative Suite</h3>
+                            <div class="flex items-center gap-1 mb-3">
+                                <div class="flex text-accent">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-text-secondary">(4.9)</span>
+                                <span class="text-xs text-text-secondary">• 567 طالب</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg font-semibold text-primary">299 ريال</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-text-secondary">
+                                    <i class="far fa-clock"></i>
+                                    <span>15 ساعة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 4 -->
+                    <div class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal cursor-pointer"
+                        onclick="window.location.href='course_detail.html'">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover"
+                                src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400"
+                                alt="دورة اللغة الإنجليزية"
+                                />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-secondary text-white text-xs px-2 py-1 rounded-full">مبتدئ</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <button
+                                    class="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-micro">
+                                    <i class="far fa-heart text-text-secondary hover:text-error"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img class="w-6 h-6 rounded-full object-cover"
+                                    src="https://images.pixabay.com/photo/2017/08/01/01/33/beanie-2562646_960_720.jpg"
+                                    alt="المدرب"
+                                    />
+                                <span class="text-xs text-text-secondary">فاطمة خالد</span>
+                            </div>
+                            <h3 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">تعلم اللغة
+                                الإنجليزية للمبتدئين - المحادثة والقواعد</h3>
+                            <div class="flex items-center gap-1 mb-3">
+                                <div class="flex text-accent">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="far fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-text-secondary">(4.7)</span>
+                                <span class="text-xs text-text-secondary">• 2,156 طالب</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg font-semibold text-primary">99 ريال</span>
+                                    <span class="text-sm text-text-secondary line-through">199 ريال</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-text-secondary">
+                                    <i class="far fa-clock"></i>
+                                    <span>20 ساعة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 5 -->
+                    <div class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal cursor-pointer"
+                        onclick="window.location.href='course_detail.html'">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover"
+                                src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                alt="دورة الذكاء الاصطناعي"
+                                />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">متقدم</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <button
+                                    class="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-micro">
+                                    <i class="far fa-heart text-text-secondary hover:text-error"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img class="w-6 h-6 rounded-full object-cover"
+                                    src="https://images.pixabay.com/photo/2016/11/29/09/38/adult-1868750_960_720.jpg"
+                                    alt="المدرب"
+                                    />
+                                <span class="text-xs text-text-secondary">د. عبدالله الشمري</span>
+                            </div>
+                            <h3 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">مقدمة في الذكاء
+                                الاصطناعي وتعلم الآلة</h3>
+                            <div class="flex items-center gap-1 mb-3">
+                                <div class="flex text-accent">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-text-secondary">(4.9)</span>
+                                <span class="text-xs text-text-secondary">• 789 طالب</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg font-semibold text-primary">399 ريال</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-text-secondary">
+                                    <i class="far fa-clock"></i>
+                                    <span>25 ساعة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 6 -->
+                    <div class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden hover-lift transition-normal cursor-pointer"
+                        onclick="window.location.href='course_detail.html'">
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover"
+                                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400"
+                                alt="دورة التصوير الفوتوغرافي"
+                                />
+                            <div class="absolute top-3 right-3">
+                                <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">متوسط</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <button
+                                    class="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-micro">
+                                    <i class="fas fa-heart text-error"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <img class="w-6 h-6 rounded-full object-cover"
+                                    src="https://images.pixabay.com/photo/2017/04/01/21/06/portrait-2194457_960_720.jpg"
+                                    alt="المدرب"
+                                    />
+                                <span class="text-xs text-text-secondary">نورا العتيبي</span>
+                            </div>
+                            <h3 class="font-heading font-semibold text-text-primary mb-2 line-clamp-2">فن التصوير
+                                الفوتوغرافي الاحترافي</h3>
+                            <div class="flex items-center gap-1 mb-3">
+                                <div class="flex text-accent">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="far fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-text-secondary">(4.5)</span>
+                                <span class="text-xs text-text-secondary">• 445 طالب</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg font-semibold text-primary">199 ريال</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-text-secondary">
+                                    <i class="far fa-clock"></i>
+                                    <span>10 ساعات</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-8">
+                    <button id="loadMoreBtn"
+                        class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-700 transition-normal">
+                        تحميل المزيد من الدورات
+                    </button>
+                </div>
+
+                <!-- Loading Skeleton (Hidden by default) -->
+                <div id="loadingSkeleton"
+                    class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+                    <!-- Skeleton Card -->
+                    <div
+                        class="bg-surface rounded-xl shadow-card-sm border border-border overflow-hidden animate-pulse">
+                        <div class="w-full h-48 bg-gray-200"></div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-6 h-6 bg-gray-200 rounded-full"></div>
+                                <div class="h-3 bg-gray-200 rounded w-20"></div>
+                            </div>
+                            <div class="h-4 bg-gray-200 rounded w-full mb-2"></div>
+                            <div class="h-4 bg-gray-200 rounded w-3/4 mb-3"></div>
+                            <div class="flex items-center justify-between">
+                                <div class="h-5 bg-gray-200 rounded w-16"></div>
+                                <div class="h-3 bg-gray-200 rounded w-12"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Filter Modal -->
+    <div id="mobileFilterModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div
+                class="inline-block align-bottom bg-surface rounded-t-xl text-right overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:rounded-xl">
+                <div class="bg-surface px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-heading font-semibold text-text-primary">تصفية النتائج</h3>
+                        <button id="closeMobileFilter" class="text-text-secondary hover:text-text-primary">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Filter Content (Same as desktop) -->
+                    <div class="space-y-6">
+                        <!-- Category Filter -->
+                        <div>
+                            <h4 class="text-sm font-medium text-text-primary mb-3">الفئة</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">التكنولوجيا</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">الأعمال</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">التصميم</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">اللغات</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div>
+                            <h4 class="text-sm font-medium text-text-primary mb-3">نطاق السعر</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="mobile-price" class="text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">مجاني</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="mobile-price" class="text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">أقل من 50 ريال</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="mobile-price" class="text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">50 - 200 ريال</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Difficulty Level -->
+                        <div>
+                            <h4 class="text-sm font-medium text-text-primary mb-3">مستوى الصعوبة</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">مبتدئ</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">متوسط</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                        class="rounded border-border text-primary focus:ring-primary" />
+                                    <span class="mr-2 text-sm text-text-secondary">متقدم</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:ml-3 sm:w-auto sm:text-sm">
+                        تطبيق الفلاتر
+                    </button>
+                    <button type="button"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        إعادة تعيين
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-surface border-t border-border md:hidden z-40">
+        <div class="flex items-center justify-around py-2">
+            <a href="course_catalog.html" class="flex flex-col items-center py-2 px-3 text-primary">
+                <i class="fas fa-th-large text-lg"></i>
+                <span class="text-xs mt-1">الكتالوج</span>
+            </a>
+            <a href="student_dashboard.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">دوراتي</span>
+            </a>
+            <a href="quiz_assessment.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-clipboard-check text-lg"></i>
+                <span class="text-xs mt-1">الاختبارات</span>
+            </a>
+            <a href="user_profile_management.html"
+                class="flex flex-col items-center py-2 px-3 text-text-secondary hover:text-primary transition-micro">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">الملف الشخصي</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+
+        searchInput.addEventListener('focus', () => {
+            searchSuggestions.classList.remove('hidden');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                searchSuggestions.classList.add('hidden');
+            }, 200);
+        });
+
+        // Mobile filter modal
+        const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+        const mobileFilterModal = document.getElementById('mobileFilterModal');
+        const closeMobileFilter = document.getElementById('closeMobileFilter');
+
+        mobileFilterBtn.addEventListener('click', () => {
+            mobileFilterModal.classList.remove('hidden');
+        });
+
+        closeMobileFilter.addEventListener('click', () => {
+            mobileFilterModal.classList.add('hidden');
+        });
+
+        // Load more functionality
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadingSkeleton = document.getElementById('loadingSkeleton');
+
+        loadMoreBtn.addEventListener('click', () => {
+            loadingSkeleton.classList.remove('hidden');
+            loadMoreBtn.style.display = 'none';
+
+            // Simulate loading
+            setTimeout(() => {
+                loadingSkeleton.classList.add('hidden');
+                loadMoreBtn.style.display = 'inline-block';
+            }, 2000);
+        });
+
+        // Heart icon toggle
+        document.querySelectorAll('.fa-heart').forEach(heart => {
+            heart.addEventListener('click', (e) => {
+                e.stopPropagation();
+                heart.classList.toggle('far');
+                heart.classList.toggle('fas');
+                heart.classList.toggle('text-error');
+                heart.classList.toggle('text-text-secondary');
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

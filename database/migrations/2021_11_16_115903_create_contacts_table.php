@@ -16,14 +16,14 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('name')->nullable();
             $table->text('email')->nullable();
             $table->text('phone')->nullable();
             $table->longText('message')->nullable();
             $table->tinyInteger('has_support_reply')->default(0);
-            $table->string('status')->default("PENDING");
-            /*$table->timestamp('contacted_at')->nullable();*/
+            $table->string('status')->default('PENDING');
+            /* $table->timestamp('contacted_at')->nullable(); */
             $table->timestamps();
         });
     }

@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 
 $messages = [
 
@@ -12,7 +11,7 @@ $messages = [
 
 ];
 
-// Entity Name => Display Text 
+// Entity Name => Display Text
 $entities = [
     'article' => 'المقال',
     'category' => 'القسم',
@@ -20,10 +19,9 @@ $entities = [
 ];
 
 foreach ($entities as $entity_name => $display_text) {
-    $messages[$entity_name . '_store_success_message'] = 'تم إضافة ' . $display_text . ' بنجاح';
-    $messages[$entity_name . '_update_success_message'] = 'تم تحديث ' . $display_text . ' بنجاح';
-    $messages[$entity_name . '_destroy_success_message'] = 'تم حذف ' . $display_text . ' بنجاح';
+    $messages[$entity_name.'_store_success_message'] = 'تم إضافة '.$display_text.' بنجاح';
+    $messages[$entity_name.'_update_success_message'] = 'تم تحديث '.$display_text.' بنجاح';
+    $messages[$entity_name.'_destroy_success_message'] = 'تم حذف '.$display_text.' بنجاح';
 }
-
 
 return $messages;

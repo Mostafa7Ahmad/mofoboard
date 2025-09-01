@@ -54,7 +54,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL', "//"),
+    'asset_url' => env('ASSET_URL', '//'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,8 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        //App\Providers\FortifyServiceProvider::class,
-        //App\Providers\JetstreamServiceProvider::class,
+        // App\Providers\FortifyServiceProvider::class,
+        // App\Providers\JetstreamServiceProvider::class,
 
     ],
 
@@ -228,17 +228,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'MainHelper'=> \App\Helpers\MainHelper::class,
-        'UserSystemInfoHelper'=> \App\Helpers\UserSystemInfoHelper::class,
-        'UploadFilesHelper'=> \App\Helpers\UploadFilesHelper::class,
-        'Carbon'=>  Carbon\Carbon::class,
-        'ImageResizer'=>TarunMangukiya\ImageResizer\Facades\ImageResizer::class,
+        'MainHelper' => \App\Helpers\MainHelper::class,
+        'UserSystemInfoHelper' => \App\Helpers\UserSystemInfoHelper::class,
+        'UploadFilesHelper' => \App\Helpers\UploadFilesHelper::class,
+        'Carbon' => Carbon\Carbon::class,
+        'ImageResizer' => TarunMangukiya\ImageResizer\Facades\ImageResizer::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'SettingsHelper'=>\App\Helpers\SettingsHelper::class,
-        'PluginsHelper'=>\App\Helpers\PluginsHelper::class,
-        
-        //'Location'=> Stevebauman\Location\Facades\Location::class,
+        'SettingsHelper' => \App\Helpers\SettingsHelper::class,
+        'PluginsHelper' => \App\Helpers\PluginsHelper::class,
+
+        // 'Location'=> Stevebauman\Location\Facades\Location::class,
     ],
 ];
-
-
