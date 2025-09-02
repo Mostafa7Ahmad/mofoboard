@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @vite('resources/css/dashboard.css')
 
@@ -375,7 +376,7 @@
                                 'links' => [
                                     [
                                         'can' => 'courses-read',
-                                        'url' => route("admin.courses.index"),
+                                        'url' => route('admin.courses.index'),
                                         'icon' => 'fal fa-book-open',
                                         'text' => 'الكورسات',
                                     ],

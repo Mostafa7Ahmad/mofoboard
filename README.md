@@ -1,100 +1,25 @@
 # مزايا لوحة التحكم
 
 
-- ✅ مهيئة للسيو بشكل تلقائي وذكي
-- ✅ جاهزة لعرض اشعارات مع صور
-- ✅ عرض التنبيهات بشكل لطيف
-- ✅ عرض الأخطاء بشكل لحظي وتلقائي
-- ✅ طريقة لعرض الصور باحترافية
-- ✅ تدعم السحب والافلات
-- ✅ الاشعارات في الوقت الفعلي
-- ✅ أيقونات مدفوعة بشكل مجاني
-- ✅ أفضل وأجمل الخطوط العربية
-- ✅ اعدادات Robots جاهزة
-- ✅ منشئ SiteMap تلقائي
-- ✅ جاهزة للتحويل إلى تطبيق هاتف
-- ✅ جميع الصفحات الأساسية وأكثر
-- ✅ احصائيات رائعة في لوحة التحكم
-- ✅ امكانية انشاء قوائم وتحديد أماكنها
-- ✅ امكانية ترتيب الروابط داخل القوائم
-- ✅ امكانية انشاء صفحات مخصصة
-- ✅ نظام اعلانات جاهز
-- ✅ مدونة متكاملة أقسام،مقالات ..
-- ✅ نظام تحويل الروابط
-- ✅ عربية بالكامل !
-- ✅ محرر جميل مع امكانية رفع صور
-- ✅ نظام مستخدمين ولهم صور
-- ✅ متجاوبة بالكامل
-- ✅ تستخدم آخر اصدار Laravel
-- ✅ تستخدم آخر اصدار Bootstrap
-- ✅ الاشعارات في الوقت الفعلي
-- ✅ راصد الأخطاء الذكي
-- ✅ نظام تتبع شامل
-- ✅ اضافة حدود الزيارات لزيادة الحماية
-- ✅ صفحات 404 مخصصة
-- ✅ صفحات الدخول والتسجيل وغيرها
-- ✅ نظام اعدادات الموقع
-- ✅ جاهزة للدمج مع كلاود فلاير
-- ✅ نظام متابعة ذكي
-- ✅ نظام صلاحيات متقدم
-- ✅ مرفق نماذج لصناعة الصفحات
-- ✅ نظام التذاكر للتواصل معنا
-- ✅ نظام Plugins جاهز لاضافة المزيد
-- ✅ المزيد 
+⚡ تهيئة ذكية للسيو مع مولد تلقائي لملفات Robots وSiteMap.
+🔔 إشعارات متقدمة (صور، لحظية، لطيفة) مع دعم السحب والإفلات.
+🖼️ عرض صور باحترافية + مكتبة أيقونات مدفوعة مجانًا + أجمل الخطوط العربية.
+📱 توافق كامل مع الهواتف وقابلية التحويل لتطبيق موبايل.
+📄 جميع الصفحات الأساسية + صفحات 404 مخصصة + صفحات مرنة + قوالب جاهزة.
+🧭 نظام قوائم متكامل (إنشاء – ترتيب – تحديد أماكن).
+📝 مدونة متطورة (أقسام، مقالات، محرر حديث مع رفع صور) + إنشاء محتوى غير محدود بالذكاء الاصطناعي.
+💰 نظام إعلانات + تحويل روابط + تتبع شامل + حماية بحدود الزيارات.
+🛡️ راصد أخطاء ذكي + إشعارات فورية + نظام متابعة مباشر.
+👤 نظام مستخدمين متكامل مع صور شخصية + صلاحيات متقدمة + إعدادات شاملة.
+📊 إحصائيات ولوحة تحكم قوية + نظام تذاكر للتواصل مع العملاء.
+☁️ جاهزة للدمج مع Cloudflare + دعم الإضافات (Plugins) للتوسعة.
+🖥️ مبنية على أحدث إصدارات Laravel & Bootstrap + تصميم متجاوب بالكامل.
 
 
 ### Screenshots
 
 
-![screenshots/25.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/25.jpg)
-![screenshots/18.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/18.jpg)
-![screenshots/19.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/19.jpg)
-![screenshots/20.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/20.jpg)
-![screenshots/24.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/24.jpg)
-![screenshots/6.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/6.jpg)
-![screenshots/7.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/7.jpg)
-![screenshots/8.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/8.jpg)
-![screenshots/9.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/9.jpg)
-![screenshots/10.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/10.jpg)
-![screenshots/11.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/11.jpg)
-![screenshots/12.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/12.jpg)
-![screenshots/13.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/13.jpg)
-![screenshots/14.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/14.jpg)
-![screenshots/15.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/15.jpg)
-![screenshots/16.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/16.jpg)
-![screenshots/17.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/17.jpg)
-
-
-
-<!-- - ✅ Auto & Smart Seo
-- ✅ Optimized Notifications With Images
-- ✅ Smart Alerts
-- ✅ Auto Js Validations
-- ✅ Front End Alert
-- ✅ Nice Image Viewing FancyBox
-- ✅ Drag And drop Feature
-- ✅ Fully Arabic 😀
-- ✅ Smart Editor With Upload Images
-- ✅ Select from Already uploaded Files
-- ✅ Fully Profile System With Avatars ( Can Resize Avatar )
-- ✅ Fully Responsive
-- ✅ Intervally Getting Notifcations Out Of The Box
-- ✅ FontAwesome PRO 💥 + ResponsiveFonts + Noto Sans Arabic fonts Included
-- ✅ Robots.txt , SiteMapGenerator , manifest.json
-- ✅ General Statistics On Home Page ( Traffic , New Users , Top Pages , Top Browsers , Top Devices , Top OSs , Top Ips , Top Users , and so on ... )
-- ✅ basic pages ( contact , articles , privacy , terms , about , categories , redirections )
-- ✅ You can Create Menus With Links ( can change order by Drag And drop )
-- ✅ Ability to Create custom pages
-- ✅ Smart Error Listeners
-- ✅ Smart Traffic tracker
-- ✅ RateLimit Plugin
-- ✅ Custom 404 Page
-- ✅ Nice Login , Register and Confirm Email Pages
-- ✅ Most Common Settings
-- ✅ Ready to integrate CloudFlare Firewall
-- ✅ Smart Logging System -->
-    
- 
+<!-- ![screenshots/17.jpg](https://raw.githubusercontent.com/peter-tharwat/dashboard/master/public/images/screenshots/17.jpg) -->
 
 ### How to setup
 
@@ -201,6 +126,3 @@ toastr.success('We do have the Kapua suite available.', 'Turtle Bay Resort', {ti
 		<img src="" />
 </div>
 ```
-
-### License
-The Laravel framework is open-sourced software licensed under the MIT license.

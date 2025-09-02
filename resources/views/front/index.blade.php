@@ -295,7 +295,7 @@
         <div class="container mx-auto cta-section">
             <h2 class="text-center text-white">انضم إلينا اليوم</h2>
             <p>ابدأ رحلتك التعليمية الآن واكتشف عالمًا من المعرفة مع دوراتنا المتنوعة والمصممة خصيصًا لك.</p> <a
-                href="{{ route('register') }}" class="hero-cta">سجل الآن</a>
+                href="{{ route('register') }}" class="btn btn-white btn-lg rounded-lg">سجل الآن</a>
         </div>
 
         <!-- === Contact Section === -->

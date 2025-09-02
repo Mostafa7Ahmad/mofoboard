@@ -42,12 +42,13 @@
         const popupKey = `popup_closed_${popupId}`;
         const popupTimestampKey = `popup_closed_time_${popupId}`;
         const reopenAfterHours =
-        {{ data_get($general_popup_plugin->settings, 'reopen_after_hours', 24) }}; // Set the number of hours to reopen the popup
+            {{ data_get($general_popup_plugin->settings, 'reopen_after_hours', 24) }}; // Set the number of hours to reopen the popup
         function close_general_popup_plugin() {
             localStorage.setItem(popupKey, 'true');
             localStorage.setItem(popupTimestampKey, Date.now());
             document.querySelector(`.general_popup_plugin_${popupId}`).style.display = 'none';
         }
+
         function shouldShowPopup() {
             const popupClosed = localStorage.getItem(popupKey) === 'true';
             const closedTimestamp = parseInt(localStorage.getItem(popupTimestampKey), 10);

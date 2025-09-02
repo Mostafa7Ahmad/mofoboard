@@ -14,7 +14,8 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        return view('front.index');
+        $courses = \App\Models\Course::latest()->take(8)->get();
+        return view('front.index', compact('courses'));
     }
 
     public function comment_post(Request $request)

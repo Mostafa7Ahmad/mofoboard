@@ -60,6 +60,7 @@ Route::prefix('dashboard')->middleware(['auth', 'ActiveAccount', 'verified'])->n
 Route::prefix('admin')->middleware(['auth', 'ActiveAccount'])->name('admin.')->group(function () {
 
     Route::get('/', [BackendAdminController::class, 'index'])->name('index');
+
     Route::middleware('auth')->group(function () {
 
         Route::get('plugins/{plugin}/builder', [BackendPluginController::class, 'builder_edit'])->name('plugins.builder-edit');
@@ -148,6 +149,8 @@ Route::prefix('admin')->middleware(['auth', 'ActiveAccount'])->name('admin.')->g
         Route::get('/create', [BackendNotificationsController::class, 'create'])->name('create');
         Route::post('/create', [BackendNotificationsController::class, 'store'])->name('store');
     });
+
+    Route::post('/ai/generate', [\App\Http\Controllers\AiController::class, 'generate'])->name('ai.generate');
 });
 
 Route::get('/login/google/redirect', [LoginController::class, 'redirect_google']);
@@ -181,4 +184,4 @@ Route::get('/test', function () {
 
 Route::get('course', function () {
     return view("front.pages.course");
-})->name('blog');
+})->name('courses');

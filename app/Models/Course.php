@@ -1,91 +1,85 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
-use App\Enums\LevelEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
 
-/**
- * Class Course
- *
- * @property int $id
- * @property string $title
- * @property string $slug
- * @property string|null $description
- * @property float $price
- * @property string $difficulty_level
- * @property string|null $duration
- * @property int|null $category_id
- * @property int|null $instructor_id
- * @property bool $is_published
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property Category|null $category
- * @property User|null $user
- * @property Collection|Enrollment[] $enrollments
- * @property Collection|Module[] $modules
- * @property Collection|Review[] $reviews
- */
 class Course extends Model
 {
-    use \Illuminate\Database\Eloquent\Factories\HasFactory;
-
-    protected $table = 'courses';
-
-    protected $casts = [
-        'price' => 'float',
-        'category_id' => 'int',
-        'instructor_id' => 'int',
-        'is_published' => 'bool',
-        'difficulty_level' => LevelEnum::class,
-    ];
+    use HasFactory;
 
     protected $fillable = [
         'title',
         'slug',
+        'short_description',
         'description',
-        'price',
+        'original_price',
+        'discounted_price',
+        'discount_percent',
         'difficulty_level',
         'duration',
+        'lessons_count',
+        'students_count',
+        'language',
+        'lifetime_access',
+        'certificate',
+        'support',
+        'downloadable_files',
+        'rating',
+        'reviews_count',
         'category_id',
         'instructor_id',
         'is_published',
     ];
 
+    /**
+     * العلاقة مع التصنيفات
+     */
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function instructor()
-    {
-        return $this->belongsTo(User::class, 'instructor_id');
-    }
-
-
+        /**
+     * العلاقة مع المدرب
+     */
     public function user()
     {
         return $this->belongsTo(User::class, 'instructor_id');
     }
 
-    public function enrollments()
+    /**
+     * العلاقة مع المدرب
+     */
+    public function instructor()
     {
-        return $this->hasMany(Enrollment::class);
+        return $this->belongsTo(User::class, 'instructor_id');
     }
 
-    public function modules()
+    /**
+     * الطلاب الملتحقين بالدورة (Pivot Table: course_user)
+     */
+    public function students()
     {
-        return $this->hasMany(Module::class);
+        return $this->belongsToMany(User::class, 'course_user')
+                    ->withTimestamps();
     }
 
-    public function reviews()
+    /**
+     * حساب السعر الفعلي لو فيه خصم
+     */
+    public function getFinalPriceAttribute()
     {
-        return $this->hasMany(Review::class);
+        return $this->discounted_price ?? $this->original_price;
+    }
+
+    /**
+     * Check if course has discount
+     */
+    public function getHasDiscountAttribute()
+    {
+        return !is_null($this->discounted_price) 
+            && $this->discounted_price < $this->original_price;
     }
 }

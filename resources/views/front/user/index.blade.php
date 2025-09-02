@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('user-content')
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-4 p-0">
         <div class="row">
             <!-- Main Content -->
             <div class="col-lg-9 mb-4">
@@ -156,7 +156,7 @@
             </div>
 
             <!-- Sidebar -->
-            <div class="col-lg-3">
+            <div class="col-lg-3 p-0">
                 <div class="card shadow-sm mb-4">
                     <div class="card-body p-5">
                         <h6 class="fw-bold mb-3">إحصائيات سريعة</h6>

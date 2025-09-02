@@ -1,30 +1,20 @@
 @props(['course' => null, 'showBadge' => true, 'showActions' => true])
 
 @php
-    $get = function ($key, $default = null) use ($course) {
-        if (is_array($course)) {
-            return $course[$key] ?? $default;
-        }
-        if (is_object($course)) {
-            return $course->{$key} ?? $default;
-        }
-        return $default;
-    };
-
-    $title = $get('title', 'اسم الكورس');
-    $slug = $get('slug', '#');
-    $image = $get('image_url', asset('images/course-placeholder.png'));
-    $excerpt = $get('excerpt', '');
-    $price = $get('price', null);
-    $oldPrice = $get('old_price', null);
-    $isFree = $get('is_free', false);
-    $rating = floatval($get('rating', 0));
-    $students = intval($get('students_count', 0));
-    $duration = $get('duration', null);
-    $tags = $get('tags', []);
+    $title = data_get($course, 'title', 'اسم الكورس');
+    $slug = data_get($course, 'slug', '#');
+    $image = data_get($course, 'image_url', asset('images/default/image.jpg'));
+    $excerpt = data_get($course, 'excerpt', '');
+    $price = data_get($course, 'price');
+    $oldPrice = data_get($course, 'old_price');
+    $isFree = data_get($course, 'is_free', false);
+    $rating = (float) data_get($course, 'rating', 0);
+    $students = (int) data_get($course, 'students_count', 0);
+    $duration = data_get($course, 'duration');
+    $tags = data_get($course, 'tags', []);
 @endphp
 
-<div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden hover-shadow">
+<div class="card h-100 shadow-lg border-0 rounded-3 overflow-hidden">
     {{-- صورة --}}
     <div class="position-relative overflow-hidden">
         <a>

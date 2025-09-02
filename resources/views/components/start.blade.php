@@ -68,7 +68,7 @@
 
     /* CTA Button */
     .hero-cta {
-        background: #10b981;
+        background: var(--bs-indigo);
         border: none;
         border-radius: 50px;
         padding: 14px 30px;
@@ -153,7 +153,7 @@
     }
 
     .hero-cta {
-        background: #10b981;
+        background: var(--bs-indigo);
         padding: 16px 40px;
         font-size: 1.1rem;
         position: relative;
@@ -161,7 +161,7 @@
     }
 
     .hero-cta:hover {
-        background: #059669;
+        background: var(--bs-indigo);
         transform: translateY(-3px);
     }
 

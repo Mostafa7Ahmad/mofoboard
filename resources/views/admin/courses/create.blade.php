@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
     <div class="col-12 p-3">
         <div class="col-12 col-lg-12 p-0 ">
@@ -6,99 +7,190 @@
                 action="{{ route('admin.courses.store') }}">
                 @csrf
                 <input type="hidden" name="temp_file_selector" id="temp_file_selector" value="{{ uniqid() }}">
+
                 <div class="col-12 col-lg-8 p-0 main-box">
                     <div class="col-12 px-0">
                         <div class="col-12 px-3 py-3">
-                            <span class="fas mx-1fa-info mx-2"></span> إضافة جديد
+                            <span class="fas fa-info-circle mx-2"></span> إضافة دورة جديدة
                         </div>
                         <div class="col-12 divider" style="min-height: 2px;"></div>
                     </div>
+
                     <div class="col-12 p-3 row">
+                        {{-- القسم --}}
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="col-12">
-                                القسم
-                            </div>
-                            <div class="col-12 pt-3">
-                                <select class="form-control select2-select" name="category_id" required
-                                    size="1" style="height:30px;opacity: 0;">
+                            <div class="col-12">القسم</div>
+                            <div class="col-12 pt-2">
+                                <select class="form-control select2-select" name="category_id" required>
+                                    <option value="">اختر القسم</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"
-                                            @if (old('category_id') == $category->id) selected @endif>{{ $category->title }}
+                                        <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                                            {{ $category->title }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="col-12 col-lg-6 p-2">
-                            <div class="col-12">
-                                الوسوم
-                            </div>
-                            <div class="col-12 pt-3">
-                                <select class="form-control select2-select" name="tag_id[]" multiple size="1"
-                                    style="height:30px;opacity: 0;">
-                                    @foreach ($tags as $tag)
-                                        <option value="{{ $tag->id }}">{{ $tag->tag_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div> --}}
+
+                        {{-- الرابط --}}
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="col-12">
-                                الرابط
-                            </div>
-                            <div class="col-12 pt-3">
+                            <div class="col-12">الرابط (Slug)</div>
+                            <div class="col-12 pt-2">
                                 <input type="text" name="slug" required maxlength="190" class="form-control"
                                     value="{{ old('slug') }}">
                             </div>
                         </div>
+
+                        {{-- العنوان --}}
                         <div class="col-12 col-lg-6 p-2">
-                            <div class="col-12">
-                                العنوان
-                            </div>
-                            <div class="col-12 pt-3">
+                            <div class="col-12">العنوان</div>
+                            <div class="col-12 pt-2">
                                 <input type="text" name="title" required maxlength="190" class="form-control"
                                     value="{{ old('title') }}">
                             </div>
                         </div>
-                        <div class="col-12 p-2">
-                            <div class="col-12">
-                                الصورة الرئيسية
-                            </div>
-                            <div class="col-12 pt-3">
+
+                        {{-- الصورة الرئيسية --}}
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">الصورة الرئيسية</div>
+                            <div class="col-12 pt-2">
                                 <input type="file" name="main_image" class="filepond" accept="image/*">
                             </div>
-                            <div class="col-12 pt-3">
+                        </div>
+
+                        {{-- السعر الأصلي --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">السعر الأصلي</div>
+                            <div class="col-12 pt-2">
+                                <input type="number" name="original_price" step="0.01" class="form-control"
+                                    value="{{ old('original_price') }}">
                             </div>
                         </div>
-                        {{-- <div class="col-12  p-2">
-                            <div class="col-12">
-                                الوصف
-                            </div>
-                            <div class="col-12 pt-3">
-                                <textarea name="description" class="editor with-file-explorer">{{ old('description') }}</textarea>
-                            </div>
-                        </div>
-                        <div class="col-12 p-2">
-                            <div class="col-12">
-                                ميتا الوصف
-                            </div>
-                            <div class="col-12 pt-3">
-                                <textarea name="meta_description" class="form-control" style="min-height:150px">{{ old('meta_description') }}</textarea>
+
+                        {{-- السعر بعد الخصم --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">السعر بعد الخصم</div>
+                            <div class="col-12 pt-2">
+                                <input type="number" name="discounted_price" step="0.01" class="form-control"
+                                    value="{{ old('discounted_price') }}">
                             </div>
                         </div>
-                        <div class="col-12 p-2">
-                            <div class="col-12">
-                                مميز
+
+                        {{-- نسبة الخصم --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">نسبة الخصم (%)</div>
+                            <div class="col-12 pt-2">
+                                <input type="number" name="discount_percent" class="form-control"
+                                    value="{{ old('discount_percent') }}">
                             </div>
-                            <div class="col-12 pt-3">
-                                <select class="form-control" name="is_featured">
-                                    <option @if (old('is_featured') == '0') selected @endif value="0">لا</option>
-                                    <option @if (old('is_featured') == '1') selected @endif value="1">نعم</option>
+                        </div>
+
+                        {{-- المستوى --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">المستوى</div>
+                            <div class="col-12 pt-2">
+                                <select name="difficulty_level" class="form-control">
+                                    <option value="beginner" @selected(old('difficulty_level') == 'beginner')>مبتدئ</option>
+                                    <option value="intermediate" @selected(old('difficulty_level') == 'intermediate')>متوسط</option>
+                                    <option value="advanced" @selected(old('difficulty_level') == 'advanced')>متقدم</option>
                                 </select>
                             </div>
-                        </div> --}}
+                        </div>
+
+                        {{-- المدة --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">المدة (مثال: 12 ساعة)</div>
+                            <div class="col-12 pt-2">
+                                <input type="text" name="duration" class="form-control" value="{{ old('duration') }}">
+                            </div>
+                        </div>
+
+                        {{-- عدد الدروس --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">عدد الدروس</div>
+                            <div class="col-12 pt-2">
+                                <input type="number" name="lessons_count" class="form-control"
+                                    value="{{ old('lessons_count') }}">
+                            </div>
+                        </div>
+
+                        {{-- اللغة --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">اللغة</div>
+                            <div class="col-12 pt-2">
+                                <input type="text" name="language" class="form-control"
+                                    value="{{ old('language', 'العربية') }}">
+                            </div>
+                        </div>
+
+                        {{-- خيارات إضافية --}}
+                        <div class="col-12 col-lg-12 p-2">
+                            <div class="col-12">المميزات</div>
+                            <div class="col-12 pt-2 row">
+
+                                {{-- وصول مدى الحياة --}}
+                                <div class="col-12 col-md-6 d-flex align-items-center mb-3">
+                                    <p class="text-start m-0 flex-grow-1">وصول مدى الحياة</p>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" name="lifetime_access"
+                                            value="1" id="lifetime_access" @checked(old('lifetime_access', 1))>
+                                    </div>
+                                </div>
+
+                                {{-- شهادة إتمام --}}
+                                <div class="col-12 col-md-6 d-flex align-items-center mb-3">
+                                    <p class="text-start m-0 flex-grow-1">شهادة إتمام</p>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" name="certificate"
+                                            value="1" id="certificate" @checked(old('certificate', 1))>
+                                    </div>
+                                </div>
+
+                                {{-- دعم فني --}}
+                                <div class="col-12 col-md-6 d-flex align-items-center mb-3">
+                                    <p class="text-start m-0 flex-grow-1">دعم فني</p>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" name="support" value="1"
+                                            id="support" @checked(old('support', 1))>
+                                    </div>
+                                </div>
+
+                                {{-- ملفات قابلة للتحميل --}}
+                                <div class="col-12 col-md-6 d-flex align-items-center mb-3">
+                                    <p class="text-start m-0 flex-grow-1">ملفات قابلة للتحميل</p>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" name="downloadable_files"
+                                            value="1" id="downloadable_files" @checked(old('downloadable_files', 1))>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        {{-- الوصف --}}
+                        <div class="col-12 p-2">
+                            <div class="col-12">الوصف</div>
+                            <div class="col-12 pt-2">
+                                <textarea name="description" class="editor with-file-explorer" style="min-height:200px">{{ old('description') }}</textarea>
+                            </div>
+                        </div>
+
+                        {{-- النشر --}}
+                        <div class="col-12 col-lg-4 p-2">
+                            <div class="col-12">حالة النشر</div>
+                            <div class="col-12 pt-2">
+                                <select name="is_published" class="form-control">
+                                    <option value="0" @selected(old('is_published') == '0')>مسودة</option>
+                                    <option value="1" @selected(old('is_published') == '1')>منشور</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+                {{-- زر الحفظ --}}
                 <div class="col-12 p-3">
                     <button class="btn btn-success" id="submitEvaluation">حفظ</button>
                 </div>

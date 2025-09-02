@@ -60,15 +60,20 @@
                         <div class="col-9 px-2">
                             <select class="form-control" name="location" required>
                                 <option disabled hidden selected value>اختر مكان الاعلان</option>
-                                <option value="HOME" {{ old('location', $announcement ?? '') == 'HOME' ? 'selected' : '' }}>
+                                <option value="HOME"
+                                    {{ old('location', $announcement ?? '') == 'HOME' ? 'selected' : '' }}>
                                     الرئيسية</option>
-                                <option value="TOP" {{ old('location', $announcement ?? '') == 'TOP' ? 'selected' : '' }}>أعلى
+                                <option value="TOP"
+                                    {{ old('location', $announcement ?? '') == 'TOP' ? 'selected' : '' }}>أعلى
                                     الموقع</option>
-                                <option value="ASIDE" {{ old('location', $announcement ?? '') == 'ASIDE' ? 'selected' : '' }}>
+                                <option value="ASIDE"
+                                    {{ old('location', $announcement ?? '') == 'ASIDE' ? 'selected' : '' }}>
                                     القائمة الجانبية</option>
-                                <option value="FOOTER" {{ old('location', $announcement ?? '') == 'ASIDE' ? 'selected' : '' }}>تذييل
+                                <option value="FOOTER"
+                                    {{ old('location', $announcement ?? '') == 'ASIDE' ? 'selected' : '' }}>تذييل
                                     الموقع</option>
-                                <option value="POPUP" {{ old('location', $announcement ?? '') == 'POPUP' ? 'selected' : '' }}>
+                                <option value="POPUP"
+                                    {{ old('location', $announcement ?? '') == 'POPUP' ? 'selected' : '' }}>
                                     النافذة المنبثقة</option>
                             </select>
                         </div>

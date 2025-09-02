@@ -2,13 +2,14 @@
 
 namespace App\Helpers;
 
-
 use Illuminate\Support\Facades\Http;
+
 class AiHelper
 {
     public static function make($message)
     {
         $message = "جاوب فقط بالعربية الفصحى:\n" . $message;
+
         try {
             $response = Http::timeout(60)
                 ->connectTimeout(10)
@@ -25,28 +26,47 @@ class AiHelper
 
         $json = $response->json();
 
+        if (!is_array($json)) {
+            return [
+                'status' => 'error',
+                'message' => 'استجابة غير صالحة من الخادم',
+            ];
+        }
+
         if ($json['status'] === 'success') {
-            return response()->json([
+            return [
                 'status' => 'success',
-                'response' => $json['response'],
-            ]);
+                'response' => self::cleanText($json['response'] ?? ''),
+            ];
         }
 
         if ($json['status'] === 'rate_limited') {
-            return response()->json([
+            return [
                 'status' => 'rate_limited',
-                'response' => $json['response'] ?? '',
+                'response' => self::cleanText($json['response'] ?? ''),
                 'error' => $json['error'] ?? 'تم تجاوز الحد المسموح به',
                 'retry_after' => $json['retry_after'] ?? 5,
-            ], 429);
+            ];
         }
 
-        $cleanResponse = preg_replace('/[^\p{Arabic}\p{L}\p{N}\s\.\,\-\_\!\?]/u', '', $json['response']);
-
-        return response()->json([
+        return [
             'status' => $json['status'] ?? 'error',
-            'response' => $cleanResponse ?? '',
+            'response' => self::cleanText($json['response'] ?? ''),
             'error' => $json['error'] ?? 'خطأ غير معروف',
-        ], 400);
+        ];
+    }
+
+    /**
+     * تنظيف الاستجابة من أي رموز أو نصوص غريبة
+     */
+    private static function cleanText(string $text): string
+    {
+        // يسمح فقط بالعربية + اللاتينية + أرقام + مسافات + بعض الرموز البسيطة
+        $clean = preg_replace('/[^\p{Arabic}a-zA-Z0-9\s\.\,\-\_\!\?\(\)]/u', '', $text);
+
+        // إزالة أي مسافات مكررة
+        $clean = preg_replace('/\s+/', ' ', $clean);
+
+        return trim($clean);
     }
 }
